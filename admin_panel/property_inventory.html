@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Property Inventory | Ledger CRM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#002805",
+                        "surface-bright": "#effcfd",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-container": "#3f5882",
+                        "outline": "#74777f",
+                        "surface-variant": "#d8e5e6",
+                        "primary-fixed": "#ffdbcf",
+                        "tertiary-container": "#00400c",
+                        "secondary": "#455f88",
+                        "on-tertiary-container": "#61b15f",
+                        "secondary-fixed-dim": "#adc7f7",
+                        "inverse-surface": "#273233",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#deebeb",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#ffb59a",
+                        "surface-tint": "#a83900",
+                        "background": "#effcfd",
+                        "surface-dim": "#d0dcdd",
+                        "on-primary-fixed-variant": "#802a00",
+                        "on-secondary-fixed-variant": "#2d476f",
+                        "surface-container-low": "#eaf6f7",
+                        "primary-fixed-dim": "#ffb59a",
+                        "on-secondary-fixed": "#001b3c",
+                        "on-primary-fixed": "#380d00",
+                        "secondary-container": "#b6d0ff",
+                        "primary": "#401100",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#d8e5e6",
+                        "on-background": "#121d1e",
+                        "on-primary-container": "#ff753d",
+                        "tertiary-fixed-dim": "#88d982",
+                        "surface-container": "#e4f0f1",
+                        "inverse-on-surface": "#e7f3f4",
+                        "primary-container": "#641e00",
+                        "on-surface": "#121d1e",
+                        "surface": "#effcfd",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#a3f69c",
+                        "on-tertiary-fixed": "#002204",
+                        "on-surface-variant": "#43474e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-manrope { font-family: 'Manrope', sans-serif; }
+        .whatsapp-green { color: #25D366; }
+        .whatsapp-bg { background-color: #25D366; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-slate-100 dark:bg-slate-950 flex flex-col py-6 z-40 font-manrope text-sm font-medium tracking-wide">
+<div class="px-6 mb-8">
+<h2 class="text-secondary font-bold text-lg uppercase tracking-widest leading-tight">The Architectural<br/>Ledger</h2>
+<p class="text-xs text-slate-500 mt-1">Elite Portfolio Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center px-6 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">person_search</span>
+<span>Leads</span>
+</a>
+<a class="flex items-center px-6 py-3 text-blue-700 dark:text-blue-400 font-extrabold border-l-4 border-blue-700 pl-5 bg-white/50 dark:bg-white/5" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center px-6 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">chat_bubble</span>
+<span>Communications</span>
+</a>
+<a class="flex items-center px-6 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-4 mb-6">
+<button class="w-full bg-gradient-to-br from-primary-container to-on-primary-container text-white py-3 rounded-md font-semibold text-sm shadow-lg shadow-primary-container/20">
+            New Listing
+        </button>
+</div>
+<div class="mt-auto px-6 space-y-1">
+<a class="flex items-center py-2 text-slate-500 hover:text-blue-600 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center py-2 text-slate-500 hover:text-blue-600 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar Shell -->
+<header class="bg-slate-50 dark:bg-slate-900 h-16 flex items-center justify-between px-8 w-full border-b border-slate-200/50 dark:border-slate-800/50 z-30 sticky top-0">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-md focus:ring-2 focus:ring-secondary/20 text-sm" placeholder="Search inventory, leads or transactions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-4">
+<button class="text-slate-500 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-500 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined">history</span>
+</button>
+</div>
+<div class="flex items-center border-l border-slate-200 pl-6 space-x-3">
+<div class="text-right">
+<p class="text-xs font-bold text-slate-900 uppercase tracking-tighter">LEDGER CRM</p>
+<p class="text-[10px] text-slate-500">Elite Broker Portal</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-slate-400">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Content Stage -->
+<section class="p-8 space-y-8 max-w-[1600px] mx-auto w-full">
+<!-- Hero Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-extrabold text-on-background tracking-tight font-headline">Property Inventory</h1>
+<p class="text-on-surface-variant mt-2 text-lg">Manage your architectural portfolio and real estate assets.</p>
+</div>
+<button class="flex items-center bg-secondary text-white px-6 py-3 rounded-md font-bold hover:bg-on-secondary-container transition-all shadow-xl shadow-secondary/10">
+<span class="material-symbols-outlined mr-2">add</span>
+                Add New Property
+            </button>
+</div>
+<!-- Inventory Overview Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col justify-between h-32">
+<span class="text-secondary font-bold text-xs uppercase tracking-widest">Total Properties</span>
+<span class="text-4xl font-headline font-extrabold text-on-background">156</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col justify-between h-32">
+<span class="text-on-tertiary-container font-bold text-xs uppercase tracking-widest">Available</span>
+<div class="flex items-baseline space-x-2">
+<span class="text-4xl font-headline font-extrabold text-on-background">94</span>
+<span class="text-xs text-on-tertiary-container font-bold">60% Total</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col justify-between h-32">
+<span class="text-on-primary-container font-bold text-xs uppercase tracking-widest">Negotiation/Blocked</span>
+<span class="text-4xl font-headline font-extrabold text-on-background">39</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col justify-between h-32">
+<span class="text-outline font-bold text-xs uppercase tracking-widest">Sold/Rented</span>
+<span class="text-4xl font-headline font-extrabold text-on-background">23</span>
+</div>
+</div>
+<!-- Hyper-Local Smart Filter Bar -->
+<div class="bg-surface-container-low p-5 rounded-xl flex flex-wrap items-center gap-4">
+<div class="flex-1 min-w-[180px]">
+<label class="text-[10px] uppercase font-bold text-outline-variant mb-1 block px-1">Locality / Micro-market</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm">location_on</span>
+<input class="w-full pl-8 pr-4 py-2 bg-surface-container-lowest border-none rounded-md text-sm focus:ring-1 focus:ring-secondary" placeholder="e.g. Golf Course Ext Rd" type="text"/>
+</div>
+</div>
+<div class="flex-1 min-w-[150px]">
+<label class="text-[10px] uppercase font-bold text-outline-variant mb-1 block px-1">Property Sub-type</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-md text-sm focus:ring-1 focus:ring-secondary">
+<option>All Types</option>
+<option>Apartment</option>
+<option>Builder Floor</option>
+<option>Penthouse</option>
+<option>Villa</option>
+<option>Commercial</option>
+<option>Plot</option>
+</select>
+</div>
+<div class="flex-1 min-w-[140px]">
+<label class="text-[10px] uppercase font-bold text-outline-variant mb-1 block px-1">BHK Config</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-md text-sm focus:ring-1 focus:ring-secondary">
+<option>All</option>
+<option>1 BHK</option>
+<option>2 BHK</option>
+<option>3 BHK</option>
+<option>4 BHK+</option>
+</select>
+</div>
+<div class="flex-1 min-w-[150px]">
+<label class="text-[10px] uppercase font-bold text-outline-variant mb-1 block px-1">Price Range</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-md text-sm focus:ring-1 focus:ring-secondary">
+<option>All Pricing</option>
+<option>Luxury (&gt; ₹5 Cr)</option>
+<option>Premium (₹1.5 - 5 Cr)</option>
+<option>Mid-Segment (₹75L - 1.5Cr)</option>
+</select>
+</div>
+<div class="flex items-end h-full self-end pb-0.5">
+<button class="bg-secondary text-white px-6 py-2 rounded-md text-sm font-semibold transition-colors shadow-sm">
+                    Apply Filters
+                </button>
+</div>
+</div>
+<!-- Property Catalog -->
+<div class="space-y-4">
+<!-- List Header -->
+<div class="grid grid-cols-12 gap-4 px-6 text-[10px] font-bold uppercase tracking-widest text-outline py-2">
+<div class="col-span-5">Property &amp; Configuration</div>
+<div class="col-span-3">Status, RERA &amp; Vault</div>
+<div class="col-span-1 text-center">Inquiries</div>
+<div class="col-span-2">Price Estimate</div>
+<div class="col-span-1 text-right">Actions</div>
+</div>
+<!-- Property Items -->
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="grid grid-cols-12 gap-4 items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-on-tertiary-container hover:shadow-md transition-all group">
+<div class="col-span-5 flex items-center space-x-4">
+<img alt="Luxury apartment" class="w-20 h-20 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0YAAMMx08OcZbd35R5K3FwBapOZ5zvyyEV8jN0rVFs42aD7F2SC3LTHRfyVAcyKdFhsLFUtb3FrjMOJtYmal5HgzVq2_GCb_193eqgAIdcRfFnPSBfZq5eFbJPGDofBYDlNBq54HmpZ2f61IsuhneiX49g_LMwAqygi2UYNQcI_eHSeibQN1_nuXDwu2A2449watay8zP47rJiVpsBeruvxnEWP7VXuYuzkmx57S5O3c8Ly2txOukiByxp76sgh90dJEM7bakFyLc"/>
+<div>
+<h3 class="font-headline font-bold text-on-background text-lg leading-tight">Skyline Residences</h3>
+<div class="flex items-center text-on-surface-variant text-sm mt-1">
+<span class="material-symbols-outlined text-xs mr-1">location_on</span>
+<span>Sector 54, Gurgaon</span>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="text-[10px] font-bold bg-secondary-container/30 text-on-secondary-container px-2 py-0.5 rounded uppercase">3 BHK Apartment</span>
+<span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-0.5 rounded uppercase">Penthouse</span>
+</div>
+</div>
+</div>
+<div class="col-span-3 space-y-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-on-tertiary-container/10 text-on-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container mr-1.5"></span>Available
+                            </span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center text-[10px] font-bold text-tertiary-container bg-tertiary-container/10 px-2 py-1 rounded border border-tertiary-container/20">
+<span class="material-symbols-outlined text-[16px] mr-1" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                                RERA REGISTERED
+                            </div>
+<button class="flex items-center justify-center w-7 h-7 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded transition-colors" title="Document Vault">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</button>
+</div>
+</div>
+<div class="col-span-1">
+<div class="flex flex-col items-center">
+<span class="text-xl font-bold text-on-background">42</span>
+<span class="text-[9px] text-outline font-bold uppercase">Leads</span>
+</div>
+</div>
+<div class="col-span-2">
+<p class="text-xl font-headline font-extrabold text-on-background tracking-tight">₹3.20 Cr</p>
+<p class="text-[11px] text-outline font-bold uppercase tracking-tight">₹14,500 / sq.ft</p>
+</div>
+<div class="col-span-1 flex items-center justify-end space-x-2">
+<button class="whatsapp-bg text-white w-9 h-9 flex items-center justify-center rounded-full shadow-lg shadow-green-500/20 hover:scale-110 transition-transform">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+</button>
+<button class="text-secondary hover:bg-secondary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="grid grid-cols-12 gap-4 items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-on-primary-container hover:shadow-md transition-all group">
+<div class="col-span-5 flex items-center space-x-4">
+<img alt="Plot of land" class="w-20 h-20 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgLDdJRswsZhKO2w5ivsF0krX_igjXEKj0XaD-JMyB4U3bbNht7Mdm979PAPxjw1xyDRNKjaDdUSUBm7U9igM3lk14ZdCKJmsMYumXDn_zIF1oyPBVR_XwIGvGLmiyV2hUoJXja4kRbxqK96yoVQpxLPMa8f_Z6VLgwKF5lSuZlWXj4shC-jR7tJ4eYfzhkIv7VDZJuwCRjZhjYAY3BOOfUH2GtwCOWtUlAqMcjRXamzI2ngyFJRWux0eWUyyvRRUkAE4z1596NTVi"/>
+<div>
+<h3 class="font-headline font-bold text-on-background text-lg leading-tight">Green Valley Plots</h3>
+<div class="flex items-center text-on-surface-variant text-sm mt-1">
+<span class="material-symbols-outlined text-xs mr-1">location_on</span>
+<span>Lonavala, Pune</span>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="text-[10px] font-bold bg-secondary-container/30 text-on-secondary-container px-2 py-0.5 rounded uppercase">Residential Plot</span>
+</div>
+</div>
+</div>
+<div class="col-span-3 space-y-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span>Token Received
+                            </span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center text-[10px] font-bold text-tertiary-container bg-tertiary-container/10 px-2 py-1 rounded border border-tertiary-container/20">
+<span class="material-symbols-outlined text-[16px] mr-1" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                                RERA REGISTERED
+                            </div>
+<button class="flex items-center justify-center w-7 h-7 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded transition-colors" title="Document Vault">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</button>
+</div>
+</div>
+<div class="col-span-1">
+<div class="flex flex-col items-center">
+<span class="text-xl font-bold text-on-background">18</span>
+<span class="text-[9px] text-outline font-bold uppercase">Leads</span>
+</div>
+</div>
+<div class="col-span-2">
+<p class="text-xl font-headline font-extrabold text-on-background tracking-tight">₹85.00 L</p>
+<p class="text-[11px] text-outline font-bold uppercase tracking-tight">₹4,200 / sq.yard</p>
+</div>
+<div class="col-span-1 flex items-center justify-end space-x-2">
+<button class="whatsapp-bg text-white w-9 h-9 flex items-center justify-center rounded-full shadow-lg shadow-green-500/20 hover:scale-110 transition-transform">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+</button>
+<button class="text-secondary hover:bg-secondary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="grid grid-cols-12 gap-4 items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-outline hover:shadow-md transition-all opacity-90 group">
+<div class="col-span-5 flex items-center space-x-4">
+<img alt="Corporate office" class="w-20 h-20 object-cover rounded-lg grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5gTmAo_Lta65a5xVUep4yoJ7A87YALRkxDCPbqLmZzHn1MHB_j_tXYS89H9AoHImXvcpqTd17a0Eq50i6mXcSYwQyeGCNWfQYCZu1p-9u_xkfl_Hzw4lp4cNgkCPxgTJs_ql6IpqSX-4WGgEfeL9xWo9AtwDMZtA7OVf755xNIgCmiXPQuVa7CzlrwzdsLJHCxHSKFLzD0SCBDHAcEtEiGhGZTnUSuzKhdl6-9fDJ_GRAVtms33fgAIrg6LiHe4qU40ARGsClTwE6"/>
+<div>
+<h3 class="font-headline font-bold text-on-background text-lg leading-tight">Elite Corporate Hub</h3>
+<div class="flex items-center text-on-surface-variant text-sm mt-1">
+<span class="material-symbols-outlined text-xs mr-1">location_on</span>
+<span>BKC, Mumbai</span>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="text-[10px] font-bold bg-secondary-container/30 text-on-secondary-container px-2 py-0.5 rounded uppercase">Corporate Office</span>
+</div>
+</div>
+</div>
+<div class="col-span-3 space-y-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-tertiary-container text-white">
+<span class="w-1.5 h-1.5 rounded-full bg-white mr-1.5"></span>Agreement Done
+                            </span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center text-[10px] font-bold text-tertiary-container bg-tertiary-container/10 px-2 py-1 rounded border border-tertiary-container/20">
+<span class="material-symbols-outlined text-[16px] mr-1" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                                RERA REGISTERED
+                            </div>
+<button class="flex items-center justify-center w-7 h-7 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded transition-colors" title="Document Vault">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</button>
+</div>
+</div>
+<div class="col-span-1">
+<div class="flex flex-col items-center">
+<span class="text-xl font-bold text-on-background">112</span>
+<span class="text-[9px] text-outline font-bold uppercase">Leads</span>
+</div>
+</div>
+<div class="col-span-2">
+<p class="text-xl font-headline font-extrabold text-on-background/60 tracking-tight">₹12.40 Cr</p>
+<p class="text-[11px] text-outline font-bold uppercase tracking-tight">₹45,000 / sq.ft</p>
+</div>
+<div class="col-span-1 flex items-center justify-end space-x-2">
+<button class="whatsapp-bg text-white w-9 h-9 flex items-center justify-center rounded-full shadow-lg shadow-green-500/20 hover:scale-110 transition-transform">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+</button>
+<button class="text-secondary hover:bg-secondary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="grid grid-cols-12 gap-4 items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-on-tertiary-container hover:shadow-md transition-all group">
+<div class="col-span-5 flex items-center space-x-4">
+<img alt="Luxury villa" class="w-20 h-20 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALc4CzYyDwzmiVLN6o_8pvMhRM3B1EDyP8G0L-H7nzX9dHurN57BzvP9N3O2tpcPPHldlZN1UnnotCsQqOHwAh1yoX83qwd1TOoWBoUREKYElbEplsuvR_tQJBKc_uHccErc8KVNbIaWySEKc6VxrPQbTBg3K-7_n63fWAWD3adiWTF2HWOPFY3MU5eNS2BxXlnxviPKb-w6QYauKkXY-w6gEgpH14LWNrhCXsPtrpjDyYOUY0E_yuEDNgcPo3WMr1mnRlzhdU5m8N"/>
+<div>
+<h3 class="font-headline font-bold text-on-background text-lg leading-tight">Azure Coast Villas</h3>
+<div class="flex items-center text-on-surface-variant text-sm mt-1">
+<span class="material-symbols-outlined text-xs mr-1">location_on</span>
+<span>Candolim, Goa</span>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="text-[10px] font-bold bg-secondary-container/30 text-on-secondary-container px-2 py-0.5 rounded uppercase">4 BHK Luxury Villa</span>
+</div>
+</div>
+</div>
+<div class="col-span-3 space-y-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-on-primary-container/10 text-on-primary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary-container mr-1.5"></span>Blocked
+                            </span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center text-[10px] font-bold text-tertiary-container bg-tertiary-container/10 px-2 py-1 rounded border border-tertiary-container/20">
+<span class="material-symbols-outlined text-[16px] mr-1" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                                RERA REGISTERED
+                            </div>
+<button class="flex items-center justify-center w-7 h-7 bg-slate-100 text-slate-600 hover:bg-slate-200 rounded transition-colors" title="Document Vault">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</button>
+</div>
+</div>
+<div class="col-span-1">
+<div class="flex flex-col items-center">
+<span class="text-xl font-bold text-on-background">24</span>
+<span class="text-[9px] text-outline font-bold uppercase">Leads</span>
+</div>
+</div>
+<div class="col-span-2">
+<p class="text-xl font-headline font-extrabold text-on-background tracking-tight">₹5.50 Cr</p>
+<p class="text-[11px] text-outline font-bold uppercase tracking-tight">₹22,000 / sq.ft</p>
+</div>
+<div class="col-span-1 flex items-center justify-end space-x-2">
+<button class="whatsapp-bg text-white w-9 h-9 flex items-center justify-center rounded-full shadow-lg shadow-green-500/20 hover:scale-110 transition-transform">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+</button>
+<button class="text-secondary hover:bg-secondary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination/Footer -->
+<div class="flex justify-between items-center pt-4">
+<p class="text-xs text-on-surface-variant font-medium">Showing <span class="font-bold">4</span> of <span class="font-bold">156</span> properties</p>
+<div class="flex items-center space-x-2">
+<button class="p-2 rounded-md hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-md bg-secondary text-white text-xs font-bold shadow-md">1</button>
+<button class="w-8 h-8 rounded-md bg-surface-container-lowest text-on-surface text-xs font-bold border border-outline-variant/20 hover:bg-surface-container-high">2</button>
+<button class="w-8 h-8 rounded-md bg-surface-container-lowest text-on-surface text-xs font-bold border border-outline-variant/20 hover:bg-surface-container-high">3</button>
+<button class="p-2 rounded-md hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Estate Elite | Lead Management</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#2b486a",
+                    "primary-container": "#022747",
+                    "surface-container-low": "#f6f3f2",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#d2e4ff",
+                    "on-surface-variant": "#43474e",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001c37",
+                    "secondary-container": "#5ff4f7",
+                    "secondary": "#00696b",
+                    "surface-container-highest": "#e4e2e1",
+                    "outline": "#73777f",
+                    "tertiary": "#230a00",
+                    "secondary-fixed-dim": "#3cdbde",
+                    "on-background": "#1b1c1c",
+                    "tertiary-fixed-dim": "#ffb68e",
+                    "surface-container": "#f0eded",
+                    "background": "#fbf9f8",
+                    "surface-bright": "#fbf9f8",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#002020",
+                    "surface-variant": "#e4e2e1",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1c1c",
+                    "error-container": "#ffdad6",
+                    "surface": "#fbf9f8",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#abc9f1",
+                    "tertiary-container": "#431a00",
+                    "surface-tint": "#436083",
+                    "on-secondary-container": "#006e70",
+                    "on-primary-container": "#728fb4",
+                    "secondary-fixed": "#63f7fa",
+                    "on-tertiary-container": "#df6d1d",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-tertiary-fixed": "#331200",
+                    "tertiary-fixed": "#ffdbc9",
+                    "primary-fixed-dim": "#abc9f1",
+                    "outline-variant": "#c3c6cf",
+                    "inverse-surface": "#303030",
+                    "surface-dim": "#dcd9d9",
+                    "primary": "#001225",
+                    "surface-container-high": "#eae8e7",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 flex flex-col h-full h-screen w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 z-50">
+<div class="px-8 py-10">
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50 brand-font">Estate Elite</span>
+<p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold mt-1">Broker Admin</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<!-- Dashboard Tab -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/30 dark:hover:bg-slate-800/30 transition-colors font-manrope text-sm font-medium tracking-wide" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Leads Tab - ACTIVE -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-900 dark:text-slate-50 font-bold border-r-4 border-slate-900 dark:border-slate-50 bg-slate-200/50 dark:bg-slate-800/50 font-manrope text-sm tracking-wide" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span>Leads</span>
+</a>
+<!-- Properties Tab -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/30 dark:hover:bg-slate-800/30 transition-colors font-manrope text-sm font-medium tracking-wide" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span>Properties</span>
+</a>
+<!-- Analytics Tab -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/30 dark:hover:bg-slate-800/30 transition-colors font-manrope text-sm font-medium tracking-wide" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- Settings Tab -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/30 dark:hover:bg-slate-800/30 transition-colors font-manrope text-sm font-medium tracking-wide" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<div class="flex items-center gap-3 p-3 bg-surface-container rounded-xl">
+<img alt="Brokerage Logo" class="w-10 h-10 rounded-full object-cover" data-alt="professional real estate broker headshot with friendly expression and city office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqlW9DrSzXgyZ-MGHT9yWYkJybFuZ-VOy7NUKcBsM9pkkk78cJ_6elpwVHq8Bnupo_Ok773TWkGD2fdmr4du5Qe-EBmMRSZ1sGuCMgHw-yjBGpwuQXgV2NVC6eKtisCtEeN97PIV7zbcVYpQS4RcpYhcK9OujLJjevFFIvBoTwPlehE5k9w9tPFZ1KyQJgLvw8LYsRhAHZjwTa5Hx9iobgBGZ2LjX9TpjRCVZVUaqT_GT20nLWHt3Amqb9JHLT85eNnxIrhdRp6ts"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Marcus Sterling</p>
+<p class="text-[10px] text-on-surface-variant">Principal Broker</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-64 z-40 flex items-center justify-between px-8 h-16 w-full border-b border-slate-200/50 dark:border-slate-800/50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/10 font-body" placeholder="Search leads, names, or locations..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="help">help</span>
+</button>
+<div class="h-8 w-px bg-outline-variant/30 mx-2"></div>
+<button class="flex items-center gap-2 group">
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border-2 border-primary-container object-cover" data-alt="Modern high-resolution user avatar showing a professional male administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnRnIHat0GRIggDTrTxwiNorRSqsEwVzVJ4BU72PqulawfzR1SABqIjWIaPF3azKe26k9BFmUvb7KqcCU3_pO3N61VnWd9fpwwwLJKGnXg3j6qR0UpHCsaWy4i39Y6XJ2Y6faRnYUxoHW3db1Ex5BTuUWD7d3qQ6FGv8r-dqxsZVXaOwqDqc6a6YMkOR311PUEXcPV6-Q1DIqmJVAbq9RVVRIu_xK-hncLLheQfq4mo1ZIeQYNvrWUNAAAe8l3TvkbKLibxg3E_xk"/>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-8 max-w-[1600px] mx-auto">
+<!-- Hero Header Section -->
+<section class="mb-10 flex items-end justify-between">
+<div>
+<span class="text-xs font-bold tracking-[0.1em] text-on-tertiary-fixed-variant uppercase mb-2 block">Executive Overview</span>
+<h1 class="text-4xl font-extrabold tracking-tight text-primary brand-font leading-none">Lead Acquisition</h1>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-lowest text-on-surface-variant rounded-xl text-sm font-semibold hover:shadow-sm transition-all border border-outline-variant/10">
+<span class="material-symbols-outlined text-lg">file_download</span>
+                        Export Report
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary-container text-on-primary rounded-xl text-sm font-semibold hover:opacity-90 transition-all shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-lg">add</span>
+                        New Lead
+                    </button>
+</div>
+</section>
+<!-- Key Metrics (Asymmetric Bento) -->
+<section class="grid grid-cols-12 gap-6 mb-10">
+<div class="col-span-12 md:col-span-4 bg-primary-container text-on-primary p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between h-56">
+<div class="relative z-10">
+<p class="text-sm font-medium opacity-70">Total Leads</p>
+<h2 class="text-5xl font-bold mt-2">1,284</h2>
+</div>
+<div class="relative z-10 flex items-center gap-2 text-sm text-secondary-fixed">
+<span class="material-symbols-outlined">trending_up</span>
+<span>+12.5% from last month</span>
+</div>
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-8 rounded-3xl flex flex-col justify-between h-56">
+<div>
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-on-surface-variant">Conversion Rate</p>
+<span class="p-2 bg-tertiary-fixed rounded-full">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-lg">analytics</span>
+</span>
+</div>
+<h2 class="text-5xl font-bold text-primary mt-2">18.4%</h2>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 18.4%"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-8 rounded-3xl flex flex-col justify-between h-56">
+<div>
+<p class="text-sm font-medium text-on-surface-variant">Top Source</p>
+<h2 class="text-3xl font-bold text-primary mt-2">Zillow Luxury</h2>
+<p class="text-sm text-on-surface-variant mt-1">42% of high-value leads</p>
+</div>
+<div class="flex -space-x-3">
+<img alt="Agent" class="w-10 h-10 rounded-full border-4 border-surface-container-lowest object-cover" data-alt="professional person headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8uS6pNYmL9lmETB07VbVUOgfLpfZHBvbpQWkVvvPk1DAVGQKB2wd14R_KzdVDThJTVsfKRkQ15tgTWmB1seAPxG2uktqXKH2w2c5vASPlMp0gRLkqS2DbhPz_ildl7kx6uhw59tqQH3hKt5ZkwV95T65q_dE5WOP9fI2nzd2jEigrbUB2x58oIZPnLeheou94TCQeNZbxvp6_RwVs661F-x8LdPhJHkfNk82ROUUU3UN2Vtk7FH1p-Y3GJPMyRmSIxsiJ6KzRVuE"/>
+<img alt="Agent" class="w-10 h-10 rounded-full border-4 border-surface-container-lowest object-cover" data-alt="professional person headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7YN4pjj4MPqGLYZjooAibGcbZqyDCwrErKQjOafmX3sE4dREfortKWFo-doqIs4tNy7sp4Dnx3oi5jj0b67TZ-qujYj5sCO5aXSGVFAVw-wS3KxC_SzMcskikH8FJkCvi8GtJmp9wlXWVQjiT8GDEUN0IYxY08U1xK_obDggARvXJ9tfsu6Aw_5GLsyuxoXg6FOXfCE85_-Xauh9SGm6PiO1jMkRXk6zuK4LWlHVitnbx2L0QoJtugUei94BpgN19E1Vr0DKgMK4"/>
+<img alt="Agent" class="w-10 h-10 rounded-full border-4 border-surface-container-lowest object-cover" data-alt="professional person headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQncoeS2W2YoO2_VgLvs1UbuNpqHSsCDbKF-op00sdxGZ6zT6hEOd8CeV3A2Qy1stK_RMK7CuUBnj8ogjYTv0yE09nrtY01hh4AFocApJeSqOqRhK3OAdofB6l1lTHH3Wt39g43WlywfY4E0Ur47TiY8lMDBSf63BHzPBJmbZmijXCinyyujJccCkbZiMhl8-BiJIZgP1QibyojI2C_XGebRNlFxqQuo_YstLE8gXMmXmwS_GOSvueodyVqgB52KNDOzVkkzzR7Kg"/>
+<div class="w-10 h-10 rounded-full border-4 border-surface-container-lowest bg-surface-container text-[10px] font-bold flex items-center justify-center">+12</div>
+</div>
+</div>
+</section>
+<!-- Table Filters & Controls -->
+<section class="bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-sm">
+<div class="p-8 border-b border-surface-container">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<h3 class="text-xl font-bold brand-font">Lead Pipeline</h3>
+<div class="flex gap-2 p-1 bg-surface-container rounded-xl">
+<button class="px-4 py-1.5 rounded-lg text-xs font-bold bg-surface-container-lowest text-primary shadow-sm">All Time</button>
+<button class="px-4 py-1.5 rounded-lg text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">Last 30 Days</button>
+<button class="px-4 py-1.5 rounded-lg text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">Today</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-lg text-on-surface-variant">filter_list</span>
+<select class="bg-transparent border-none text-xs font-bold focus:ring-0 cursor-pointer">
+<option>All Statuses</option>
+<option>New</option>
+<option>Contacted</option>
+<option>In Progress</option>
+</select>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-lg text-on-surface-variant">calendar_today</span>
+<span class="text-xs font-bold">Select Date Range</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Custom Lead Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container/30">
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Name</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Interest</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Budget</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-center">Score</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="px-8 py-5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-sm">JS</div>
+<div>
+<p class="text-sm font-bold text-primary">Julianne Sterling</p>
+<p class="text-[11px] text-on-surface-variant">j.sterling@outlook.com</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs font-medium text-primary">Buy · Luxury Estate</span>
+</td>
+<td class="px-8 py-6 text-sm font-bold text-primary">$4.2M - $5.5M</td>
+<td class="px-8 py-6">
+<div class="flex items-center justify-center">
+<span class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[11px] font-extrabold">98</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+                                        New
+                                    </span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-white rounded-lg text-on-surface-variant hover:text-primary transition-all active:scale-90" title="Send Email">
+<span class="material-symbols-outlined text-lg">mail</span>
+</button>
+<button class="p-2 hover:bg-white rounded-lg text-on-surface-variant hover:text-primary transition-all active:scale-90" title="Assign Agent">
+<span class="material-symbols-outlined text-lg">person_add</span>
+</button>
+<button class="px-3 py-1.5 bg-surface-container text-primary rounded-lg text-[11px] font-bold hover:bg-primary hover:text-white transition-all">Details</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm">RM</div>
+<div>
+<p class="text-sm font-bold text-primary">Robert Miller</p>
+<p class="text-[11px] text-on-surface-variant">robert@miller.tech</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs font-medium text-primary">Rent · Modern Loft</span>
+</td>
+<td class="px-8 py-6 text-sm font-bold text-primary">$12k/mo</td>
+<td class="px-8 py-6">
+<div class="flex items-center justify-center">
+<span class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-[11px] font-extrabold">72</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                        Contacted
+                                    </span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-white rounded-lg text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-lg">mail</span></button>
+<button class="p-2 hover:bg-white rounded-lg text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-lg">person_add</span></button>
+<button class="px-3 py-1.5 bg-surface-container text-primary rounded-lg text-[11px] font-bold hover:bg-primary hover:text-white transition-all">Details</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-sm">AE</div>
+<div>
+<p class="text-sm font-bold text-primary">Aisha El-Sayed</p>
+<p class="text-[11px] text-on-surface-variant">aisha@elsayed.co</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs font-medium text-primary">Buy · Commercial</span>
+</td>
+<td class="px-8 py-6 text-sm font-bold text-primary">$12.5M</td>
+<td class="px-8 py-6">
+<div class="flex items-center justify-center">
+<span class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[11px] font-extrabold">89</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                                        In Progress
+                                    </span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-white rounded-lg text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-lg">mail</span></button>
+<button class="p-2 hover:bg-white rounded-lg text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-lg">person_add</span></button>
+<button class="px-3 py-1.5 bg-surface-container text-primary rounded-lg text-[11px] font-bold hover:bg-primary hover:text-white transition-all">Details</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm">TC</div>
+<div>
+<p class="text-sm font-bold text-primary">Thomas Chen</p>
+<p class="text-[11px] text-on-surface-variant">t.chen@lifestyle.com</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs font-medium text-primary">Buy · Beach House</span>
+</td>
+<td class="px-8 py-6 text-sm font-bold text-primary">$3.1M</td>
+<td class="px-8 py-6">
+<div class="flex items-center justify-center">
+<span class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-[11px] font-extrabold">64</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+                                        New
+                                    </span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 hover:bg-white rounded-lg text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-lg">mail</span></button>
+<button class="p-2 hover:bg-white rounded-lg text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-lg">person_add</span></button>
+<button class="px-3 py-1.5 bg-surface-container text-primary rounded-lg text-[11px] font-bold hover:bg-primary hover:text-white transition-all">Details</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer -->
+<div class="px-8 py-6 border-t border-surface-container flex items-center justify-between">
+<p class="text-xs text-on-surface-variant font-medium">Showing <span class="font-bold text-primary">1-4</span> of <span class="font-bold text-primary">1,284</span> entries</p>
+<div class="flex items-center gap-2">
+<button class="p-2 bg-surface-container rounded-lg text-on-surface-variant disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 bg-primary text-on-primary rounded-lg text-xs font-bold">1</button>
+<button class="w-8 h-8 hover:bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold transition-colors">2</button>
+<button class="w-8 h-8 hover:bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold transition-colors">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="w-8 h-8 hover:bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold transition-colors">32</button>
+<button class="p-2 bg-surface-container rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#022747",
+                    "on-primary-container": "#728fb4",
+                    "surface": "#fbf9f8",
+                    "on-primary-fixed": "#001c37",
+                    "secondary-fixed": "#63f7fa",
+                    "surface-dim": "#dcd9d9",
+                    "surface-container": "#f0eded",
+                    "on-tertiary-container": "#df6d1d",
+                    "outline-variant": "#c3c6cf",
+                    "primary-fixed": "#d2e4ff",
+                    "secondary-container": "#5ff4f7",
+                    "surface-bright": "#fbf9f8",
+                    "error-container": "#ffdad6",
+                    "outline": "#73777f",
+                    "primary": "#001225",
+                    "on-secondary-container": "#006e70",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface-container-highest": "#e4e2e1",
+                    "on-secondary-fixed": "#002020",
+                    "secondary-fixed-dim": "#3cdbde",
+                    "on-tertiary-fixed": "#331200",
+                    "background": "#fbf9f8",
+                    "surface-container-high": "#eae8e7",
+                    "surface-tint": "#436083",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb68e",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1c1c",
+                    "primary-fixed-dim": "#abc9f1",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "secondary": "#00696b",
+                    "tertiary-container": "#431a00",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#43474e",
+                    "inverse-surface": "#303030",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e4e2e1",
+                    "tertiary": "#230a00",
+                    "on-background": "#1b1c1c",
+                    "inverse-primary": "#abc9f1",
+                    "tertiary-fixed": "#ffdbc9",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#2b486a",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "surface-container-low": "#f6f3f2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-primary">
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-2xl transition-all duration-300 rounded-b-xl px-4" id="main-nav">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto font-['Manrope'] tracking-tight">
+<div class="text-xl font-bold tracking-widest text-white uppercase transition-colors duration-300" id="nav-logo">LUXE ARCHITECTURAL</div>
+<div class="hidden md:flex items-center gap-8" id="nav-links">
+<a class="text-white font-bold border-b-2 border-white pb-1 transition-colors duration-300" href="#">Buy</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300" href="#">Rent</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300" href="#">Sell</a>
+<a class="text-white/80 font-medium hover:text-white transition-colors duration-300" href="#">Locations</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-white/80 font-medium hover:opacity-80 transition-opacity active:scale-95 duration-150" id="nav-login">Login</button>
+<button class="bg-white text-primary-container px-6 py-2.5 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all" id="nav-cta">List Property</button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center justify-center pt-20 overflow-hidden reveal">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Modern minimalist architectural masterpiece with large glass windows at dusk, soft interior lighting, surrounded by manicured landscaping and clear sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWOaaYcHwGemvjzj7oC41w_vl_OqUR_736sJRT39p_8Qoq9xN_4GWFFMqsy_oMqeY6kzz6fECYE5FAtDTHjnZzC1B6Qru14CsSe03UJve2M1g4Agis8q4tbMYYUynpB_7vlE_91l2o5jO-DDcEMdN8bRMVa0amnLkIkGAczxGJdN4Yi8HugD7D90URIGwrtmf16BJ_smiXyQAJNbP-Ney5XEOBy2nQ1wBgsR6e3sVErjoB4uivzGEP3hfLJd-L9VntPQBK02O435U"/>
+<div class="absolute inset-0 bg-primary/30"></div>
+</div>
+<div class="relative z-10 w-full max-w-5xl px-8 text-center">
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight">
+                Space, Curated.
+            </h1>
+<div class="glass-nav p-2 md:p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center gap-2 max-w-4xl mx-auto border border-white/20">
+<div class="flex-1 w-full flex items-center gap-4 px-6 py-3 bg-white/50 rounded-xl">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder:text-outline font-medium" placeholder="Search by city, neighborhood, or building..." type="text"/>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-8 py-4 bg-surface-container-highest text-on-surface font-semibold rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+                        Filters
+                    </button>
+<button class="flex-1 md:flex-none px-10 py-4 bg-primary-container text-on-primary font-bold rounded-l-none rounded-r-xl hover:opacity-90 transition-all active:scale-[0.98]">
+                        Search
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Expertise Section -->
+<section class="py-24 bg-surface-container-low overflow-hidden reveal">
+<div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="relative z-10 rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-[600px] object-cover" data-alt="Portrait of two professional real estate agents in sharp suits discussing a property plan in a sunlit architectural studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcg6EAk9hQ_MBJbggVhJ2QFxeIQtSNWwwmIu4LD_EB3s1fdLAui_eQzv-BoKWLkK62HIy9V2we727xK5T31osbP9i0WW0ZNC0vKlftx9uj2_FEvzGFzcvVsmztgqsk-vapJKLXqIxANokFkvDxYgryPQl6JR-xkXuruCEk-RtRCW0dSiPdVNvg8lX6QsXwsm9kfIPzGsLNwb3te2OQLHfgmSGeU3gkjdZq4nTy257MBk7rEwWBIznZJsc4wiocLf-LupjHfE1hNu0"/>
+</div>
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-primary-fixed rounded-full -z-0 opacity-50"></div>
+<div class="absolute -bottom-12 -right-12 w-80 h-80 bg-secondary-fixed opacity-30 rounded-full -z-0"></div>
+</div>
+<div class="max-w-xl">
+<span class="text-on-tertiary-container font-bold tracking-widest uppercase text-xs mb-6 block">Our Expertise</span>
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-primary mb-8 leading-tight">
+                    We don't just sell property. We curate legacies.
+                </h2>
+<p class="text-on-surface-variant text-lg mb-10 leading-relaxed">
+                    With over three decades of mastery in global luxury real estate, Luxe Architectural provides an unparalleled concierge experience for the discerning investor. Our agents are curators of space, light, and architectural significance.
+                </p>
+<div class="grid grid-cols-2 gap-8 mb-12">
+<div>
+<div class="text-3xl font-headline font-extrabold text-primary mb-2">$12B+</div>
+<p class="text-sm font-medium text-outline">Closed Volume</p>
+</div>
+<div>
+<div class="text-3xl font-headline font-extrabold text-primary mb-2">24</div>
+<p class="text-sm font-medium text-outline">Global Markets</p>
+</div>
+</div>
+<button class="px-10 py-5 bg-primary text-on-primary font-bold rounded-lg hover:opacity-90 transition-all flex items-center gap-3">
+                    Meet the Partners
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Global Destinations -->
+<section class="py-24 px-8 max-w-screen-2xl mx-auto reveal">
+<h2 class="font-headline text-4xl font-extrabold text-primary mb-16 text-center">Global Destinations</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<a class="group relative aspect-[4/5] rounded-xl overflow-hidden" href="#">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Aerial view of Manhattan skyline with Central Park in the foreground during autumn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNLVwC3YDvS96mvgSBWOlDuFp4P2ST08KCexnHujVLmdLyhgGxYA-yasbnVtsui-pcowZkED0SJzCvWTjQ3_fT4zY1aBxHobGRHBIqShuEIcdbPIACnpBMd-rhI46EP7huR7_kD3pBv44aUexBfUqS5wTQnCfsQCRIGIiGd4R1lbayyv21o7NAytzx87nzRbgILOePq8eloHIg9QB4IV5xW0k_ghapQsDdP7-DE7pIASxrH1rgSVqaN4n29nVhLTFswXstO-3Eh0U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<p class="text-xs font-bold tracking-widest uppercase mb-1">New York</p>
+<h3 class="text-2xl font-headline font-bold">Manhattan</h3>
+</div>
+</a>
+<a class="group relative aspect-[4/5] rounded-xl overflow-hidden mt-8 md:mt-12" href="#">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Sun-drenched Miami South Beach architecture with pastel colored deco buildings and palm trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHmKQRietHRUYzQpyPoYbez68Qyqklc7dtGS3Niu3-whwBqZ_WUu6QI9GBcunRQprJA7fGDWEGWwjP0BQ6trenE0P0QWauy4VkkDDEkVAqU-zcRR2CaDyNFA1u7DaXDzjrXcRJIuqZdyzxF1NHkm4ffrndAku5lLb9AsGjp4YOVNR0-NaBK43PraCObDW0P6ueSNlv4rMKiVSLRE36S33qq9XILENxdMdfzGkPWyN3zHeU-AXx15wbTIEgHT2C68dPBwyb83VE1hY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<p class="text-xs font-bold tracking-widest uppercase mb-1">Florida</p>
+<h3 class="text-2xl font-headline font-bold">Miami</h3>
+</div>
+</a>
+<a class="group relative aspect-[4/5] rounded-xl overflow-hidden" href="#">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="London skyline featuring Big Ben and the Thames at sunset with golden reflection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-AHhkfh2KYzjxC3WUacQd3XJWUA1mTSaCcbc5lgBxhC9cbxQ62_EojtbAB_A4fxwHh1N6BQ-eS8wL-ni55_trskiQ_4DFvmjeQyGEOKrg8_3vLF_IFNkztFRah7SSzUHAeHGX_exKv8-3Lo-kifTO3tX1sdG234I6c8RnzB7AOZUb-6Jpz-jVVCd0kAHcjVcPuZ5fkWSfdrR7kIsf9ZJDq-w_8Iix-J91IJEldZuZJVW52BfBDwKsWUySCbUbfCRc8wenQKooBLw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<p class="text-xs font-bold tracking-widest uppercase mb-1">United Kingdom</p>
+<h3 class="text-2xl font-headline font-bold">London</h3>
+</div>
+</a>
+<a class="group relative aspect-[4/5] rounded-xl overflow-hidden mt-8 md:mt-12" href="#">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Classic Parisian street with elegant Haussmann architecture and small balconies with flowers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD23ZRh5n8vuzYCrX-MktvCA73DNvrvu_E2GpZImPGUxIRy_SjkqFxYURqID7ZnURLGo5DdMInbhHiWTic8b5YMmsLu_IRqsOwVxCfi017_fGEHchSB3MbBfa1b46TVci5GWWu_CQg_NtbrO_fGioJSw-z1nrTwtnPkIByTvO4glOvjC-vNXNOes07oMKCrPY0CICAhbym0o4fIHnYebMAEsdub1ADKf-0hnZVTnU9gzkYs377K1MgeVf4m2J77jIstL24-Xv_6RX0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<p class="text-xs font-bold tracking-widest uppercase mb-1">France</p>
+<h3 class="text-2xl font-headline font-bold">Paris</h3>
+</div>
+</a>
+</div>
+</section>
+<!-- Why Us Section -->
+<section class="py-24 px-8 reveal">
+<div class="max-w-screen-2xl mx-auto bg-primary-container rounded-2xl p-12 md:p-16 text-white shadow-2xl">
+<div class="mb-12">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-1.5 h-8 bg-on-tertiary-container rounded-full"></div>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight">Why Us</h2>
+</div>
+<p class="text-lg text-white/90 leading-relaxed max-w-5xl">
+            At The Homestore, we're more than just Property Advisors. We're a one-stop shop for all your home-buying needs. From choosing the perfect property to financing to transforming it into your dream home,... 
+            <a class="text-on-tertiary-container font-bold hover:underline ml-1" href="#">Read More</a>
+</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-16 border-t border-white/10 pt-16">
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 transition-all group-hover:bg-on-tertiary-container/20">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl">currency_rupee</span>
+</div>
+<h3 class="font-headline font-bold text-lg">Zero Brokerage</h3>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 transition-all group-hover:bg-on-tertiary-container/20">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl">explore</span>
+</div>
+<h3 class="font-headline font-bold text-lg">Vaastu Consultation</h3>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 transition-all group-hover:bg-on-tertiary-container/20">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl">domain_add</span>
+</div>
+<h3 class="font-headline font-bold text-lg">Wide range of Properties to offer</h3>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 transition-all group-hover:bg-on-tertiary-container/20">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl">handshake</span>
+</div>
+<h3 class="font-headline font-bold text-lg">Support Till Position</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Newly Listed Cards -->
+<section class="py-24 bg-surface-container-highest reveal">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="flex items-center justify-between mb-16">
+<h2 class="font-headline text-4xl font-extrabold text-primary">Newly Listed</h2>
+<div class="flex gap-4">
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-primary shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-white shadow-sm hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<!-- Property Card -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group">
+<div class="relative overflow-hidden aspect-[16/10]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern white villa with sharp geometric lines and a crystal clear swimming pool in the foreground" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADTnaTwb7HlTXHl1fiPzahA3cHvxZ1Vv4u3RneNVzMzNIDIPpbWHqFl75FWL-0Tm_g0Y9-J-WNeCVf2LmK4MQD4W5VZUFbmhAS7zLkCBPS8iXBX_p3yS-onLmA8EFHamY7727Ra26jdC4bGHGUAqbvt6pRU0EZ0RbKgFfpocCEyZNPpP9tFuaxqLviHJClqJLeBonb7b97C9BX3F0vva1ROwAzpFeb8HWInNgG5T2vo5FwfjGx3A1Y5XaNd4rHH-98SvGgGQw6grI"/>
+<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-xl font-headline font-bold text-primary mb-1">Aria Estate</h3>
+<p class="text-outline text-sm">Canyon Drive, Los Angeles</p>
+</div>
+<div class="text-xl font-headline font-extrabold text-primary">$18,400,000</div>
+</div>
+<div class="flex items-center gap-6 text-on-surface-variant font-medium text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bed</span> 6 Beds
+                            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bathtub</span> 8 Baths
+                            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">square_foot</span> 12,400 sqft
+                            </div>
+</div>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group">
+<div class="relative overflow-hidden aspect-[16/10]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Industrial style loft apartment with exposed brick walls, high ceilings, and large factory windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD40JcGSGPfozgqNZBLyfUzuGLbyYNn2-G8NVjk8K4p_S59JjqQkfpkuZ7T7HsR4MPl_Ll2v85Lm-jM9vxo0fsheVPMacRmNvhP7j_kU6IBWkiza5168mR_I0KHjDVfIDGonfkQ0gGnXrwyIshkcOwv7Ijc7tPgvsiCfPFPjH5lJjU6Xe3HUNcgHSOxNsS0iun_9qdZhE1EDxVXTs0UpjnZv9d4lO68lL2tP_rg8RTc072lO14yJ7dm5cf1Ylxnc0UKDA_8LBHOMz0"/>
+<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-xl font-headline font-bold text-primary mb-1">Industrial Sky</h3>
+<p class="text-outline text-sm">SoHo, Manhattan</p>
+</div>
+<div class="text-xl font-headline font-extrabold text-primary">$5,250,000</div>
+</div>
+<div class="flex items-center gap-6 text-on-surface-variant font-medium text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bed</span> 2 Beds
+                            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bathtub</span> 2 Baths
+                            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">square_foot</span> 3,200 sqft
+                            </div>
+</div>
+</div>
+</div>
+<!-- Property Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group">
+<div class="relative overflow-hidden aspect-[16/10]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Ultra-modern kitchen with marble islands, minimalist cabinetry, and designer lighting fixtures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgG7vFoeM3xe9OGN_z2kl1Sw08qvDZDB0U7jpb_5jaJmy4Kq1-CQeQe8vauwIkJH6dk5sSO0w54YAvK3TudTku7DF0L4P9yhFt09BpMv0bzdZ4aPry8eR8BSpR7CX2OATvCzEZ5JI2B0sVtPsOR579Uz29kEelld9zHv5haqpdCflMuo_b2RCgfJgi_ZIBYfDIS6YZ5LF83uECAcQvll3fwQFhVNJEC6IC_w0LdZgVim5cThdsSIOws9f3K3a71OGHlPtxAJe2ZwU"/>
+<button class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-xl font-headline font-bold text-primary mb-1">The Marble Villa</h3>
+<p class="text-outline text-sm">Palm Jumeirah, Dubai</p>
+</div>
+<div class="text-xl font-headline font-extrabold text-primary">$12,000,000</div>
+</div>
+<div class="flex items-center gap-6 text-on-surface-variant font-medium text-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bed</span> 5 Beds
+                            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bathtub</span> 6 Baths
+                            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">square_foot</span> 8,500 sqft
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Client Feedback Section -->
+<section class="py-24 bg-surface reveal">
+<div class="max-w-screen-2xl mx-auto px-8">
+<h2 class="font-headline text-4xl font-extrabold text-primary mb-16 text-center">Client Feedback</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white p-10 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex gap-0.5 text-on-tertiary-container mb-6">
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+<p class="text-on-surface-variant italic text-lg leading-relaxed mb-8">
+                            "The level of architectural insight provided by Luxe Architectural is unmatched. They didn't just show us houses; they curated a selection of art we could live in."
+                        </p>
+</div>
+<div class="flex items-center gap-4 border-t border-outline-variant/30 pt-8">
+<img alt="Client photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcg6EAk9hQ_MBJbggVhJ2QFxeIQtSNWwwmIu4LD_EB3s1fdLAui_eQzv-BoKWLkK62HIy9V2we727xK5T31osbP9i0WW0ZNC0vKlftx9uj2_FEvzGFzcvVsmztgqsk-vapJKLXqIxANokFkvDxYgryPQl6JR-xkXuruCEk-RtRCW0dSiPdVNvg8lX6QsXwsm9kfIPzGsLNwb3te2OQLHfgmSGeU3gkjdZq4nTy257MBk7rEwWBIznZJsc4wiocLf-LupjHfE1hNu0"/>
+<div>
+<p class="font-headline font-bold text-primary">Julianne Vaught</p>
+<p class="text-xs text-outline font-medium tracking-wide uppercase">Private Collector</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-10 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex gap-0.5 text-on-tertiary-container mb-6">
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+<p class="text-on-surface-variant italic text-lg leading-relaxed mb-8">
+                            "Discreet, efficient, and deeply knowledgeable about the global market. They secured our London penthouse in record time through their exclusive off-market network."
+                        </p>
+</div>
+<div class="flex items-center gap-4 border-t border-outline-variant/30 pt-8">
+<img alt="Client photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcg6EAk9hQ_MBJbggVhJ2QFxeIQtSNWwwmIu4LD_EB3s1fdLAui_eQzv-BoKWLkK62HIy9V2we727xK5T31osbP9i0WW0ZNC0vKlftx9uj2_FEvzGFzcvVsmztgqsk-vapJKLXqIxANokFkvDxYgryPQl6JR-xkXuruCEk-RtRCW0dSiPdVNvg8lX6QsXwsm9kfIPzGsLNwb3te2OQLHfgmSGeU3gkjdZq4nTy257MBk7rEwWBIznZJsc4wiocLf-LupjHfE1hNu0"/>
+<div>
+<p class="font-headline font-bold text-primary">Marcus Thorne</p>
+<p class="text-xs text-outline font-medium tracking-wide uppercase">Investor</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-10 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex gap-0.5 text-on-tertiary-container mb-6">
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-[20px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+<p class="text-on-surface-variant italic text-lg leading-relaxed mb-8">
+                            "A concierge experience from start to finish. Luxe Architectural understands that for us, a home is more than an asset—it's a sanctuary for our legacy."
+                        </p>
+</div>
+<div class="flex items-center gap-4 border-t border-outline-variant/30 pt-8">
+<img alt="Client photo" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcg6EAk9hQ_MBJbggVhJ2QFxeIQtSNWwwmIu4LD_EB3s1fdLAui_eQzv-BoKWLkK62HIy9V2we727xK5T31osbP9i0WW0ZNC0vKlftx9uj2_FEvzGFzcvVsmztgqsk-vapJKLXqIxANokFkvDxYgryPQl6JR-xkXuruCEk-RtRCW0dSiPdVNvg8lX6QsXwsm9kfIPzGsLNwb3te2OQLHfgmSGeU3gkjdZq4nTy257MBk7rEwWBIznZJsc4wiocLf-LupjHfE1hNu0"/>
+<div>
+<p class="font-headline font-bold text-primary">Sofia Chen</p>
+<p class="text-xs text-outline font-medium tracking-wide uppercase">Tech Founder</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Partners Section -->
+<section class="py-24 bg-surface-container-low reveal">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="flex items-center gap-4 mb-16">
+<div class="w-1.5 h-8 bg-on-tertiary-container rounded-full"></div>
+<h2 class="font-headline text-3xl font-extrabold text-primary tracking-tight">Our Partners</h2>
+</div>
+<div class="w-full">
+<img alt="Our Partners Logos" class="w-full h-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0uh_RMJHfDJS1QJqU3A1hww1P_M3svsdMjCa5qPnG2nK9Oi2nDHGy3qIlOcKUvRvyThAaBwNFkMIGBP4QUUUCojC_3oJsoKj_zAQR3N_vht7uydXRFBgISyLzvPyThle0xHDdc-X6VVs7FEKTmpUYovT79ORGkIrRmJzEwZ-4gkvQI1FdWPMg5zwBfY9eFBg-sapOFbDDI9SvHrWp76IpNinJhCyQv8OgdzNRhxgF6s1OjQbyknTt0u5hJvwah2sfAetaXoqYtAyoQ"/>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-slate-100 dark:bg-slate-950 full-width py-16 px-8 text-slate-900 dark:text-slate-50 font-['Inter'] text-sm leading-relaxed reveal">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-screen-2xl mx-auto">
+<div>
+<div class="text-lg font-black text-slate-900 dark:text-white mb-8">LUXE ARCHITECTURAL</div>
+<p class="text-slate-600 dark:text-slate-400 max-w-xs mb-8">
+                Defining the standard of luxury brokerage through curated architectural masterpieces and bespoke service for global investors.
+            </p>
+<!-- Social Media Icons -->
+<div class="flex items-center gap-5 mt-4">
+<a class="text-slate-400 hover:text-primary transition-colors duration-300" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors duration-300" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors duration-300" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors duration-300" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"></path></svg>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-slate-900 dark:text-white font-semibold mb-2">Global Offices</p>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Manhattan Office</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Miami Gallery</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">London Studio</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-slate-900 dark:text-white font-semibold mb-2">Portfolio</p>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Luxury Residential</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Commercial Space</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">New Developments</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-slate-900 dark:text-white font-semibold mb-2">Legal</p>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500">
+        © 2024 Luxe Architectural Brokerage. All rights reserved.
+    </div>
+</footer>
+<script>
+    // Scroll handling for nav styles
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('main-nav');
+        const logo = document.getElementById('nav-logo');
+        const links = document.querySelectorAll('#nav-links a');
+        const login = document.getElementById('nav-login');
+        const cta = document.getElementById('nav-cta');
+
+        if (window.scrollY > 50) {
+            nav.classList.add('glass-nav', 'shadow-md');
+            logo.classList.replace('text-white', 'text-slate-950');
+            login.classList.replace('text-white/80', 'text-slate-500');
+            cta.classList.replace('bg-white', 'bg-primary-container');
+            cta.classList.replace('text-primary-container', 'text-on-primary');
+            links.forEach(link => {
+                if (link.classList.contains('border-b-2')) {
+                    link.classList.replace('text-white', 'text-slate-900');
+                    link.classList.replace('border-white', 'border-slate-900');
+                } else {
+                    link.classList.replace('text-white/80', 'text-slate-500');
+                }
+            });
+        } else {
+            nav.classList.remove('glass-nav', 'shadow-md');
+            logo.classList.replace('text-slate-950', 'text-white');
+            login.classList.replace('text-slate-500', 'text-white/80');
+            cta.classList.replace('bg-primary-container', 'bg-white');
+            cta.classList.replace('text-on-primary', 'text-primary-container');
+            links.forEach(link => {
+                if (link.classList.contains('border-b-2')) {
+                    link.classList.replace('text-slate-900', 'text-white');
+                    link.classList.replace('border-slate-900', 'border-white');
+                } else {
+                    link.classList.replace('text-slate-500', 'text-white/80');
+                }
+            });
+        }
+    });
+
+    // Intersection Observer for scroll reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body></html>

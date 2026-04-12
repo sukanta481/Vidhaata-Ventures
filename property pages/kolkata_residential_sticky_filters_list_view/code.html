@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Residential Properties | Architectural Editorial</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d2e4ff",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "secondary-fixed": "#63f7fa",
+                    "on-primary-fixed": "#001c37",
+                    "on-primary-fixed-variant": "#2b486a",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f6f3f2",
+                    "on-surface": "#1b1c1c",
+                    "tertiary": "#230a00",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#fbf9f8",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#abc9f1",
+                    "on-secondary-container": "#006e70",
+                    "inverse-surface": "#303030",
+                    "surface-tint": "#436083",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f3f0f0",
+                    "tertiary-fixed": "#ffdbc9",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "primary": "#001225",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c3c6cf",
+                    "tertiary-fixed-dim": "#ffb68e",
+                    "primary-container": "#022747",
+                    "on-surface-variant": "#43474e",
+                    "outline": "#73777f",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#3cdbde",
+                    "surface": "#fbf9f8",
+                    "background": "#fbf9f8",
+                    "on-tertiary-fixed": "#331200",
+                    "on-background": "#1b1c1c",
+                    "on-tertiary-container": "#df6d1d",
+                    "secondary-container": "#5ff4f7",
+                    "primary-fixed-dim": "#abc9f1",
+                    "tertiary-container": "#431a00",
+                    "surface-container": "#f0eded",
+                    "surface-variant": "#e4e2e1",
+                    "on-primary-container": "#728fb4",
+                    "on-secondary-fixed": "#002020",
+                    "surface-dim": "#dcd9d9",
+                    "secondary": "#00696b",
+                    "surface-container-highest": "#e4e2e1",
+                    "surface-container-high": "#eae8e7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .backdrop-blur-xl { backdrop-filter: blur(24px); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #dcd9d9; border-radius: 10px; }
+        .glass-search { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+        }
+        .sticky-filter-bar {
+            top: 76px; /* Height of the main nav approx */
+        }
+        @media (max-width: 768px) {
+            .sticky-filter-bar {
+                top: 68px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50">
+<nav class="glass-nav border-b border-surface-container" id="main-nav">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto font-['Manrope'] tracking-tight">
+<div class="text-xl font-bold tracking-widest text-slate-950 uppercase transition-colors duration-300" id="nav-logo">LUXE ARCHITECTURAL</div>
+<div class="hidden md:flex items-center gap-8" id="nav-links">
+<a class="text-slate-500 font-medium hover:text-slate-900 transition-colors duration-300" href="#">Buy</a>
+<a class="text-slate-500 font-medium hover:text-slate-900 transition-colors duration-300" href="#">Rent</a>
+<a class="text-slate-500 font-medium hover:text-slate-900 transition-colors duration-300" href="#">Sell</a>
+<a class="text-slate-500 font-medium hover:text-slate-900 transition-colors duration-300" href="#">Locations</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="hidden lg:block text-slate-500 text-[10px] font-medium tracking-wider uppercase border border-slate-200 px-2 py-1 rounded">WBRERA Reg. No: HIRA/A/KOL/2024/000XXX</span>
+<button class="text-slate-500 font-medium hover:opacity-80 transition-opacity active:scale-95 duration-150" id="nav-login">Login</button>
+<button class="bg-primary-container text-on-primary px-6 py-2.5 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all" id="nav-cta">Book Free Site Visit</button>
+</div>
+</div>
+</nav>
+<!-- Full-width Sticky Search & Filter Bar -->
+<div class="sticky-filter-bar bg-white/95 backdrop-blur-md border-b border-surface-container shadow-sm">
+<div class="max-w-screen-2xl mx-auto px-8 py-3 flex flex-wrap items-center gap-4">
+<!-- Search Box -->
+<div class="relative flex-1 min-w-[240px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary focus:border-primary placeholder:text-outline" placeholder="Search Micro-markets (New Town, Ballygunge...)" type="text"/>
+</div>
+<!-- Horizontal Filters -->
+<div class="flex items-center gap-4 overflow-x-auto no-scrollbar py-1">
+<!-- Budget -->
+<div class="flex flex-col min-w-[120px]">
+<select class="bg-transparent border border-outline-variant rounded-lg text-xs font-bold py-2 px-3 focus:ring-1 focus:ring-primary">
+<option>Any Budget</option>
+<option>₹50L - ₹1Cr</option>
+<option>₹1Cr - ₹3Cr</option>
+<option>₹3Cr +</option>
+</select>
+</div>
+<!-- BHK -->
+<div class="flex items-center bg-surface-container-low border border-outline-variant rounded-lg p-0.5">
+<button class="px-3 py-1.5 text-[10px] font-bold rounded-md bg-primary text-white">2BHK</button>
+<button class="px-3 py-1.5 text-[10px] font-bold rounded-md text-on-surface-variant hover:bg-surface-container">3BHK</button>
+<button class="px-3 py-1.5 text-[10px] font-bold rounded-md text-on-surface-variant hover:bg-surface-container">4BHK+</button>
+</div>
+<!-- Status -->
+<div class="flex flex-col min-w-[140px]">
+<select class="bg-transparent border border-outline-variant rounded-lg text-xs font-bold py-2 px-3 focus:ring-1 focus:ring-primary">
+<option>Status: All</option>
+<option>Ready to Move</option>
+<option>Under Construction</option>
+</select>
+</div>
+<!-- Building Type -->
+<div class="flex flex-col min-w-[140px]">
+<select class="bg-transparent border border-outline-variant rounded-lg text-xs font-bold py-2 px-3 focus:ring-1 focus:ring-primary">
+<option>Type: All</option>
+<option>Standalone</option>
+<option>Gated Community</option>
+</select>
+</div>
+<!-- Vastu / South-Open Toggle -->
+<div class="flex items-center gap-3 border-l border-surface-container pl-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+<span class="ms-2 text-[10px] font-bold uppercase tracking-widest text-on-surface whitespace-nowrap">South-Open</span>
+</label>
+</div>
+<button class="flex items-center gap-1.5 text-primary font-bold text-[10px] uppercase tracking-widest hover:underline px-2">
+<span class="material-symbols-outlined text-base" data-icon="tune">tune</span>
+                    More
+                </button>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-40 min-h-screen">
+<!-- Hero Title -->
+<section class="px-8 mb-6">
+<div class="max-w-4xl mx-auto text-center">
+<h1 class="font-headline text-3xl md:text-4xl font-extrabold tracking-tight text-primary">
+                Curated Kolkata Residencies
+            </h1>
+</div>
+</section>
+<!-- Property List View (Horizontal Cards) -->
+<div class="px-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-6 pb-20">
+<!-- Property List Item 1 -->
+<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-surface-container flex flex-col md:flex-row">
+<!-- Left Side: Image -->
+<div class="relative w-full md:w-1/3 lg:w-[400px] h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="ultra modern luxury apartment building in Kolkata" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw8vsMeyHv1x4xBDD0UvyO3y3ADXXEBgqqXhnJL6wfl44KpER4IJAOb8s4gtaaPBKWpBn0oRvCO7igUgo29KikNJ3ynhkxbxKxFs2jQHPdCAv_KHjrZXQdxyKOkbV9GLE1JepRCpRfC9RlRdk1jeJ12CAxWIhd7ZASatLKkCWPl9ZYoScyqrqBELc6VkYP7YVNQbOr1szijCeW8ZiKD6JhCqYDgYZcYxOSGX7az3BeAjRFhtA4rhd9oVbX6Y8V8l44jQ-SX7-V0IE"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] fill-1" data-icon="verified">verified</span>
+                            RERA Registered
+                        </span>
+</div>
+</div>
+<!-- Middle Section: Content -->
+<div class="flex-1 p-8 flex flex-col justify-center">
+<div class="mb-4">
+<h3 class="font-headline text-2xl font-extrabold text-primary mb-1">The Address Legacy</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="location_on">location_on</span>
+                            Ballygunge, South Kolkata
+                        </p>
+</div>
+<div class="flex flex-wrap gap-8 mb-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Configuration</span>
+<span class="text-base font-bold text-on-surface">4 BHK Sky Villa</span>
+</div>
+<div class="flex flex-col border-l border-surface-container pl-8">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">RERA Carpet</span>
+<span class="text-base font-bold text-on-surface">2,850 Sq.Ft</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-xs font-bold text-on-surface-variant uppercase tracking-wide">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="local_parking">local_parking</span> Covered Parking</span>
+<span class="text-outline">|</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="elevator">elevator</span> Lift</span>
+<span class="text-outline">|</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="wb_sunny">wb_sunny</span> South-Open</span>
+</div>
+</div>
+<!-- Right Side: Pricing & CTA -->
+<div class="w-full md:w-1/4 lg:w-[300px] p-8 border-t md:border-t-0 md:border-l border-surface-container flex flex-col justify-center bg-surface-container-lowest/50">
+<div class="mb-8">
+<p class="text-[10px] font-bold text-outline uppercase tracking-widest mb-1">Starting Price</p>
+<p class="font-headline text-3xl font-extrabold text-primary">₹4.25 Cr<span class="text-sm font-normal text-outline">*</span></p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-primary-container text-white py-3.5 rounded-xl font-headline text-sm font-bold hover:bg-primary transition-all shadow-md hover:shadow-lg active:scale-[0.98]">Get Price Details</button>
+<button class="w-full bg-surface-container text-on-surface py-3.5 rounded-xl font-headline text-sm font-bold hover:bg-surface-container-high transition-all border border-outline-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                            Floor Plan
+                        </button>
+</div>
+</div>
+</div>
+<!-- Property List Item 2 -->
+<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-surface-container flex flex-col md:flex-row">
+<!-- Left Side: Image -->
+<div class="relative w-full md:w-1/3 lg:w-[400px] h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="contemporary gated community garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAClxJskZFtlbHQQcp80gSshE1fdu89SIVim-WFOGZL7H8mOCCYYrPpaY7QPsGHcPTufzI-TCaYC1AYl_FF_T2PptcOTvG2m9hWZGM10H42uxqxcHRdxmkZecpFRggIiPyYLMdsLIRc2neOGpd6cleP3B0rU5IATRpejAE9mqaLtNXNtReuu7XErTVgfzRjIZmsbqfWJUdwp5OZ5pEki334bHhZ7gtEHd2WcTu_lBgDzaKWavPokb8ziSyEShiG6-QQe92K0JCFuhY"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] fill-1" data-icon="verified">verified</span>
+                            RERA Registered
+                        </span>
+</div>
+</div>
+<!-- Middle Section: Content -->
+<div class="flex-1 p-8 flex flex-col justify-center">
+<div class="mb-4">
+<h3 class="font-headline text-2xl font-extrabold text-primary mb-1">Eco-Urban Heights</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="location_on">location_on</span>
+                            Action Area II, New Town
+                        </p>
+</div>
+<div class="flex flex-wrap gap-8 mb-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Configuration</span>
+<span class="text-base font-bold text-on-surface">2 &amp; 3 BHK Apartments</span>
+</div>
+<div class="flex flex-col border-l border-surface-container pl-8">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">RERA Carpet</span>
+<span class="text-base font-bold text-on-surface">945 - 1220 Sq.Ft</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-xs font-bold text-on-surface-variant uppercase tracking-wide">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="pool">pool</span> Infinity Pool</span>
+<span class="text-outline">|</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="fitness_center">fitness_center</span> Modern Gym</span>
+<span class="text-outline">|</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="park">park</span> Central Park</span>
+</div>
+</div>
+<!-- Right Side: Pricing & CTA -->
+<div class="w-full md:w-1/4 lg:w-[300px] p-8 border-t md:border-t-0 md:border-l border-surface-container flex flex-col justify-center bg-surface-container-lowest/50">
+<div class="mb-8">
+<p class="text-[10px] font-bold text-outline uppercase tracking-widest mb-1">Starting Price</p>
+<p class="font-headline text-3xl font-extrabold text-primary">₹85.5 L<span class="text-sm font-normal text-outline">*</span></p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-primary-container text-white py-3.5 rounded-xl font-headline text-sm font-bold hover:bg-primary transition-all shadow-md hover:shadow-lg active:scale-[0.98]">Get Price Details</button>
+<button class="w-full bg-surface-container text-on-surface py-3.5 rounded-xl font-headline text-sm font-bold hover:bg-surface-container-high transition-all border border-outline-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                            Floor Plan
+                        </button>
+</div>
+</div>
+</div>
+<!-- Property List Item 3 -->
+<div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-surface-container flex flex-col md:flex-row">
+<!-- Left Side: Image -->
+<div class="relative w-full md:w-1/3 lg:w-[400px] h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="luxury bungalow balcony" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUPJnqnLFbr37T49JnuaiQk20ZIIqFR1_Z6A_uD7Ya_8uYSw9Fbs4ColBrLkyWOjmDsrDAV5lFvY0OE360Y8nQtz2IbqwM81J-P3hS36mhM7sdTQVi0wQkRrC6HdR88e3MsceGFUbP-KlF4kOHuf3bBBlNTnYL4ubG5AOeDqnylSUpSnBFJrU91R1DpmY_txfx0ALcm1rC0S6cXD9acCKxATkuUXlOVD9yP9_uFhmJDH9HW1SpejInjV-dQOt5S3viYYs-NGcGjAE"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] fill-1" data-icon="verified">verified</span>
+                            RERA Registered
+                        </span>
+</div>
+</div>
+<!-- Middle Section: Content -->
+<div class="flex-1 p-8 flex flex-col justify-center">
+<div class="mb-4">
+<h3 class="font-headline text-2xl font-extrabold text-primary mb-1">Solitaire Greens</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1.5 font-medium">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="location_on">location_on</span>
+                            Joka, South Kolkata
+                        </p>
+</div>
+<div class="flex flex-wrap gap-8 mb-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Configuration</span>
+<span class="text-base font-bold text-on-surface">3 BHK Standalone Villa</span>
+</div>
+<div class="flex flex-col border-l border-surface-container pl-8">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">RERA Carpet</span>
+<span class="text-base font-bold text-on-surface">1,150 Sq.Ft</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-xs font-bold text-on-surface-variant uppercase tracking-wide">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="deck">deck</span> Private Deck</span>
+<span class="text-outline">|</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="security">security</span> Gated Community</span>
+<span class="text-outline">|</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="local_florist">local_florist</span> Garden Facing</span>
+</div>
+</div>
+<!-- Right Side: Pricing & CTA -->
+<div class="w-full md:w-1/4 lg:w-[300px] p-8 border-t md:border-t-0 md:border-l border-surface-container flex flex-col justify-center bg-surface-container-lowest/50">
+<div class="mb-8">
+<p class="text-[10px] font-bold text-outline uppercase tracking-widest mb-1">Starting Price</p>
+<p class="font-headline text-3xl font-extrabold text-primary">₹65.0 L<span class="text-sm font-normal text-outline">*</span></p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-primary-container text-white py-3.5 rounded-xl font-headline text-sm font-bold hover:bg-primary transition-all shadow-md hover:shadow-lg active:scale-[0.98]">Get Price Details</button>
+<button class="w-full bg-surface-container text-on-surface py-3.5 rounded-xl font-headline text-sm font-bold hover:bg-surface-container-high transition-all border border-outline-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                            Floor Plan
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating WhatsApp Widget -->
+<div class="fixed bottom-8 right-8 z-[100] group flex items-center gap-3">
+<div class="bg-white px-4 py-2 rounded-lg shadow-xl text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none border border-primary/10">
+        Chat with us
+    </div>
+<a class="w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-95" href="#">
+<svg class="w-8 h-8 fill-current" viewbox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+</svg>
+</a>
+</div>
+<!-- Footer -->
+<footer class="bg-slate-100 dark:bg-slate-950 full-width py-16 px-8 text-slate-900 dark:text-slate-50 font-['Inter'] text-sm leading-relaxed mt-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-screen-2xl mx-auto">
+<div>
+<div class="text-lg font-black text-slate-900 dark:text-white mb-8 uppercase tracking-widest">LUXE ARCHITECTURAL</div>
+<p class="text-slate-600 dark:text-slate-400 max-w-xs mb-8">
+                Defining the standard of luxury brokerage in Kolkata through curated architectural masterpieces and bespoke service for global investors.
+            </p>
+<div class="flex items-center gap-5 mt-4">
+<a class="text-slate-400 hover:text-primary transition-colors duration-300" href="#"><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+<a class="text-slate-400 hover:text-primary transition-colors duration-300" href="#"><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+<a class="text-slate-400 hover:text-primary transition-colors duration-300" href="#"><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
+<a class="text-slate-400 hover:text-primary transition-colors duration-300" href="#"><svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"></path></svg></a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-slate-900 dark:text-white font-semibold mb-2">Local Offices</p>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">New Town Hub</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Ballygunge Gallery</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">EM Bypass Studio</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-slate-900 dark:text-white font-semibold mb-2">Portfolio</p>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Luxury Residential</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Commercial Space</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">New Developments</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-slate-900 dark:text-white font-semibold mb-2">Legal</p>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-12 mb-[-32px] text-center">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium tracking-wide uppercase">
+<a class="hover:text-primary transition-colors underline underline-offset-4" href="https://www.rera.wb.gov.in" target="_blank">WBRERA</a> Registered Agent ID: HIRA/A/KOL/2024/000XXX
+        </p>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500">
+        © 2024 Luxe Architectural Brokerage (Kolkata). All rights reserved.
+    </div>
+</footer>
+<script>
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('main-nav');
+        if (nav) {
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        }
+    });
+</script>
+</body></html>

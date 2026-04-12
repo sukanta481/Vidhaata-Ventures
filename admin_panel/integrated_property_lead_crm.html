@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architect Ledger - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d0dcdd",
+                    "tertiary-fixed-dim": "#88d982",
+                    "secondary-fixed-dim": "#adc7f7",
+                    "on-primary-fixed": "#380d00",
+                    "surface-variant": "#d8e5e6",
+                    "primary-container": "#641e00",
+                    "on-secondary-container": "#3f5882",
+                    "primary-fixed-dim": "#ffb59a",
+                    "on-surface-variant": "#43474e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#b6d0ff",
+                    "on-tertiary-fixed": "#002204",
+                    "on-tertiary-fixed-variant": "#005312",
+                    "inverse-surface": "#273233",
+                    "on-tertiary-container": "#61b15f",
+                    "background": "#effcfd",
+                    "tertiary-fixed": "#a3f69c",
+                    "on-surface": "#121d1e",
+                    "outline-variant": "#c4c6cf",
+                    "on-primary-fixed-variant": "#802a00",
+                    "on-primary-container": "#ff753d",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e4f0f1",
+                    "primary": "#401100",
+                    "on-secondary-fixed-variant": "#2d476f",
+                    "inverse-on-surface": "#e7f3f4",
+                    "on-background": "#121d1e",
+                    "surface-bright": "#effcfd",
+                    "tertiary-container": "#00400c",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#deebeb",
+                    "surface-container-highest": "#d8e5e6",
+                    "error-container": "#ffdad6",
+                    "surface": "#effcfd",
+                    "secondary-fixed": "#d6e3ff",
+                    "inverse-primary": "#ffb59a",
+                    "error": "#ba1a1a",
+                    "outline": "#74777f",
+                    "surface-container-low": "#eaf6f7",
+                    "tertiary": "#002805",
+                    "on-secondary-fixed": "#001b3c",
+                    "on-primary": "#ffffff",
+                    "secondary": "#455f88",
+                    "primary-fixed": "#ffdbcf",
+                    "surface-tint": "#a83900"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .tonal-shift { background-color: #effcfd; }
+    
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #adc7f7;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #455f88;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface selection:bg-secondary-container">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#eaf6f7] dark:bg-slate-800 flex flex-col py-6 z-50">
+<div class="px-8 mb-10">
+<h2 class="text-lg font-black text-[#455f88] font-headline tracking-tight">The Portfolio</h2>
+<p class="text-[10px] uppercase tracking-widest text-[#455f88]/60 font-bold">Luxury Real Estate</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 bg-[#ffffff] dark:bg-slate-700 text-[#455f88] border-l-4 border-[#455f88] px-8 py-4 font-headline font-semibold transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-[#455f88]/70 dark:text-slate-400 px-8 py-4 font-headline font-semibold hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="view_kanban">view_kanban</span>
+<span>Leads Pipeline</span>
+</a>
+<a class="flex items-center gap-3 text-[#455f88]/70 dark:text-slate-400 px-8 py-4 font-headline font-semibold hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home_work">home_work</span>
+<span>Property Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-[#455f88]/70 dark:text-slate-400 px-8 py-4 font-headline font-semibold hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span>Communications</span>
+</a>
+<a class="flex items-center gap-3 text-[#455f88]/70 dark:text-slate-400 px-8 py-4 font-headline font-semibold hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-gradient-to-br from-[#641e00] to-[#ff753d] text-white py-3 rounded-xl font-headline font-bold shadow-lg shadow-primary/20 hover:scale-[0.98] transition-transform">
+            New Listing
+        </button>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="ml-64 flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="h-16 bg-[#effcfd] dark:bg-slate-900 flex justify-between items-center px-8 w-full sticky top-0 z-40">
+<div class="flex items-center gap-8 flex-1">
+<h1 class="text-xl font-bold text-[#455f88] dark:text-[#6486b8] font-headline tracking-tight">Architect Ledger</h1>
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-secondary/20 placeholder:text-outline/60" placeholder="Search properties, leads, or tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 text-[#ff753d] font-bold font-headline hover:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="hidden lg:inline">Quick Add</span>
+</button>
+<div class="relative cursor-pointer text-[#121d1e] dark:text-slate-300">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-[#ff753d] rounded-full border-2 border-background"></span>
+</div>
+<div class="flex items-center gap-3 border-l pl-6 border-outline-variant/30">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="professional male real estate broker portrait with confident smile in modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwTpS-sLXiv1xv5917fsSLUlh1aRKgrpz5hnthrMjMvX8V4MxKCRKt79ZFM1amFPWvcgdqw0snX0C5kKAqZFOzhR1IoIkIEoXnDIW9_w-si3B9xFU1zrK64Y3M4SiBNB_XdrXbk9OTKhng54MOSbT2lvkN_h5no7XfnxW0abCG4RcpfzdliVLdgyQzdMroVzunaF0aIYixAmE6RyN5MiYeBTW0nraYZtmB0FCNZv3IS8yJO3-ePMVbubVQjlLox_pjP4gxgdr5MsUg"/>
+<span class="material-symbols-outlined text-outline" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="p-8 space-y-8">
+<!-- Performance Snapshot (Bento Layout) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="group_add">group_add</span>
+</div>
+<span class="text-tertiary font-bold text-xs bg-tertiary-fixed-dim/20 px-2 py-1 rounded">+12%</span>
+</div>
+<h3 class="text-outline text-sm font-semibold font-headline">New Leads</h3>
+<p class="text-4xl font-extrabold font-headline text-on-surface mt-1">24</p>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-9xl" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-error relative">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-error/10 rounded-lg flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="notification_important">notification_important</span>
+</div>
+<span class="font-bold text-xs bg-error-container px-2 py-1 rounded">3 OVERDUE</span>
+</div>
+<h3 class="text-outline text-sm font-semibold font-headline">Today's Follow-ups</h3>
+<p class="text-4xl font-extrabold font-headline text-on-surface mt-1">08</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 bg-tertiary/10 rounded-lg flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</div>
+<span class="text-outline text-xs font-medium">Next: 2:00 PM</span>
+</div>
+<h3 class="text-outline text-sm font-semibold font-headline">Upcoming Site Visits</h3>
+<p class="text-4xl font-extrabold font-headline text-on-surface mt-1">05</p>
+</div>
+</section>
+<!-- Property Metrics Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- 1. Live Inventory Status -->
+<div class="bg-surface-container-lowest p-6 rounded-xl flex items-center gap-6">
+<div class="relative w-24 h-24 flex-shrink-0">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<circle class="stroke-surface-container" cx="18" cy="18" fill="none" r="16" stroke-width="4"></circle>
+<circle class="stroke-secondary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="60, 100" stroke-width="4"></circle>
+<circle class="stroke-tertiary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="25, 100" stroke-dashoffset="-60" stroke-width="4"></circle>
+<circle class="stroke-error" cx="18" cy="18" fill="none" r="16" stroke-dasharray="15, 100" stroke-dashoffset="-85" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-lg font-black font-headline leading-none">156</span>
+<span class="text-[8px] uppercase font-bold text-outline">Total</span>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<h3 class="text-outline text-xs font-bold font-headline uppercase tracking-wider">Inventory Status</h3>
+<div class="grid grid-cols-1 gap-1">
+<div class="flex items-center justify-between text-[11px] font-bold">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-secondary"></span> Available</span>
+<span class="text-on-surface">94</span>
+</div>
+<div class="flex items-center justify-between text-[11px] font-bold">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary"></span> Blocked</span>
+<span class="text-on-surface">39</span>
+</div>
+<div class="flex items-center justify-between text-[11px] font-bold">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-error"></span> Sold/Rent</span>
+<span class="text-on-surface">23</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Compliance & Docs -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-t-4 border-error flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="text-outline text-xs font-bold font-headline uppercase tracking-wider">Compliance &amp; Docs</h3>
+<p class="text-[10px] text-outline/60 font-medium">Last audit: Today, 10:45 AM</p>
+</div>
+<span class="bg-error text-white text-[10px] font-black px-2 py-1 rounded">8 CRITICAL</span>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="bg-error/5 p-3 rounded-lg border border-error/10">
+<p class="text-2xl font-black text-error leading-tight">05</p>
+<p class="text-[10px] font-bold text-outline uppercase">Missing RERA</p>
+</div>
+<div class="bg-surface-container p-3 rounded-lg border border-outline-variant/30">
+<p class="text-2xl font-black text-on-surface leading-tight">03</p>
+<p class="text-[10px] font-bold text-outline uppercase">Expiring Soon</p>
+</div>
+</div>
+</div>
+<!-- 3. High-Demand Properties -->
+<div class="bg-surface-container-lowest p-6 rounded-xl">
+<h3 class="text-outline text-xs font-bold font-headline uppercase tracking-wider mb-4">High-Demand Properties</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></div>
+<span class="text-xs font-bold text-on-surface">Skyline Residences</span>
+</div>
+<span class="text-[10px] font-black bg-primary-fixed-dim/20 text-primary-fixed-dim px-2 py-0.5 rounded">42 INQUIRIES</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+<span class="text-xs font-bold text-on-surface">Green Valley Plots</span>
+</div>
+<span class="text-[10px] font-black bg-secondary/10 text-secondary px-2 py-0.5 rounded">38 INQUIRIES</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+<span class="text-xs font-bold text-on-surface">Palm Grove Apts</span>
+</div>
+<span class="text-[10px] font-black bg-tertiary/10 text-tertiary px-2 py-0.5 rounded">29 INQUIRIES</span>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+<!-- Sales Pipeline (Middle) -->
+<section class="xl:col-span-3 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-extrabold font-headline tracking-tight flex items-center gap-3">
+                        Sales Pipeline
+                        <span class="text-sm font-normal text-outline bg-surface-container px-3 py-1 rounded-full">14 Deals Active</span>
+</h2>
+<button class="text-secondary text-sm font-bold flex items-center gap-1 hover:underline">
+                        View Full Pipeline <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-6 relative custom-scrollbar">
+<!-- Kanban Column 1 -->
+<div class="min-w-[320px] space-y-4">
+<div class="flex items-center justify-between px-2">
+<span class="text-sm font-bold text-[#455f88] uppercase tracking-widest">New Lead</span>
+<span class="text-xs font-bold text-outline">04</span>
+</div>
+<div class="space-y-4">
+<!-- Card -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow border-t-2 border-secondary/20">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-on-surface">Alexander Wright</h4>
+<p class="text-xs text-outline font-medium">Oceanfront Penthouse</p>
+<div class="mt-2 flex items-center gap-1.5">
+<div class="flex items-center gap-1 px-1.5 py-0.5 rounded bg-tertiary-fixed-dim/10 border border-tertiary/20">
+<span class="material-symbols-outlined text-[12px] text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-tight">Score: 94/100</span>
+</div>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of professional male lead" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI51MjzkBQrhfY9s_fcP6zX87nW_cGEQA8mWTfqw2tf955qUkrExGpBcu5IF89YXzH0DqTUOV0UYv_AvaFECHJ7SzT2BlnX08ZjJpnCYj_Tl0XNhmwMrl7VsMzWm2Fcu028Qu22WbLHRarTlgy2PGztFLB0zjvZwMEqqaxUoLPnjiNR5WbI_iMgjvYtsPJfVLiSfN3gOY9tx4S2S_Q9x6YPlUwVOhHoOzAJLe2Ln_N7n7uZ6R3vaF5agndRc-eBShOxeva4UsXVqUa"/>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4 pt-4 border-t border-outline-variant/10">
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="call">call</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-tertiary-container hover:bg-tertiary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="chat">chat</span>
+</button>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase">Value: $4.2M</span>
+</div>
+</div>
+<!-- Card -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border-t-2 border-secondary/20">
+<h4 class="font-bold text-on-surface">Elena Rodriguez</h4>
+<p class="text-xs text-outline font-medium">Suburban Estate</p>
+<div class="mt-4 flex items-center gap-2">
+<span class="bg-primary-fixed text-[10px] font-black px-2 py-0.5 rounded text-[#5d2100]">HOT LEAD</span>
+<div class="flex items-center gap-1 px-1.5 py-0.5 rounded bg-tertiary-fixed-dim/10 border border-tertiary/20">
+<span class="material-symbols-outlined text-[12px] text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-tight">Score: 88/100</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Kanban Column 2 -->
+<div class="min-w-[320px] space-y-4">
+<div class="flex items-center justify-between px-2">
+<span class="text-sm font-bold text-[#455f88] uppercase tracking-widest">Contacted</span>
+<span class="text-xs font-bold text-outline">06</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border-t-2 border-secondary/40">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-bold text-on-surface">Dr. Julian Vance</h4>
+<p class="text-xs text-outline font-medium">Medical Center Lease</p>
+<div class="mt-2 flex items-center gap-1 px-1.5 py-0.5 rounded w-fit bg-secondary-fixed-dim/10 border border-secondary/20">
+<span class="material-symbols-outlined text-[12px] text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-tight">Score: 76/100</span>
+</div>
+</div>
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-secondary-container"></div>
+</div>
+</div>
+<p class="text-xs text-outline line-clamp-2 italic mb-3">"Requested floor plans for the North Wing by Friday."</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-lg" data-icon="call">call</span></button>
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-tertiary-container"><span class="material-symbols-outlined text-lg" data-icon="chat">chat</span></button>
+</div>
+<span class="text-[10px] font-bold text-secondary uppercase">Last Touch: 2h ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Kanban Column 3 -->
+<div class="min-w-[320px] space-y-4">
+<div class="flex items-center justify-between px-2">
+<span class="text-sm font-bold text-[#455f88] uppercase tracking-widest">Qualified</span>
+<span class="text-xs font-bold text-outline">04</span>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm border-t-2 border-secondary/60">
+<h4 class="font-bold text-on-surface">The Sterling Group</h4>
+<p class="text-xs text-outline font-medium">Commercial Portfolio</p>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold text-tertiary">Pre-Approved</span>
+</div>
+<div class="flex items-center gap-1 px-1.5 py-0.5 rounded bg-tertiary-fixed-dim/10 border border-tertiary/20">
+<span class="material-symbols-outlined text-[12px] text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-tight">Score: 91/100</span>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase">Value: $18M</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Fade Edge -->
+<div class="absolute right-0 top-0 bottom-[6px] w-24 bg-gradient-to-l from-[#effcfd] to-transparent pointer-events-none z-10"></div>
+</div>
+</section>
+<!-- Today's Focus (Right) -->
+<aside class="space-y-6">
+<h2 class="text-2xl font-extrabold font-headline tracking-tight">Today's Focus</h2>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="p-4 bg-secondary/5 border-b border-outline-variant/10">
+<span class="text-xs font-black uppercase tracking-tighter text-secondary">High Priority Tasks</span>
+</div>
+<ul class="divide-y divide-outline-variant/10">
+<li class="p-5 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex gap-4">
+<div class="mt-1 w-5 h-5 rounded border-2 border-outline-variant flex items-center justify-center group-hover:border-secondary transition-colors"></div>
+<div>
+<p class="text-sm font-bold text-on-surface">Finalize Escrow for Miller Estate</p>
+<p class="text-[10px] text-error font-black mt-1 uppercase">Deadline: 4:00 PM Today</p>
+</div>
+</div>
+</li>
+<li class="p-5 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex gap-4">
+<div class="mt-1 w-5 h-5 rounded border-2 border-outline-variant flex items-center justify-center group-hover:border-secondary transition-colors"></div>
+<div>
+<p class="text-sm font-bold text-on-surface">Draft Offer for Luxury Loft #402</p>
+<p class="text-[10px] text-outline font-black mt-1 uppercase">With Client Review</p>
+</div>
+</div>
+</li>
+<li class="p-5 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex gap-4">
+<div class="mt-1 w-5 h-5 rounded border-2 border-outline-variant flex items-center justify-center group-hover:border-secondary transition-colors"></div>
+<div>
+<p class="text-sm font-bold text-on-surface">Review New Portal Listings</p>
+<p class="text-[10px] text-tertiary font-black mt-1 uppercase">3 New Matches Found</p>
+</div>
+</div>
+</li>
+</ul>
+<button class="w-full py-4 text-center text-xs font-bold text-secondary bg-surface-container-low hover:bg-surface-container transition-colors uppercase tracking-widest">
+                        Add New Task
+                    </button>
+</div>
+<!-- Quick Stats Micro-Card -->
+<div class="bg-gradient-to-br from-[#455f88] to-[#121d1e] p-6 rounded-xl text-white relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-[10px] font-black uppercase tracking-[0.2em] opacity-60">TOKENS COLLECTED</h4>
+<p class="text-3xl font-black font-headline mt-2">₹18,50,000</p>
+<div class="mt-4 flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-white/20 rounded-full overflow-hidden">
+<div class="w-[75%] h-full bg-[#ff753d]"></div>
+</div>
+<span class="text-[10px] font-bold">75% of Token Goal</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-white/10 text-8xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</body></html>

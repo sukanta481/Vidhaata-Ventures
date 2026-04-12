@@ -1,0 +1,79 @@
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Glassmorphism - nav and search overlays only */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bottom border inputs for property page form */
+.bottom-border-input {
+  border: none;
+  border-bottom: 1px solid #c3c6cf;
+  background: transparent;
+}
+
+.bottom-border-input:focus {
+  border-bottom-color: #022747;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Smooth scrollbar */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar on mobile menu */
+#mobile-menu {
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+#mobile-menu::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile utilities */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .full-width-mobile {
+    width: 100%;
+  }
+  /* Extra padding so content isn't hidden below bottom nav bar */
+  main {
+    padding-bottom: 5.5rem;
+  }
+}
+
+/* Safe-area for notched devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+}
+
+/* Suppress tap highlight on interactive elements */
+.tap-highlight-none {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Global no-scrollbar helpers */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

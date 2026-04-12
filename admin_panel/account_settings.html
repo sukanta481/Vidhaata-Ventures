@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings | Architectural Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#002204",
+                    "surface": "#effcfd",
+                    "primary-fixed-dim": "#ffb59a",
+                    "on-tertiary-fixed-variant": "#005312",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#deebeb",
+                    "surface-tint": "#a83900",
+                    "secondary": "#455f88",
+                    "on-primary-container": "#ff753d",
+                    "surface-container-low": "#eaf6f7",
+                    "secondary-container": "#b6d0ff",
+                    "on-surface": "#121d1e",
+                    "on-primary-fixed-variant": "#802a00",
+                    "surface-container": "#e4f0f1",
+                    "primary-fixed": "#ffdbcf",
+                    "tertiary-fixed": "#a3f69c",
+                    "on-tertiary-container": "#61b15f",
+                    "inverse-surface": "#273233",
+                    "on-secondary-container": "#3f5882",
+                    "background": "#effcfd",
+                    "surface-container-highest": "#d8e5e6",
+                    "on-secondary-fixed-variant": "#2d476f",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#d0dcdd",
+                    "tertiary-container": "#00400c",
+                    "inverse-primary": "#ffb59a",
+                    "outline": "#74777f",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary": "#401100",
+                    "secondary-fixed": "#d6e3ff",
+                    "primary-container": "#641e00",
+                    "surface-bright": "#effcfd",
+                    "on-secondary-fixed": "#001b3c",
+                    "on-background": "#121d1e",
+                    "tertiary": "#002805",
+                    "on-primary-fixed": "#380d00",
+                    "surface-variant": "#d8e5e6",
+                    "tertiary-fixed-dim": "#88d982",
+                    "secondary-fixed-dim": "#adc7f7",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#43474e",
+                    "inverse-on-surface": "#e7f3f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab-indicator {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #455f88;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d8e5e6; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#effcfd]/80 backdrop-blur-md border-b border-surface-container-high h-[72px] flex items-center justify-between px-8">
+<div class="flex items-center gap-12">
+<h1 class="text-xl font-bold tracking-tighter text-[#121d1e] font-manrope">Architectural Ledger</h1>
+<div class="hidden md:flex items-center gap-2 bg-surface-container rounded-full px-4 py-1.5 w-[400px]">
+<span class="material-symbols-outlined text-outline text-xl" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline/60" placeholder="Search inventory, leads, or tasks..." type="text"/>
+<span class="text-[10px] font-bold text-outline border border-outline/30 px-1.5 py-0.5 rounded">⌘K</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-secondary" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-secondary" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-surface-container-high mx-2"></div>
+<div class="flex items-center gap-3 pl-2 cursor-pointer group">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-on-surface leading-none mb-0.5">Rajesh Malhotra</p>
+<p class="text-[10px] text-outline leading-none">Senior Broker</p>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high group-hover:border-secondary transition-colors">
+<img alt="Broker Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbg62_Za9ApQ4YtjlaCeimtd7PGZChsf8z_mBqtUCltS3iohxf45b9Pnj5ywXmMDE4d-JtSc9vF52XdOwWLVbCNgHsQy_49v1xKPTiQbHsbwce85vVkgJiimgtWMPPLqWIJMtS9S-K1MaH7bMfgvlQ7hORRiYP_aNl77dA_LRv-HawN4ZOUf43KvW_nsre5MVyXGGtOGML6aYUcE1vjDW48KbdaQl0X0LxHQ5bHUaeCGBA4UqS-0x6mMN13syQ2uZGWgmhUgYEDc_S"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex pt-[72px] min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-64 fixed left-0 top-[72px] bottom-0 bg-[#eaf6f7] border-r border-surface-container-high hidden lg:flex flex-col py-6 overflow-y-auto">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+</div>
+<div>
+<p class="font-manrope font-black text-[#121d1e] text-sm">Brokerage Portal</p>
+<p class="text-xs text-slate-500 font-manrope">Premium Tier</p>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-gradient-to-br from-primary-container to-on-primary-container text-white rounded-md font-semibold text-sm shadow-sm active:scale-95 duration-150 ease-in-out flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+                    New Listing
+                </button>
+</div>
+<nav class="flex-1 font-manrope text-sm tracking-wide">
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-white/40 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-white/40 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="real_estate_agent">real_estate_agent</span>
+<span>Properties</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-white/40 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory">inventory</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-white/40 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Clients</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-white/40 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Reports</span>
+</a>
+<div class="h-[1px] bg-surface-container-high mx-5 my-2"></div>
+<a class="flex items-center gap-3 text-[#455f88] font-bold border-l-4 border-[#455f88] pl-4 py-3 bg-white/60" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-6 py-4 border-t border-surface-container-high space-y-1">
+<a class="flex items-center gap-3 text-slate-500 pl-2 py-2 hover:text-[#455f88] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="contact_support">contact_support</span>
+<span class="text-xs font-semibold">Support</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-2 py-2 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+<span class="text-xs font-semibold">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 p-8 max-w-[1400px] mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-xs font-bold text-outline uppercase tracking-widest mb-4">
+<a class="hover:text-secondary" href="#">Admin</a>
+<span class="material-symbols-outlined text-[10px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-secondary">Settings</span>
+</nav>
+<h2 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight mb-2">Account Settings</h2>
+<p class="text-secondary font-manrope text-lg">Architectural Ledger Configuration</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 bg-white text-secondary font-bold rounded-lg border border-surface-container-high hover:bg-surface-container-low transition-all text-sm">
+                        Export Config
+                    </button>
+</div>
+</div>
+<!-- Settings Shell -->
+<div class="bg-surface-container-low rounded-xl p-1 overflow-hidden shadow-sm border border-surface-container-high">
+<!-- Navigation Tabs -->
+<div class="bg-surface-container-lowest rounded-t-xl flex items-center px-6 border-b border-surface-container-high overflow-x-auto">
+<button class="relative px-6 py-5 text-sm font-semibold text-secondary whitespace-nowrap">
+                        Profile Settings
+                        <div class="active-tab-indicator"></div>
+</button>
+<button class="px-6 py-5 text-sm font-medium text-outline whitespace-nowrap hover:text-secondary transition-colors">Lead Distribution</button>
+<button class="px-6 py-5 text-sm font-medium text-outline whitespace-nowrap hover:text-secondary transition-colors">Team Management</button>
+<button class="px-6 py-5 text-sm font-medium text-outline whitespace-nowrap hover:text-secondary transition-colors">Integrations</button>
+<button class="px-6 py-5 text-sm font-medium text-outline whitespace-nowrap hover:text-secondary transition-colors">Security</button>
+</div>
+<!-- Settings Content Stage -->
+<div class="bg-surface-container-lowest p-8 md:p-12 space-y-16">
+<!-- Section 1: Profile Settings -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="md:col-span-1">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-2">Profile Identity</h3>
+<p class="text-sm text-outline leading-relaxed">Manage your public broker profile and brokerage credentials for legal compliance.</p>
+<div class="mt-8 flex flex-col items-start gap-4">
+<div class="relative group">
+<div class="w-24 h-24 rounded-full overflow-hidden ring-4 ring-surface-container-high transition-all group-hover:ring-secondary/20">
+<img alt="Profile Photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKrsms9kyuRgwcOf6stwuxRXsH6lalA0Az8VhKgCB9zu11DCqg_-zGw9lRlMdAqvmoK3DO2vu1SOjtHw8WCouNCAKr24BpiD2aRF5UxS5oH-eYUVkWx5ExkGiwibg5tubN5D6jsHxVTJZNVU5DUiJOq4HULTDFCthLIiH23kaxv-XTQ85TlMiF4Ed_S5nqGdwMLcw6ODNOdyOkNf3LoK201z6YxKKW-dWevFUnraomZL9fYaxgFPqHfbY17zMB4ji8LQfaX2lTlIUZ"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-white shadow-lg p-2 rounded-full border border-surface-container-high text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Upload New Photo</span>
+</div>
+</div>
+<div class="md:col-span-2 space-y-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-xs font-bold text-secondary uppercase tracking-wider">Full Name</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-4 text-on-surface font-medium transition-all" type="text" value="Rajesh Malhotra"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold text-secondary uppercase tracking-wider">Email Address</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-4 text-on-surface font-medium transition-all" type="email" value="rajesh.m@architectledger.com"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold text-secondary uppercase tracking-wider">Phone Number</label>
+<div class="flex gap-2">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 rounded-lg border-none">
+<img alt="India Flag" class="w-5 h-3 object-cover rounded-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALmAf9YygutkXAffTC8tfCKVWxcbBUxN6QgQud_z5rNKq9AHowH8kSI756M9p5e8CWkjri5j_VQtg-yObm9TLtTMNAbiflGNYxEq2bWG4tqPCZlZR25a5zM-DDVuOM2chGhL_Pj2l2ZfFQz7CMQ_rLvgnpZZRIEUJaJzuf2OBwRVT4CaLbU_-MsAH4PsEoyPazSV3rSHF2OG8_KFUR22Omb-ta3HIrWB0F4ENXsBV6jE74zyP1p4S3A8K66hhPxxDWADpehnqhXxvB"/>
+<span class="text-sm font-medium">+91</span>
+</div>
+<input class="flex-1 bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-4 text-on-surface font-medium transition-all" type="tel" value="9876543210"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold text-secondary uppercase tracking-wider">RERA ID</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-4 text-on-surface font-medium transition-all font-mono text-xs tracking-tight" type="text" value="PRM/KA/RERA/1251/446/AG/210515/002241"/>
+</div>
+<div class="sm:col-span-2 space-y-2">
+<label class="block text-xs font-bold text-secondary uppercase tracking-wider">Agency Name</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-secondary/20 rounded-lg py-3 px-4 text-on-surface font-medium transition-all" type="text" value="Malhotra Luxury Properties &amp; Estates"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Lead Distribution (Bento Grid) -->
+<section class="space-y-8">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-xl font-headline font-bold text-on-surface">Lead Distribution Rules</h3>
+<p class="text-sm text-outline mt-1">Automate how incoming leads are prioritized and assigned.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-6 rounded-xl space-y-6">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#455f88]"></div>
+</label>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-2">Auto-assign Leads</h4>
+<p class="text-xs text-outline leading-normal">New inquiries from portals will be automatically assigned to agents based on availability.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl space-y-6">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="sync_alt">sync_alt</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#455f88]"></div>
+</label>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-2">Round Robin Settings</h4>
+<p class="text-xs text-outline leading-normal">Distribute leads equally among your active sales force to maintain portfolio balance.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl space-y-6">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="chat">chat</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#455f88]"></div>
+</label>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-2">WhatsApp Auto-response</h4>
+<p class="text-xs text-outline leading-normal">Send an instant greeting and catalog link when a lead inquires via WhatsApp.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Team Management -->
+<section class="space-y-6">
+<div class="flex justify-between items-end border-b border-surface-container-high pb-4">
+<div>
+<h3 class="text-xl font-headline font-bold text-on-surface">Team Management</h3>
+<p class="text-sm text-outline">Coordinate 4 active members within your brokerage.</p>
+</div>
+<button class="text-secondary text-sm font-bold flex items-center gap-2 hover:bg-secondary-container/20 px-4 py-2 rounded-lg transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                                Invite Member
+                            </button>
+</div>
+<div class="space-y-4">
+<!-- Team Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-l-4 border-secondary rounded-r-lg group hover:bg-surface-container-low transition-all">
+<div class="flex items-center gap-4">
+<img alt="Team Member" class="w-12 h-12 rounded-full grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC_MdC2JA7e07dzIoixPUAfob3udMhMUyVFmU6s1M1qT8EPK3DtUpfDJskOsmE98FFtMh6P-a73XOiwPSFmFwOXp5Yr6WbMcpLm3XEKhL0z-S3d1eca8p9NtmWveSzR3ywHTSAMr6ZuPSYKgI2yPhSxKTSaewU_h8HfTbIPpFh4Gp0qVPrNnXzNZcge5qJ4pERqjhO7zp88vol9smeFGR4mw8-TfeOKir5Ejm4BuGB-drcO6ecU15IoPz9pVquHuAMJXV5X3sz0JQY"/>
+<div>
+<p class="font-bold text-on-surface">Aditi Sharma</p>
+<p class="text-xs text-outline uppercase tracking-tighter">Senior Broker • Residential Specialist</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="hidden md:block">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-widest">Active</span>
+</div>
+<p class="text-sm font-semibold text-secondary min-w-[80px] text-right">Admin</p>
+<button class="material-symbols-outlined text-outline hover:text-secondary" data-icon="more_vert">more_vert</button>
+</div>
+</div>
+<!-- Team Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-l-4 border-outline/30 rounded-r-lg group hover:bg-surface-container-low transition-all">
+<div class="flex items-center gap-4">
+<img alt="Team Member" class="w-12 h-12 rounded-full grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXTdjTKwKd3-Tve-4qbEfBb-5gX0xTOjVMgjMDYWu0cDfjcP8KL6xYlPyQhvKYVa8Zxj_bp4hABjc1he4lAKggxqg1uUyxsmNcI0-sA6LMIaaDUn9grb4UmceW6y6SL_oH-xMkd83SI7wPQ81rEEulAKMzR_8_BCNVcJWUfjWLAIsg0nx525vCR97lzzP5WmrC4Yh8yK6Dagr9JIuiyPPoSAAi-ZkMPxCMvi37oCC25TSwXZg8Xta1wlHINtCPQi0usfEXx6xMjZiu"/>
+<div>
+<p class="font-bold text-on-surface">Vikram Singh</p>
+<p class="text-xs text-outline uppercase tracking-tighter">Sales Associate • Commercial Lead</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="hidden md:block">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-widest">Active</span>
+</div>
+<p class="text-sm font-semibold text-secondary min-w-[80px] text-right">Agent</p>
+<button class="material-symbols-outlined text-outline hover:text-secondary" data-icon="more_vert">more_vert</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Integration Settings -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="md:col-span-1">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-2">Portal Integrations</h3>
+<p class="text-sm text-outline leading-relaxed">Sync your listings and capture leads directly from India's top property portals.</p>
+</div>
+<div class="md:col-span-2 space-y-6">
+<div class="p-6 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white rounded flex items-center justify-center p-2">
+<span class="text-error font-black italic text-xl">99</span>
+</div>
+<span class="font-bold text-on-surface">99acres API Key</span>
+</div>
+<span class="text-[10px] font-bold bg-secondary-container/30 text-on-secondary-container px-2 py-1 rounded">CONNECTED</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-lg py-3 px-4 text-xs font-mono tracking-widest" readonly="" type="password" value="99a_secret_key_8829103x_acc"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-[#FFD700] rounded flex items-center justify-center p-1 font-bold text-[#D32F2F]">MB</div>
+<span class="font-bold text-on-surface">MagicBricks Integration</span>
+</div>
+<button class="text-xs font-bold text-secondary underline">Configure</button>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-lg py-3 px-4 text-xs font-mono tracking-widest italic" placeholder="Enter MagicBricks API Token" type="password"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Security -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="md:col-span-1">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-2">Security &amp; Access</h3>
+<p class="text-sm text-outline leading-relaxed">Protect your high-value client data and deal confidentialities.</p>
+</div>
+<div class="md:col-span-2 space-y-8">
+<div class="space-y-4">
+<label class="block text-xs font-bold text-secondary uppercase tracking-wider">Authentication</label>
+<div class="flex items-center justify-between p-5 bg-surface-container-low rounded-xl">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="verified_user">verified_user</span>
+<div>
+<p class="font-bold text-on-surface">Two-Factor Authentication (2FA)</p>
+<p class="text-xs text-outline">Add an extra layer of security to your account.</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-secondary text-white rounded-lg text-xs font-bold shadow-sm hover:opacity-90 transition-all">ENABLE</button>
+</div>
+<div class="flex items-center justify-between p-5 bg-surface-container-low rounded-xl">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="lock_reset">lock_reset</span>
+<div>
+<p class="font-bold text-on-surface">Change Password</p>
+<p class="text-xs text-outline">Last changed 42 days ago.</p>
+</div>
+</div>
+<button class="px-4 py-2 border-2 border-secondary text-secondary rounded-lg text-xs font-bold hover:bg-secondary hover:text-white transition-all">UPDATE</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Global Action Bar -->
+<div class="bg-surface-container-highest p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-outline italic">Your changes are automatically saved to draft. Finalize to sync across team.</p>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-8 py-3 bg-white text-secondary font-bold rounded-lg border-2 border-secondary/10 hover:border-secondary/40 transition-all">
+                            Discard
+                        </button>
+<button class="flex-1 md:flex-none px-12 py-3 bg-gradient-to-br from-[#401100] to-[#ff753d] text-white font-bold rounded-lg shadow-xl shadow-primary-container/20 hover:scale-[1.02] active:scale-95 transition-all">
+                            Save Changes
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bottom Disclaimer/Footer -->
+<footer class="mt-12 text-center pb-12">
+<p class="text-[10px] text-outline font-bold uppercase tracking-[0.2em]">Architectural Ledger Real Estate CRM • Enterprise Edition • v2.4.0</p>
+</footer>
+</main>
+</div>
+<!-- Mobile Bottom NavBar -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-surface-container-high px-6 py-3 flex justify-between items-center z-50 shadow-2xl">
+<button class="flex flex-col items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-2xl" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-2xl" data-icon="real_estate_agent">real_estate_agent</span>
+<span class="text-[10px] font-bold">Props</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-2xl" data-icon="group">group</span>
+<span class="text-[10px] font-bold">Clients</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</button>
+</nav>
+</body></html>

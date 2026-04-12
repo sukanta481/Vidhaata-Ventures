@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architect Ledger | Premium Real Estate CRM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#e7f3f4",
+                        "error": "#ba1a1a",
+                        "primary-container": "#641e00",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#effcfd",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-container": "#e4f0f1",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-background": "#121d1e",
+                        "on-surface": "#121d1e",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#00400c",
+                        "secondary": "#455f88",
+                        "surface-bright": "#effcfd",
+                        "on-primary-fixed-variant": "#802a00",
+                        "tertiary": "#002805",
+                        "on-secondary-fixed-variant": "#2d476f",
+                        "inverse-primary": "#ffb59a",
+                        "outline": "#74777f",
+                        "on-tertiary-container": "#61b15f",
+                        "surface-dim": "#d0dcdd",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#d8e5e6",
+                        "secondary-fixed-dim": "#adc7f7",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-fixed": "#001b3c",
+                        "primary": "#401100",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary-container": "#ff753d",
+                        "primary-fixed-dim": "#ffb59a",
+                        "secondary-container": "#b6d0ff",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#43474e",
+                        "on-primary-fixed": "#380d00",
+                        "tertiary-fixed-dim": "#88d982",
+                        "surface-container-highest": "#d8e5e6",
+                        "on-secondary-container": "#3f5882",
+                        "tertiary-fixed": "#a3f69c",
+                        "surface-container-high": "#deebeb",
+                        "surface-container-low": "#eaf6f7",
+                        "inverse-surface": "#273233",
+                        "background": "#effcfd",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#a83900",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-on-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="w-full sticky top-0 z-50 bg-[#effcfd] dark:bg-slate-900 flex justify-between items-center px-8 py-4">
+<div class="flex items-center gap-12">
+<span class="text-xl font-bold tracking-tighter text-[#121d1e] dark:text-white font-headline">Architect Ledger</span>
+<div class="relative hidden lg:flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-lg">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg text-sm w-80 focus:ring-2 focus:ring-on-primary-container transition-all" placeholder="Search leads/properties..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-gradient-to-br from-primary-container to-on-primary-container text-white px-5 py-2 rounded-lg font-headline font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition-all scale-95 active:opacity-80">
+<span class="material-symbols-outlined text-sm">add</span>
+                Quick Add
+            </button>
+<div class="relative">
+<span class="material-symbols-outlined text-secondary text-2xl cursor-pointer hover:text-on-primary-container transition-colors">notifications</span>
+<span class="absolute -top-1 -right-1 bg-on-primary-container text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full border-2 border-surface">3</span>
+</div>
+<img alt="Broker profile" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="Close-up professional portrait of a real estate broker wearing a sharp navy suit and smiling warmly in a bright office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKjDMndhyerJAO43rx4Gkex9azwbjCtKc2OQTaI7L8zNp-HibX5wvhAqJd4fFU69azahTmyNzdVsseGp_8gxpDSwfdnM-98E8fP9sRlpJPqU_ASe9JfDQ-XsA89VGLmqj_p-SnCs17zSM1HBXvxzMuI78FrL64Ws_i-jLN887oMzprCfMSnInNB6No52QNcfYqX-oxM2N6_E8DtUT4vERVKjNFTu-k6gM8XTbeiDpxiAX77X0eUjGFl376_6Ql7C3fR07CNSlkxSVs"/>
+</div>
+</nav>
+<div class="flex min-h-[calc(100vh-76px)]">
+<!-- SideNavBar -->
+<aside class="h-[calc(100vh-76px)] w-64 sticky top-[76px] bg-[#effcfd] dark:bg-slate-950 flex flex-col py-8 gap-4 border-r border-[#c4c6cf]/15 overflow-y-auto no-scrollbar">
+<div class="px-6 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-white font-headline font-bold">PR</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Premium Realty</p>
+<p class="text-[10px] uppercase tracking-widest text-secondary font-medium">Elite Broker Tier</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 px-6 py-3 text-sm font-manrope font-medium uppercase tracking-widest text-[#121d1e]/60 hover:bg-[#eaf6f7] transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-4 px-6 py-3 text-sm font-manrope font-medium uppercase tracking-widest border-l-4 border-[#455f88] text-[#455f88] bg-[#eaf6f7] translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+                    Leads Pipeline
+                </a>
+<a class="flex items-center gap-4 px-6 py-3 text-sm font-manrope font-medium uppercase tracking-widest text-[#121d1e]/60 hover:bg-[#eaf6f7] transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">domain</span>
+                    Property Inventory
+                </a>
+<a class="flex items-center gap-4 px-6 py-3 text-sm font-manrope font-medium uppercase tracking-widest text-[#121d1e]/60 hover:bg-[#eaf6f7] transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+                    Communications
+                </a>
+<a class="flex items-center gap-4 px-6 py-3 text-sm font-manrope font-medium uppercase tracking-widest text-[#121d1e]/60 hover:bg-[#eaf6f7] transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</nav>
+<div class="mt-auto px-6">
+<a class="flex items-center gap-4 py-3 text-sm font-manrope font-medium uppercase tracking-widest text-[#121d1e]/60 hover:bg-[#eaf6f7] transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-8 overflow-x-hidden">
+<!-- Top Row Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-secondary text-sm font-headline font-semibold mb-2">New Leads</p>
+<h3 class="text-4xl font-headline font-extrabold text-on-surface">24</h3>
+<p class="text-xs text-on-tertiary-container mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12% from yesterday
+                        </p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-secondary/10 text-8xl group-hover:scale-110 transition-transform">group_add</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-secondary text-sm font-headline font-semibold mb-2">Today's Follow-ups</p>
+<h3 class="text-4xl font-headline font-extrabold text-on-surface">18</h3>
+<p class="text-xs text-[#9A3412] font-bold mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span> 5 overdue tasks
+                        </p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-secondary/10 text-8xl group-hover:scale-110 transition-transform">history</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-secondary text-sm font-headline font-semibold mb-2">Upcoming Site Visits</p>
+<h3 class="text-4xl font-headline font-extrabold text-on-surface">06</h3>
+<p class="text-xs text-secondary mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">event</span> Next at 2:00 PM
+                        </p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-secondary/10 text-8xl group-hover:scale-110 transition-transform">location_on</span>
+</div>
+</div>
+<!-- Kanban + Task List Layout -->
+<div class="flex flex-col xl:flex-row gap-8">
+<!-- Kanban Sales Pipeline -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-headline font-extrabold tracking-tight">Sales Pipeline</h2>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-low rounded-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+<button class="p-2 bg-surface-container-low rounded-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">sort</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto pb-6 no-scrollbar">
+<div class="flex gap-6 min-w-max">
+<!-- Column Template -->
+<div class="w-72 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h4 class="text-xs font-headline font-bold uppercase tracking-widest text-secondary/60">New Lead (4)</h4>
+<span class="material-symbols-outlined text-secondary/40 text-sm">more_horiz</span>
+</div>
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-on-primary-container group cursor-pointer hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-3">
+<h5 class="font-headline font-bold text-sm">Rajesh Kumar</h5>
+<span class="bg-secondary-container/30 text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">FB Lead</span>
+</div>
+<p class="text-xs text-secondary/70 mb-4">Budget: ₹3.5Cr - ₹4.0Cr</p>
+<div class="flex items-center justify-between"><div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-white object-cover" data-alt="close up of energetic real estate agent avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwWjq0gefTFWxWBNIVBF0G307NAXzgZfSp4SyJP9Qg6m-2eIkoeeEgLsNN5Q-g50FM_cgq7xPDHYniKZ0gXKZuRqMvyu7OYSAJAf0CKqBlD3zIFoT-vrXD0FcSeI5JFKIb6387GCdUSBEWxEF3EYqZmJ7j8XLF0mf4BUapAMmvuNpUorkePnAPRtkAO76XD9BEL9Mw6r2Nop8AduAtJBPSK3oJEjCA79BqXekbrKNmTJn3S_gAQg_tPxzPk4FmWGVeVgAui81209yJ"/>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] text-secondary font-medium mr-1">2h ago</span>
+<div class="flex gap-2">
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-secondary/5 text-secondary hover:bg-secondary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">call</span>
+</button>
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-on-tertiary-container/5 text-on-tertiary-container hover:bg-on-tertiary-container hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm text-[16px]">chat</span>
+</button>
+</div>
+</div></div>
+</div>
+<!-- Card 2 (Active State Simulation) -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-md border-l-4 border-on-primary-container ring-2 ring-on-primary-container/20">
+<div class="flex justify-between items-start mb-3">
+<h5 class="font-headline font-bold text-sm">Arjun Sharma</h5>
+<span class="bg-secondary-container/30 text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">FB Lead</span>
+</div>
+<p class="text-xs text-secondary/70 mb-4">Budget: ₹2.5Cr</p>
+<div class="flex items-center justify-between"><span class="text-[10px] font-bold text-[#9A3412]">Currently Viewing</span>
+<div class="flex items-center gap-3">
+<span class="text-[10px] text-secondary font-medium mr-1">5h ago</span>
+<div class="flex gap-2">
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-secondary/5 text-secondary hover:bg-secondary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">call</span>
+</button>
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-on-tertiary-container/5 text-on-tertiary-container hover:bg-on-tertiary-container hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm text-[16px]">chat</span>
+</button>
+</div>
+</div></div>
+</div>
+</div>
+<!-- Column 2 -->
+<div class="w-72 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h4 class="text-xs font-headline font-bold uppercase tracking-widest text-secondary/60">Contacted (2)</h4>
+<span class="material-symbols-outlined text-secondary/40 text-sm">more_horiz</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-secondary/20">
+<div class="flex justify-between items-start mb-3">
+<h5 class="font-headline font-bold text-sm">Priya Varma</h5>
+<span class="bg-tertiary-container/10 text-on-tertiary-container text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">Referral</span>
+</div>
+<p class="text-xs text-secondary/70 mb-4">Budget: ₹5.0Cr+</p>
+<div class="flex items-center justify-between"><div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-on-tertiary-container">check_circle</span>
+<span class="text-[10px] text-on-tertiary-container font-medium">Verified</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] text-secondary font-medium mr-1">1d ago</span>
+<div class="flex gap-2">
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-secondary/5 text-secondary hover:bg-secondary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">call</span>
+</button>
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-on-tertiary-container/5 text-on-tertiary-container hover:bg-on-tertiary-container hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm text-[16px]">chat</span>
+</button>
+</div>
+</div></div>
+</div>
+</div>
+<!-- Column 3 -->
+<div class="w-72 flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h4 class="text-xs font-headline font-bold uppercase tracking-widest text-secondary/60">Qualified (1)</h4>
+<span class="material-symbols-outlined text-secondary/40 text-sm">more_horiz</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 border-secondary/20 opacity-60">
+<div class="flex justify-between items-start mb-3">
+<h5 class="font-headline font-bold text-sm">Vikram Seth</h5>
+<span class="bg-outline-variant/30 text-secondary text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">Direct</span>
+</div>
+<p class="text-xs text-secondary/70">Budget: ₹1.8Cr</p>
+</div>
+</div>
+<!-- Simplified columns for design density -->
+<div class="w-72 border-r border-dashed border-outline-variant/30 flex items-center justify-center">
+<span class="text-xs font-bold text-outline-variant uppercase tracking-widest rotate-90">Pipeline Continues</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Daily Task List -->
+<div class="w-full xl:w-80 flex flex-col gap-6">
+<h2 class="text-xl font-headline font-extrabold tracking-tight">Today's Focus</h2>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<div class="flex flex-col gap-5">
+<div class="flex items-start gap-3">
+<input class="mt-1 rounded border-secondary text-on-primary-container focus:ring-on-primary-container h-4 w-4" type="checkbox"/>
+<div>
+<p class="text-sm font-semibold">Call Rajesh Kumar</p>
+<p class="text-[10px] text-secondary uppercase font-bold mt-0.5">Morning - New Lead</p>
+</div>
+</div>
+<div class="flex items-start gap-3 opacity-40">
+<input checked="" class="mt-1 rounded border-secondary text-on-primary-container focus:ring-on-primary-container h-4 w-4" type="checkbox"/>
+<div>
+<p class="text-sm font-semibold line-through">Confirm M3M Site Visit</p>
+<p class="text-[10px] text-secondary uppercase font-bold mt-0.5">Completed at 9:30 AM</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<input class="mt-1 rounded border-secondary text-on-primary-container focus:ring-on-primary-container h-4 w-4" type="checkbox"/>
+<div>
+<p class="text-sm font-semibold">Send WhatsApp Brochure</p>
+<p class="text-[10px] text-secondary uppercase font-bold mt-0.5">Arjun Sharma - Pending</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<input class="mt-1 rounded border-secondary text-on-primary-container focus:ring-on-primary-container h-4 w-4" type="checkbox"/>
+<div>
+<p class="text-sm font-semibold">Weekly Pipeline Review</p>
+<p class="text-[10px] text-secondary uppercase font-bold mt-0.5">4:00 PM</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-2 text-xs font-bold text-secondary border border-secondary/20 rounded-lg hover:bg-surface-container transition-colors">View All Tasks</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Slide-Out Panel (Open State) -->
+<aside class="w-[400px] bg-white border-l border-outline-variant/15 flex flex-col sticky top-[76px] h-[calc(100vh-76px)] overflow-y-auto no-scrollbar glass-panel">
+<div class="p-8">
+<!-- Panel Header -->
+<div class="flex items-center justify-between mb-8">
+<button class="material-symbols-outlined text-secondary hover:bg-surface-container rounded-full p-1 transition-colors">close</button>
+<div class="flex gap-2">
+<button class="material-symbols-outlined text-secondary text-xl">star</button>
+<button class="material-symbols-outlined text-secondary text-xl">edit</button>
+</div>
+</div>
+<!-- Lead Profile -->
+<div class="flex flex-col items-center text-center mb-8">
+<div class="w-24 h-24 rounded-full border-4 border-surface-container-low mb-4 relative">
+<img alt="Arjun Sharma profile" class="w-full h-full rounded-full object-cover" data-alt="Modern professional headshot of a middle-aged man with short dark hair and a friendly expression, soft office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr7kZD-npq5HCCeYWqDkbBuTsRDic5oufev4m5VPZJcDxpjul1OOJf-aW6obLpFf5mi2Lb15mqoHH1nQLe-i_5d9sNBwb02lPO7nslAD6xViSQqTQZl1nO968lvfO_Deh0seQzIbPG3IRljwMpf81xHKh_71KFI6fFjbRjUBkDOQE9MIeV8w6Yt_4hs12ot0xIjg6pAzb1PO1FGFJmmnw9QWwRUrGoogCCFub-6eUUXrL_8xKjmrknHrINlAzFMNVIGxwypIjB_3PT"/>
+<div class="absolute bottom-1 right-1 bg-tertiary-container w-4 h-4 rounded-full border-2 border-white"></div>
+</div>
+<h3 class="text-2xl font-headline font-extrabold text-on-surface">Arjun Sharma</h3>
+<p class="text-secondary font-medium text-sm flex items-center gap-1 justify-center mt-1">
+<span class="material-symbols-outlined text-sm">social_leaderboard</span> Facebook Lead
+                    </p>
+</div>
+<!-- Quick Actions -->
+<div class="grid grid-cols-2 gap-3 mb-10">
+<button class="flex items-center justify-center gap-2 py-3 bg-secondary text-white rounded-lg font-headline font-bold text-sm shadow-sm hover:translate-y-[-2px] transition-all">
+<span class="material-symbols-outlined text-lg">call</span>
+                        Call Now
+                    </button>
+<button class="flex items-center justify-center gap-2 py-3 bg-on-tertiary-container text-white rounded-lg font-headline font-bold text-sm shadow-sm hover:translate-y-[-2px] transition-all">
+<span class="material-symbols-outlined text-lg">chat</span>
+                        WhatsApp
+                    </button>
+</div>
+<!-- Lead Details -->
+<div class="space-y-6 mb-10">
+<div class="flex justify-between items-center pb-4 border-b border-outline-variant/10">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">Budget</span>
+<span class="text-sm font-headline font-bold">₹2.5 Cr</span>
+</div>
+<div class="flex justify-between items-center pb-4 border-b border-outline-variant/10">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">Location</span>
+<span class="text-sm font-headline font-bold">Gurgaon</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">Timeline</span>
+<span class="text-sm font-headline font-bold">Within 3 Months</span>
+</div>
+</div>
+<!-- Inventory Matcher (Bento Style) -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xs font-bold text-secondary uppercase tracking-widest">Inventory Matcher</h4>
+<span class="text-[10px] bg-tertiary-container/10 text-on-tertiary-container px-2 py-0.5 rounded-full font-bold">2 SUGGESTED</span>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<div class="bg-surface-container-low p-3 rounded-xl flex gap-4 group cursor-pointer hover:bg-surface-container transition-colors">
+<img alt="Property Match 1" class="w-20 h-20 rounded-lg object-cover" data-alt="Luxury modern penthouse balcony with panoramic city skyline view at dusk, stylish furniture, high-end architectural photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEYJHdIc82kLUuAGNgTv9Q_aeoTgSl8uhXeaN7AvEKxztoj95gqQUnlR1AYMWgul-E-7cWSLFZo6XLwZEGm_c9pcUY2o-Rrm9B9KmPgPzUP64XQOmuqkom_H3iaJ_kDpqGTZEwEH8zFXXmP11BE8r5St5xlTjCcD8m4m2RXYaCpEyejshCDJKZX8-FbkiZr1nS0B7XrO-hslPJKaj4fajd93OEHAPks38P6VSB_Q2r7ff2fcDVTqC4x29PNFX1uXPawbhkFjPo8VYi"/>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface truncate">Skyline Residences, Sec 54</p>
+<p class="text-[10px] text-secondary font-medium">3 BHK · ₹2.8 Cr</p>
+<div class="mt-2 flex items-center gap-1">
+<div class="h-1 flex-1 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-container w-[92%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-tertiary-container">92%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl flex gap-4 group cursor-pointer hover:bg-surface-container transition-colors">
+<img alt="Property Match 2" class="w-20 h-20 rounded-lg object-cover" data-alt="Contemporary minimal living room with large floor to ceiling windows, designer furniture, soft natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz4w96KOUEq3D_7Ecgjk4-nEmzV2dStjn5ZXC39o--juV18B_gD8lRjtpwpUcRhJh-n_AcEO6YOyaxALckf7T_v1YGQjwF6l7SOg0DEkl4eIykNb4thWM4_c9UU0hLguGw5MX9Nb6WmIQopXFBeUz5ChkK7V5Pfm3HaNMHTVEVlnLzF8jgAoCjXbBTk-bnuILkCQa6ZpD3lnWlaTp5qKahjyLyyNIx_qEH8peKPZW6_6reYTRk9mvBPCmjstPXuEFZ2leaWeC5E2gO"/>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface truncate">The Grand Atrium, Sec 42</p>
+<p class="text-[10px] text-secondary font-medium">4 BHK · ₹3.2 Cr</p>
+<div class="mt-2 flex items-center gap-1">
+<div class="h-1 flex-1 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-on-primary-container w-[75%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-primary-container">75%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Timeline -->
+<div>
+<h4 class="text-xs font-bold text-secondary uppercase tracking-widest mb-6">Activity Timeline</h4>
+<div class="relative pl-6 space-y-8 before:content-[''] before:absolute before:left-[5px] before:top-1 before:bottom-0 before:w-px before:bg-outline-variant/30">
+<div class="relative">
+<div class="absolute -left-[25px] top-1 w-2 h-2 rounded-full bg-on-primary-container ring-4 ring-on-primary-container/10"></div>
+<p class="text-xs font-bold mb-1">Follow-up Call Scheduled</p>
+<p class="text-[10px] text-secondary">Today, 2:30 PM</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[25px] top-1 w-2 h-2 rounded-full bg-secondary"></div>
+<p class="text-xs font-bold mb-1">Inquiry via Facebook</p>
+<p class="text-[10px] text-secondary">Yesterday, 11:15 AM</p>
+<div class="mt-2 p-2 bg-surface-container-low rounded italic text-[10px] text-secondary/80">
+                                "Looking for a 3BHK near Golf Course Road. Preferably ready to move."
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

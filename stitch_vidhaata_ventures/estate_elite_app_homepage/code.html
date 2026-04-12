@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Estate Elite | Luxury Real Estate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#763300",
+                    "tertiary-fixed": "#ffdbc9",
+                    "surface-variant": "#e4e2e1",
+                    "tertiary": "#230a00",
+                    "primary": "#001225",
+                    "surface-container-high": "#eae8e7",
+                    "on-primary-container": "#728fb4",
+                    "surface-container-highest": "#e4e2e1",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#63f7fa",
+                    "on-secondary-container": "#006e70",
+                    "secondary-container": "#5ff4f7",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#431a00",
+                    "on-secondary-fixed-variant": "#004f51",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface": "#fbf9f8",
+                    "surface-container-low": "#f6f3f2",
+                    "inverse-primary": "#abc9f1",
+                    "background": "#fbf9f8",
+                    "inverse-surface": "#303030",
+                    "secondary": "#00696b",
+                    "tertiary-fixed-dim": "#ffb68e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#331200",
+                    "on-secondary-fixed": "#002020",
+                    "outline": "#73777f",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001c37",
+                    "surface-container": "#f0eded",
+                    "secondary-fixed-dim": "#3cdbde",
+                    "on-primary-fixed-variant": "#2b486a",
+                    "surface-bright": "#fbf9f8",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c3c6cf",
+                    "primary-fixed": "#d2e4ff",
+                    "surface-dim": "#dcd9d9",
+                    "on-background": "#1b1c1c",
+                    "on-tertiary-container": "#df6d1d",
+                    "on-surface": "#1b1c1c",
+                    "surface-tint": "#436083",
+                    "primary-fixed-dim": "#abc9f1",
+                    "on-surface-variant": "#43474e",
+                    "primary-container": "#022747",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/70 dark:bg-slate-900/70 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-blue-950 dark:text-blue-50" data-icon="menu">menu</span>
+<h1 class="text-xl font-extrabold tracking-tighter text-blue-950 dark:text-blue-50 font-['Manrope']">Estate Elite</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img alt="Agent Profile" data-alt="professional headshot of a luxury real estate agent in a dark suit with a confident smile and soft office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkG3k4HWaWS8QomF5R1OX0SHybyFTXVUvULCWpJ4ZcdNBlMC92CGBjbkEViDssk8Mug_ctW7Gpvf-4mrJM6UI2BsPddWLD3zqU2sV1n_wFxXD7mBFvxJ6RabrulChwb72-_9R9siDa7cL8YuvJ80eimfGLmhHd9chfiQyZ8zbvhGelfNNeI-5T99sLxkb-4q39m52QGGc05IVWmbpMbkOqiUq0yd_aiL_WaxZIoRqmCz9BoY1sPmYYXDqLNWqKp2TneMT1WMB6u4c"/>
+</div>
+</header>
+<main class="pt-20 pb-32">
+<!-- Hero Section -->
+<section class="px-6 mb-12">
+<div class="relative h-64 rounded-3xl overflow-hidden mb-6 group">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="ultra-modern luxury villa exterior with sleek lines and floor to ceiling windows at dusk with warm interior lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmE5AZF5HsdHPM7a9xRhW48iCt_kVNlJTeXQlTFn7fDqo6UylQ3n2T6wjwaDdZt8fqV5UKz2U0YZKaUKiLsnbwSl_6nnPjrudZXOiD3JT8SJFGBs6RkIBiu8DH7XyLSaYaJ2AgNlGPVpOu95FmtVmMK53zm9C9kUZH1_vUGftztoZSFt8Dpo3RpJ0qevxqF1cfpkPnbv0AZfJz6iPJwWyx9c5WvJZBAu6XQO37HdKUXMprMc8tLctD_rmpMuiwJVwlrckzlE85ejA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<p class="font-label text-xs uppercase tracking-[0.2em] text-white/70 mb-1">Concierge Briefing</p>
+<h2 class="text-2xl font-extrabold text-white leading-tight">Welcome back,<br/>Find your sanctuary.</h2>
+</div>
+</div>
+<!-- Floating Search -->
+<div class="relative -mt-12 mx-4 p-2 bg-surface-container-lowest/70 backdrop-blur-2xl rounded-2xl shadow-[0_20px_40px_rgba(27,28,28,0.06)]">
+<div class="flex items-center gap-3 px-4 py-3 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-body w-full" placeholder="Search destinations, styles..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Market Quick Stats -->
+<section class="px-6 mb-12 grid grid-cols-2 gap-4">
+<div class="p-5 rounded-2xl bg-surface-container-low">
+<p class="font-label text-[10px] uppercase tracking-wider text-outline mb-2">Market Sentiment</p>
+<div class="flex items-end gap-2">
+<span class="text-xl font-bold font-headline text-primary">Bullish</span>
+<span class="material-symbols-outlined text-secondary text-sm mb-1" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<div class="p-5 rounded-2xl bg-surface-container-low">
+<p class="font-label text-[10px] uppercase tracking-wider text-outline mb-2">Avg. Yield</p>
+<div class="flex items-end gap-2">
+<span class="text-xl font-bold font-headline text-primary">5.8%</span>
+<span class="text-[10px] text-secondary font-bold mb-1">+0.4</span>
+</div>
+</div>
+</section>
+<!-- Featured Collections -->
+<section class="mb-12">
+<div class="px-6 flex justify-between items-center mb-6">
+<h3 class="text-xl font-extrabold font-headline tracking-tight">Featured Collections</h3>
+<button class="text-xs font-bold text-primary-container/80 underline decoration-primary-container/20 underline-offset-4">View All</button>
+</div>
+<div class="flex gap-6 overflow-x-auto px-6 pb-4 scrollbar-hide">
+<!-- Card 1 -->
+<div class="min-w-[280px] group">
+<div class="relative h-[360px] rounded-[1.5rem] overflow-hidden mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="architectural marvel obsidian pavilion dark charcoal stone exterior overlooking a cliffside infinity pool at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsYCdPutJzsOwLH1SfbylMIFBIc1cXLCcbSeh8iZJRWnVI9JpYqoyLryxNqOs97xt2fGqRQhF258B6jO4BpGXVQTsDpFtul5_SCxZnEXCOZtl_T6K835e-L6jlNVwkI-1NFK8TFHuvvNH314ZP4DI4Y2e8zD5oSxrz6KgXgGQwBQPMzd_ksJ5cbdyKeY2Si4yZxsOP4STh6a4Q55goO5D9-nTWfy3Me24-_Jn4AMsTj4NBnduuKZT93cGMTfTPP3lfsgdN0QxBtPA"/>
+<div class="absolute top-4 left-4 bg-tertiary-fixed px-3 py-1 rounded-full">
+<span class="text-[10px] font-bold text-on-tertiary-fixed-variant uppercase tracking-widest">98% Match</span>
+</div>
+</div>
+<div class="space-y-1">
+<h4 class="text-lg font-bold font-headline">The Obsidian Pavilion</h4>
+<p class="text-sm text-outline font-body">Malibu, CA</p>
+<p class="text-lg font-bold text-primary-container mt-2">$24,500,000</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[280px] group">
+<div class="relative h-[360px] rounded-[1.5rem] overflow-hidden mb-4">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="bright airy ethereal loft with vaulted ceilings exposed white beams and minimalist designer furniture with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeinZGk88WyUMJgN4bzyS3zpVKUlzXAKNtFMsLNq0g7pY-_kk3sAD81yzECLsHclkoxuGkIswYgFo8IK4kH7HwyhvKUphGBTvESKOD44HzcY_YlTWmRRWpHl2x6p-EPMhfkNB3VkfGHLkDedhasBOYw3Dl-th_ldgaG3GqUb_kt6jwzifdX_QRHKqBhG1fGtZmuFtwk35ssJQqOFvM6XlqDTWfyisQru7y6HSC7IcgbFbU_Ju4GQ3ysrO7wPiEPvVnkiIXasM2rjw"/>
+<div class="absolute top-4 left-4 bg-tertiary-fixed px-3 py-1 rounded-full">
+<span class="text-[10px] font-bold text-on-tertiary-fixed-variant uppercase tracking-widest">94% Match</span>
+</div>
+</div>
+<div class="space-y-1">
+<h4 class="text-lg font-bold font-headline">Ethereal Loft</h4>
+<p class="text-sm text-outline font-body">SoHo, NYC</p>
+<p class="text-lg font-bold text-primary-container mt-2">$8,900,000</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Us Section -->
+<section class="px-6 mb-12">
+<div class="bg-primary-container p-8 rounded-[2rem] text-white relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-on-primary-container/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<h3 class="text-2xl font-extrabold font-headline mb-6 leading-tight">The Estate Elite<br/>Advantage</h3>
+<div class="space-y-6">
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="verified">verified</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Vetted Inventory</h4>
+<p class="text-xs text-white/60 leading-relaxed mt-1">Every listing undergoes a rigorous 120-point architectural and legal inspection.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="lock">lock</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Total Privacy</h4>
+<p class="text-xs text-white/60 leading-relaxed mt-1">Non-disclosure priority handling for high-net-worth acquisitions.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Global Destinations -->
+<section class="px-6 mb-12">
+<h3 class="text-xl font-extrabold font-headline mb-6">Global Destinations</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="relative aspect-[3/4] rounded-2xl overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="white washed buildings of santorini greece with iconic blue domes overlooking the deep blue aegean sea at noon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcNVfdVonsMwqMHy9ER28rUvi4dW_Xj9rFfnDSxmhTUEyrrIUn0ZdopG-s-3CYU0A76T2dzXOZeWRm6Fi9sW96vhvjwhdfGMtXC-DVDvDwpuXL1bQWJ3dw8bvNQFQk1-H8vwwOmUL2k1GUq29TH65w7wPQXeWX0sOA1ssHe6gcd2fEeph9dhpcMV8Xw-GvIh0O3fuOIBretd6XenP-s3o7UXzDk0ZegNu6eaN8m5zAEEBrsB6PXESY7lk9Bb3w428TlE9Ddg4y84U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<p class="absolute bottom-4 left-4 font-bold text-white tracking-wide">Santorini</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="relative h-1/2 rounded-2xl overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="serene temple garden in kyoto japan with vibrant autumn maple leaves and a traditional stone lantern in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASuEc-pTxLAjoGPqSRzg8YBnKGXfLSuC9fboyMO25j9l6JhQMttZthi5FwX28LHr0vTZWmPcWe9udnP1E3oagfdJP7O-FZOxXXINwoWk2VlZRK44_iV3f2kmCtps55-NfcSToORjHbs4LSDCEurPvrnVb0SKz5eGwUdY0mMlMLHbRzManz4FjuiliDZpy2Al9JTysGBHkRWgfjWUSTsg7DvSfI8t29zD50yC9RfE44GRc3eCA_Djbeh874PMrntJaBuKShpRBGe4c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<p class="absolute bottom-4 left-4 font-bold text-white tracking-wide">Kyoto</p>
+</div>
+<div class="relative h-1/2 rounded-2xl overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="colorful coastal town of amalfi italy perched on rugged cliffs above shimmering turquoise mediterranean waters" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPEFQszcwCD49JGJx_sTZIV9TrYnxq2-207owcBJLOjYjCOBQq-LhBuyRyikgySgR-RWg6jyXYQuTu9lX_zTDrhQ-yx6bW_WTdfsXW2sRGtMhagj-lm3HSwTvTakMn4A9PBiBOue_ndYNeGxR-rhczAul5OBT9_uken-2lw_7Eb6lihzHga8e8wdxPLQo70eXeYAdBbYwFb3LrIaza8_u4rmsoVyWHnrwypKpBlshgLPXRBFG1vBnWWKd1LYtSO-1IPvY7g_oFbUA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<p class="absolute bottom-4 left-4 font-bold text-white tracking-wide">Amalfi</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Client Feedback -->
+<section class="px-6 mb-12">
+<div class="bg-surface-container-low p-8 rounded-[2rem] border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary/20 text-4xl mb-4" data-icon="format_quote">format_quote</span>
+<p class="text-lg font-medium font-body leading-relaxed text-primary italic mb-6">
+                    "The level of discretion and curation provided by Estate Elite is unmatched. They found our family a private island estate before it even hit the market."
+                </p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="portrait of a sophisticated middle aged man with graying hair and designer glasses in a studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc_e2sDO5seoLBAocGTYY34OzL5FvnY7s0L5f8Jbm8sUII2KcXStT3s8YAixNuxG-WGvwhnklwGlKx6yOuLbE1iMtCNADtUBD1AcwvxXLqt5d1gru0Yo27-bG8RzGpHbhDLgf8AaATaOmnmOjCHAqN8lUrzTmhVTgpT_Wv9kXs66SCplNqWiuZSoAjdKEvVeWaEYPJ8DHT5yKmZF0rA92X-xtbR8SKZ1edcJxplPtxP9kW5hFS928DMFYhdhN2_uTOOt5GoCqumsQ"/>
+<div>
+<h4 class="font-bold text-sm">Julian Thorne</h4>
+<p class="text-xs text-outline">Venture Capitalist</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Partners -->
+<section class="px-6 mb-16">
+<h3 class="text-[10px] uppercase tracking-[0.2em] font-label text-outline text-center mb-8">Strategic Partners</h3>
+<div class="grid grid-cols-3 gap-8 items-center opacity-40 grayscale">
+<div class="flex justify-center">
+<img class="h-8 object-contain" data-alt="minimalist modern luxury brand logo with geometric shapes on a transparent background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE-WgzbVmkWXSRyBhl88v-62lET7qzDlzEXtU4znYPCJP0Ze6HQXzpDjXXrFkstoShlM_4sxtfVR8LPVDvi7r-StUxZGO3E19WAD7z3gYPMKiIW_1SfbmrMeZWpG8Z9ABbNec2vLorADh1uqYNQKOefWEBpcpggtLtiYFQ4zCV7vXyoQgFBterTNpRu032b_1eyj3n70bLOsKFfE1zC6EzxajEKrdr4ycisYnsJGdvWPK0CgFvklilUw44zAeK5JW2JWNQFUlFE5E"/>
+</div>
+<div class="flex justify-center">
+<img class="h-10 object-contain" data-alt="high end architectural firm logo using elegant serif typography and minimalist linework" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvdF4v8RavsMr97rvro_1tpqxWjUtEoXVJjokC-mWb0jMNiSd2iPZBolTxdjdGYqqO_Rs2_4lcN7meZJtq9kEGZz6Kw4RcuVVZynlWDc4hseOoovg7yCcqPbOsqkn6sJ107xG9cRdrzAx3kAH0NXSAaUASVufeC3rYYYXn2rke5jWJFLrpoWJoChCtfITvhCMgK8R00agSDglzlT3CGHHxwR0MyLJTqbSdBaatygRWQP_4V1Rp9qyh298GXk25qU0G4AUtADwmYh4"/>
+</div>
+<div class="flex justify-center">
+<img class="h-6 object-contain" data-alt="boutique design agency logo featuring clean contemporary sans-serif font and a simple emblem" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQGcoYATjkSC5Sqe5LWOPrsZptnL3D7hciWVidfO_5iVPukx45jGBovNO-qwePc02-HIkNmgSorSP2Jfm3MZzuKXWc8VpW1x_g1W20FepWLqriAWfe5K8WmgYGQyVJNUAmqeEwifu7oddwO46c4Qxs9CRAAyg8Do7_aWsOCJm-71J9751iGXmYa3xd7G65KYHtTF0G07ulJ233-v0W7bYVXzzWK-LE-8FW45iMz9u8C3j2jnFWGUypgyYpQOyLk9GUegPJVrikTNM"/>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-6 bg-slate-50/70 dark:bg-slate-900/70 backdrop-blur-xl z-50 rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+<a class="flex flex-col items-center justify-center bg-blue-950 dark:bg-blue-800 text-white dark:text-white rounded-2xl px-5 py-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-blue-900 dark:hover:text-blue-100 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-blue-900 dark:hover:text-blue-100 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Inquiries</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-blue-900 dark:hover:text-blue-100 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person_pin">person_pin</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-[0.05em] font-bold mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

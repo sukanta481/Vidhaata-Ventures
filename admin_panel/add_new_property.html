@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Property | Architectural Ledger</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#74777f",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#adc7f7",
+                    "tertiary-fixed-dim": "#88d982",
+                    "primary-container": "#641e00",
+                    "on-surface-variant": "#43474e",
+                    "surface": "#effcfd",
+                    "background": "#effcfd",
+                    "on-tertiary-fixed": "#002204",
+                    "on-background": "#121d1e",
+                    "on-tertiary-container": "#61b15f",
+                    "primary-fixed-dim": "#ffb59a",
+                    "secondary-container": "#b6d0ff",
+                    "on-secondary-fixed": "#001b3c",
+                    "surface-dim": "#d0dcdd",
+                    "secondary": "#455f88",
+                    "surface-container-highest": "#d8e5e6",
+                    "surface-container-high": "#deebeb",
+                    "tertiary-container": "#00400c",
+                    "surface-container": "#e4f0f1",
+                    "surface-variant": "#d8e5e6",
+                    "on-primary-container": "#ff753d",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#eaf6f7",
+                    "primary-fixed": "#ffdbcf",
+                    "on-secondary-fixed-variant": "#2d476f",
+                    "secondary-fixed": "#d6e3ff",
+                    "on-primary-fixed": "#380d00",
+                    "on-primary-fixed-variant": "#802a00",
+                    "surface-bright": "#effcfd",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#ffb59a",
+                    "on-surface": "#121d1e",
+                    "tertiary": "#002805",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#e7f3f4",
+                    "tertiary-fixed": "#a3f69c",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#3f5882",
+                    "inverse-surface": "#273233",
+                    "surface-tint": "#a83900",
+                    "on-tertiary-fixed-variant": "#005312",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "primary": "#401100"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tab-active { font-variation-settings: 'FILL' 1; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar Implementation -->
+<header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-50 bg-[#effcfd] dark:bg-slate-900">
+<div class="flex items-center gap-12">
+<span class="text-xl font-manrope font-extrabold tracking-tight text-[#121d1e] dark:text-white">Architectural Ledger</span>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#455f88] transition-colors duration-200" href="#">Portfolio</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#455f88] transition-colors duration-200" href="#">Leads</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#455f88] transition-colors duration-200" href="#">Deals</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#455f88] transition-colors duration-200" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-secondary/20 w-64" placeholder="Search property or lead..." type="text"/>
+</div>
+<button class="text-secondary"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="text-secondary"><span class="material-symbols-outlined" data-icon="settings">settings</span></button>
+<img class="w-10 h-10 rounded-full object-cover ring-2 ring-surface-container-highest" data-alt="professional portrait of a senior real estate broker in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7QoBRozwPmvHYVifLnLf3v1GQRc8jxyF5ZlEQ2E-1JACaVaQEys7z8iIFaMVQckLkPEk-R4XxyULcE3B2GmP-6ggpGiK8kwK2ogUPPiwWkLJwJCcUc2A5BC036oFnFh5cDfeaLLQzgzinkHLy6YsBcb3Q9_TVjRNctCHOm8FE5YfmGO4D8g3b9YF2B0zW1Powd3Kaau8zQHD35fDNEFdcNUAgUbXfSR23IfYbaTqtGq0cFUHXRmVKBpku87q8idNocxDFDvcma9hh"/>
+</div>
+</header>
+<div class="flex">
+<!-- SideNavBar Implementation -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-6 px-4 z-40 bg-[#eaf6f7] dark:bg-slate-800 w-64 hidden lg:flex">
+<div class="mb-10 px-4">
+<h2 class="text-lg font-manrope font-bold text-[#121d1e] dark:text-white">Architectural Ledger</h2>
+<p class="text-xs text-secondary opacity-70">Premium Real Estate</p>
+</div>
+<div class="flex-1 space-y-2">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-manrope font-semibold text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-white dark:bg-slate-700 text-[#455f88] dark:text-blue-300 rounded-lg px-4 py-3 shadow-sm border-l-4 border-[#455f88] scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined tab-active" style="font-variation-settings: 'FILL' 1;">domain</span>
+<span class="font-manrope font-semibold text-sm">Properties</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-all" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-manrope font-semibold text-sm">Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-manrope font-semibold text-sm">Clients</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 dark:hover:bg-slate-700/50 transition-all" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-manrope font-semibold text-sm">Reports</span>
+</a>
+</div>
+<button class="mt-4 mx-4 bg-gradient-to-br from-primary-container to-on-primary-container text-white py-3 px-4 rounded-md font-manrope font-bold text-sm shadow-lg shadow-primary-container/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+        New Listing
+    </button>
+<div class="mt-auto space-y-2 pt-6 border-t border-secondary/10">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-manrope font-semibold text-sm">Help Center</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-manrope font-semibold text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:ml-64 flex-1 p-8 lg:p-12 max-w-6xl">
+<header class="mb-12">
+<h1 class="text-4xl font-headline font-extrabold text-on-background tracking-tight mb-2">Architectural Onboarding</h1>
+<p class="text-secondary font-body max-w-2xl">Create a new entry in the digital ledger. High-precision data entry ensures maximum visibility for your premium property listings.</p>
+</header>
+<form class="space-y-10">
+<!-- Section 1: Basic Property Classification -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4">
+<h3 class="text-xl font-headline font-bold text-secondary mb-2">Classification</h3>
+<p class="text-sm text-outline leading-relaxed">Define the intent and category of the listing to optimize search algorithms.</p>
+</div>
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-xl space-y-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<!-- Listing Purpose -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Listing Purpose</label>
+<div class="flex gap-2 p-1 bg-surface-container rounded-lg">
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-semibold bg-white text-secondary shadow-sm" type="button">Sell</button>
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-semibold text-outline hover:bg-white/50 transition-all" type="button">Rent</button>
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-semibold text-outline hover:bg-white/50 transition-all" type="button">PG</button>
+</div>
+</div>
+<!-- Transaction Type -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Transaction Type</label>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 text-secondary focus:ring-secondary/20 border-outline-variant" name="transaction" type="radio"/>
+<span class="text-sm font-medium text-on-surface group-hover:text-secondary">New Property</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 text-secondary focus:ring-secondary/20 border-outline-variant" name="transaction" type="radio"/>
+<span class="text-sm font-medium text-on-surface group-hover:text-secondary">Resale</span>
+</label>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<!-- Property Group -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Property Group</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 appearance-none font-medium">
+<option>Residential</option>
+<option>Commercial</option>
+<option>Plot / Land</option>
+</select>
+</div>
+<!-- Property Type -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Specific Type</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 appearance-none font-medium">
+<option>Apartment</option>
+<option>Builder Floor</option>
+<option>Villa</option>
+<option>Penthouse</option>
+<option>Studio</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Location and Building Details -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4">
+<h3 class="text-xl font-headline font-bold text-secondary mb-2">Location</h3>
+<p class="text-sm text-outline leading-relaxed">Geospatial precision is key for premium appraisal and client trust.</p>
+</div>
+<div class="md:col-span-8 bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-secondary space-y-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">City</label>
+<input class="w-full bg-surface-container border-b-2 border-transparent focus:border-secondary focus:bg-surface-container-lowest transition-all rounded-t-lg px-4 py-3 text-sm font-medium outline-none" placeholder="e.g. Mumbai" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">Locality</label>
+<input class="w-full bg-surface-container border-b-2 border-transparent focus:border-secondary focus:bg-surface-container-lowest transition-all rounded-t-lg px-4 py-3 text-sm font-medium outline-none" placeholder="e.g. Bandra West" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">Project / Society Name</label>
+<input class="w-full bg-surface-container border-b-2 border-transparent focus:border-secondary focus:bg-surface-container-lowest transition-all rounded-t-lg px-4 py-3 text-sm font-medium outline-none" placeholder="e.g. The Imperial Heights" type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Society Scale</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-3 border border-outline-variant rounded-md text-xs font-semibold hover:border-secondary hover:text-secondary transition-all" type="button">&lt;50 Units</button>
+<button class="flex-1 py-2 px-3 border border-outline-variant rounded-md text-xs font-semibold hover:border-secondary hover:text-secondary transition-all" type="button">50-100</button>
+<button class="flex-1 py-2 px-3 border border-outline-variant rounded-md text-xs font-semibold hover:border-secondary hover:text-secondary transition-all" type="button">&gt;100 Units</button>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">Road Width (ft)</label>
+<input class="w-full bg-surface-container border-b-2 border-transparent focus:border-secondary transition-all rounded-t-lg px-4 py-3 text-sm font-medium outline-none" placeholder="e.g. 40" type="number"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Physical Attributes & Layout -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4">
+<h3 class="text-xl font-headline font-bold text-secondary mb-2">Dimensions</h3>
+<p class="text-sm text-outline leading-relaxed">Structural specifics defining the physical footprint of the asset.</p>
+</div>
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-xl space-y-8">
+<div class="grid grid-cols-3 gap-6">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">BHK</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 appearance-none font-medium">
+<option>1 BHK</option>
+<option>2 BHK</option>
+<option>3 BHK</option>
+<option>4+ BHK</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">Bathrooms</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 font-medium" type="number"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">Balconies</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 font-medium" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="relative">
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-2">Super Built-up Area</label>
+<div class="flex">
+<input class="flex-1 bg-surface-container-lowest border-none rounded-l-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 font-medium" type="number"/>
+<select class="bg-surface-container-high border-none rounded-r-lg px-4 py-3 text-xs font-bold text-secondary focus:ring-0">
+<option selected="">Sq. Ft</option>
+<option>Sq. Yards</option>
+</select>
+</div>
+</div>
+<div class="relative">
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-2">Carpet Area</label>
+<div class="flex">
+<input class="flex-1 bg-surface-container-lowest border-none rounded-l-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 font-medium" type="number"/>
+<select class="bg-surface-container-high border-none rounded-r-lg px-4 py-3 text-xs font-bold text-secondary focus:ring-0">
+<option selected="">Sq. Ft</option>
+<option>Sq. Yards</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: RERA Compliance -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4">
+<h3 class="text-xl font-headline font-bold text-secondary mb-2">RERA Compliance</h3>
+<p class="text-sm text-outline leading-relaxed">Regulatory details required for legal verification and transparency.</p>
+</div>
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-xl space-y-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">RERA Registered?</label>
+<div class="flex gap-2 p-1 bg-surface-container rounded-lg max-w-[200px]">
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-semibold bg-white text-secondary shadow-sm" type="button">Yes</button>
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-semibold text-on-surface-variant hover:bg-white/50 transition-all" type="button">No</button>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">RERA Registration Number</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 font-medium" placeholder="e.g. P51800000000" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">RERA Certificate</label>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-lg border-2 border-dashed border-outline-variant hover:border-secondary transition-all group cursor-pointer">
+<span class="material-symbols-outlined text-outline group-hover:text-secondary">upload_file</span>
+<div class="flex-1">
+<p class="text-xs font-semibold text-on-surface-variant">Upload Official RERA Certificate (PDF/JPG)</p>
+</div>
+<button class="text-secondary text-xs font-bold hover:underline" type="button">Upload</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Pricing and Status (Financials) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4">
+<h3 class="text-xl font-headline font-bold text-secondary mb-2">Financials</h3>
+<p class="text-sm text-outline leading-relaxed">Valuation details and commercial status indicators.</p>
+</div>
+<div class="md:col-span-8 bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-on-primary-container space-y-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-end">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">Expected Price (₹)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-outline font-medium">₹</span>
+<input class="w-full bg-surface-container border-b-2 border-transparent focus:border-on-primary-container focus:bg-surface-container-lowest transition-all rounded-t-lg pl-10 pr-4 py-3 text-lg font-headline font-bold outline-none tabular-nums" placeholder="5,00,00,000" type="text"/>
+</div>
+</div>
+<div class="pb-3 flex items-center gap-3">
+<div class="relative inline-block w-10 h-6 transition duration-200 ease-in-out">
+<input class="peer appearance-none w-10 h-6 rounded-full bg-surface-container-high checked:bg-on-primary-container cursor-pointer transition-colors duration-200" id="toggle" type="checkbox"/>
+<label class="absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-transform duration-200 transform peer-checked:translate-x-4 cursor-pointer" for="toggle"></label>
+</div>
+<label class="text-sm font-semibold text-secondary cursor-pointer" for="toggle">Price is Negotiable</label>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Construction Status</label>
+<div class="flex gap-2">
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-semibold border border-secondary text-secondary" type="button">Ready to Move</button>
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-semibold border border-outline text-on-surface-variant hover:border-secondary transition-all" type="button">Under Construction</button>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">Existing Tenant (If any)</label>
+<input class="w-full bg-surface-container border-b-2 border-transparent focus:border-secondary transition-all rounded-t-lg px-4 py-3 text-sm font-medium outline-none" placeholder="Company name or 'N/A'" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Amenities and Features -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4">
+<h3 class="text-xl font-headline font-bold text-secondary mb-2">Amenities</h3>
+<p class="text-sm text-outline leading-relaxed">Lifestyle features that enhance the property's desirability.</p>
+</div>
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-xl space-y-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Furnishing</label>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-lowest rounded-md text-xs font-bold border border-secondary text-secondary" type="button">Fully</button>
+<button class="px-4 py-2 bg-surface-container-lowest rounded-md text-xs font-bold border border-outline text-on-surface-variant hover:border-secondary transition-all" type="button">Semi</button>
+<button class="px-4 py-2 bg-surface-container-lowest rounded-md text-xs font-bold border border-outline text-on-surface-variant hover:border-secondary transition-all" type="button">Unfurnished</button>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Parking</label>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary/20" type="checkbox"/>
+<span class="text-sm font-medium">Open</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary/20" type="checkbox"/>
+<span class="text-sm font-medium text-on-surface-variant">Closed / Covered</span>
+</label>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Special Features &amp; Compliance</label>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">Vastu Compliant <span class="material-symbols-outlined text-[14px]">check</span></span>
+<span class="bg-surface-container-lowest text-on-surface-variant border border-outline px-3 py-1.5 rounded-full text-xs font-bold hover:bg-secondary-container/50 cursor-pointer transition-all">24x7 Security</span>
+<span class="bg-surface-container-lowest text-on-surface-variant border border-outline px-3 py-1.5 rounded-full text-xs font-bold hover:bg-secondary-container/50 cursor-pointer transition-all">Clubhouse</span>
+<span class="bg-surface-container-lowest text-on-surface-variant border border-outline px-3 py-1.5 rounded-full text-xs font-bold hover:bg-secondary-container/50 cursor-pointer transition-all">Swimming Pool</span>
+<span class="bg-surface-container-lowest text-on-surface-variant border border-outline px-3 py-1.5 rounded-full text-xs font-bold hover:bg-secondary-container/50 cursor-pointer transition-all">Power Backup</span>
+<span class="bg-surface-container-lowest text-on-surface-variant border border-outline px-3 py-1.5 rounded-full text-xs font-bold hover:bg-secondary-container/50 cursor-pointer transition-all">+ Add More</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary">Property USP (Editorial Description)</label>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-secondary/20 font-medium leading-relaxed" placeholder="Describe what makes this architectural masterpiece stand out..." rows="4"></textarea>
+</div>
+</div>
+</section>
+<!-- Section 6: Media & Attachments -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4">
+<h3 class="text-xl font-headline font-bold text-secondary mb-2">Media &amp; Attachments</h3>
+<p class="text-sm text-outline leading-relaxed">Visual assets and technical plans to showcase the property's potential.</p>
+</div>
+<div class="md:col-span-8 bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-secondary space-y-8">
+<!-- Main Photo Gallery -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary mb-4">Main Photo Gallery</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-10 flex flex-col items-center justify-center bg-surface-container-low/30 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-outline group-hover:text-secondary mb-4">add_a_photo</span>
+<p class="text-sm font-semibold text-on-surface-variant mb-4">Drag and drop your property images here</p>
+<button class="bg-white border border-outline-variant text-secondary px-6 py-2 rounded-md font-bold text-xs hover:border-secondary transition-all" type="button">Upload Photos</button>
+</div>
+<!-- Thumbnail Placeholders -->
+<div class="flex gap-4 mt-6">
+<div class="w-20 h-20 rounded-lg bg-surface-container overflow-hidden border border-outline-variant relative group">
+<img class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC8n_3Pu-J6G0koaZJQTEBPS7tf8j0TH3ssI7UEwOqK9JA8SbAPUjRm-hAc9kwzi60uo4VoepoD0Q96CodSAX6R8HEeDWPOK1cKha5sDRqs5d_YC3gJPG8pzjfs-rWgiITjtUM0-HU9F5eOmeCVTCRQ4ZqSQwOWDClk4tIl5fWSZE8wiBD9GwCXoKtyL3Na-hkVuyD339O3V9v6nKb3yZbp-HQdoNPMgaFLgcEKTv0yHusgJt-WpP6BpyvWQQUeWW0RQh1pkK09T4A"/>
+<div class="absolute inset-0 bg-black/20 hidden group-hover:flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">close</span>
+</div>
+</div>
+<div class="w-20 h-20 rounded-lg bg-surface-container overflow-hidden border border-outline-variant relative group">
+<img class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgFVrfm-ofEmjajZ29rGZk2jGIFv7KT0aUhBIV4zpLfcphouAM9DVCfzxxTxG72FSbC7cX0gR4UHTKy_VTCh5GP_gGarDlj-P2GCnTdsKbCLGZw-avkonLLACEigvtNeXfZTU-gBKgQ88J6Sv7S8sFOwti2AtOvs_mQ926w_TsFPljNAAq7ubHMekyvelY-4_2dmtxDmd2UvfFoEHG__pRJ1kG7WyHc7UDJzGfoTo0i6aIdMxRZGKmPHyJp6kdTVAJV4VV89l1VX3m"/>
+<div class="absolute inset-0 bg-black/20 hidden group-hover:flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">close</span>
+</div>
+</div>
+<div class="w-20 h-20 rounded-lg bg-surface-container-low border border-dashed border-outline-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-xl">add</span>
+</div>
+</div>
+</div>
+<!-- Floor Plans & Video -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary">Floor Plans</label>
+<div class="flex items-center gap-4 bg-surface-container-low p-4 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-secondary">architecture</span>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-outline uppercase tracking-widest">Select File</p>
+<p class="text-xs font-semibold">PDF, JPG, or PNG</p>
+</div>
+<button class="text-secondary text-xs font-bold hover:underline" type="button">Browse</button>
+</div>
+</div>
+<div class="space-y-4">
+<label class="block text-xs font-bold uppercase tracking-wider text-secondary">Video Tour</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">link</span>
+<input class="w-full bg-surface-container border-b-2 border-transparent focus:border-secondary focus:bg-surface-container-lowest transition-all rounded-t-lg pl-10 pr-4 py-3 text-sm font-medium outline-none" placeholder="YouTube or Matterport Link" type="url"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<footer class="flex items-center justify-end gap-6 pt-12 pb-12 border-t border-secondary/10">
+<button class="text-secondary font-headline font-bold text-sm hover:opacity-70 transition-opacity" type="button">Cancel</button>
+<button class="bg-gradient-to-br from-primary-container to-on-primary-container text-white py-4 px-12 rounded-md font-headline font-extrabold text-sm shadow-xl shadow-primary-container/30 hover:scale-[1.02] active:scale-[0.98] transition-all" type="submit">
+                Save Property to Ledger
+            </button>
+</footer>
+</form>
+</main>
+</div>
+<!-- Map Component Placeholder for Location context - Repositioned to avoid overlap with CTA -->
+<div class="fixed right-12 top-24 w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white hidden xl:block z-30">
+<div class="absolute inset-0 bg-surface-container-high animate-pulse"></div>
+<img class="w-full h-full object-cover" data-alt="minimalist clean map satellite view showing urban streets and green areas in a luxury neighborhood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDELDQf2hksNNQVk-zbXZ7669MAM3jRkWN8GfYU0eN2imFCOkr4Br7aL-uZ98Np0MgZny2k_GT2wjyzVDKjSzYUwoNTMg4qgH4L04CDr-FqCf0Pa0RmG0KJTXSJ72ZiPY3q5coSkdWKqLgc4_QXTFPFG-n3UliYyDQxQu9PN6-U6hYrgTfBUZ7rt1RmC_CLrogkkqHRQ1fFxV0Kjw7EPXEu0zWoL9G21Hr4rJj8L3cQjrN434Uze3k5DMYiaS2WWitlBJ7jmPeKNZEK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-3 left-3 text-white text-[10px] font-bold uppercase tracking-widest">Neighborhood Context</div>
+</div>
+</body></html>
