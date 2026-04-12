@@ -124,7 +124,9 @@ tailwind.config = {
      ============================================================ -->
 <nav class="hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-2xl transition-all duration-300 rounded-b-xl px-4<?php echo $nav_needs_glass ? ' glass-nav shadow-md' : ''; ?>" id="main-nav">
   <div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto font-headline tracking-tight">
-    <a href="index.php" class="text-xl font-bold tracking-widest <?php echo $nav_logo_class; ?> uppercase transition-colors duration-300" id="nav-logo"><?php echo SITE_NAME; ?></a>
+    <a href="index.php" class="inline-flex items-center" id="nav-logo" aria-label="<?php echo SITE_NAME; ?> home">
+      <img src="assets/images/vidhaataventureslogo.png" alt="<?php echo SITE_NAME; ?>" class="h-10 w-auto <?php echo $nav_needs_glass ? '' : 'brightness-0 invert'; ?> transition duration-300"/>
+    </a>
 
     <div class="flex items-center gap-8" id="nav-links">
       <a class="<?php echo $current_page === 'index'       ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="index.php">Home</a>
@@ -148,7 +150,9 @@ tailwind.config = {
   <button onclick="toggleMobileMenu()" class="text-slate-900 p-1 -ml-1 hover:opacity-80 active:scale-95 transition-all" aria-label="Open menu">
     <span class="material-symbols-outlined text-2xl" id="mobile-hamburger-icon">menu</span>
   </button>
-  <a href="index.php" class="absolute left-1/2 -translate-x-1/2 text-sm font-bold tracking-[0.2em] text-primary uppercase font-headline whitespace-nowrap"><?php echo SITE_NAME; ?></a>
+  <a href="index.php" class="absolute left-1/2 -translate-x-1/2 inline-flex items-center" aria-label="<?php echo SITE_NAME; ?> home">
+    <img src="assets/images/vidhaataventureslogo.png" alt="<?php echo SITE_NAME; ?>" class="h-8 w-auto"/>
+  </a>
   <button onclick="openContactModal()" class="text-primary-container text-sm font-bold border border-primary-container/30 rounded-lg px-3 py-1.5 active:scale-95 transition-all">
     Contact
   </button>
