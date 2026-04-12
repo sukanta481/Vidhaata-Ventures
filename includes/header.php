@@ -1,5 +1,11 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF'], '.php');
+// Pages with NO dark hero behind the navbar need glass+dark text from the start
+$nav_needs_glass = in_array($current_page, ['residential','commercial','property','services','about']);
+$nav_logo_class  = $nav_needs_glass ? 'text-[#001225]' : 'text-white';
+$nav_link_active = $nav_needs_glass ? 'text-[#001225] font-bold border-b-2 border-[#001225] pb-1' : 'text-white font-bold border-b-2 border-white pb-1';
+$nav_link_idle   = $nav_needs_glass ? 'text-[#43474e] font-medium hover:text-[#001225]' : 'text-white/80 font-medium hover:text-white';
+$nav_cta_class   = $nav_needs_glass ? 'bg-primary-container text-white' : 'bg-white text-primary-container';
 ?>
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en">
@@ -84,15 +90,16 @@ tailwind.config = {
   },
 }
 </script>
-<link href="<?php echo SITE_URL; ?>/assets/css/custom.css" rel="stylesheet"/>
+<link href="assets/css/custom.css" rel="stylesheet"/>
 <style>
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
   .glass-nav {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
   .reveal {
     opacity: 0;
@@ -115,21 +122,21 @@ tailwind.config = {
 <!-- ============================================================
      DESKTOP Navigation (hidden on mobile)
      ============================================================ -->
-<nav class="hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-2xl transition-all duration-300 rounded-b-xl px-4" id="main-nav">
+<nav class="hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-2xl transition-all duration-300 rounded-b-xl px-4<?php echo $nav_needs_glass ? ' glass-nav shadow-md' : ''; ?>" id="main-nav">
   <div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto font-headline tracking-tight">
-    <a href="<?php echo SITE_URL; ?>/index.php" class="text-xl font-bold tracking-widest text-white uppercase transition-colors duration-300" id="nav-logo"><?php echo SITE_NAME; ?></a>
+    <a href="index.php" class="text-xl font-bold tracking-widest <?php echo $nav_logo_class; ?> uppercase transition-colors duration-300" id="nav-logo"><?php echo SITE_NAME; ?></a>
 
     <div class="flex items-center gap-8" id="nav-links">
-      <a class="<?php echo $current_page === 'index' ? 'text-white font-bold border-b-2 border-white pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="<?php echo SITE_URL; ?>/index.php">Home</a>
-      <a class="<?php echo $current_page === 'residential' ? 'text-white font-bold border-b-2 border-white pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="<?php echo SITE_URL; ?>/residential.php">Residential</a>
-      <a class="<?php echo $current_page === 'commercial' ? 'text-white font-bold border-b-2 border-white pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="<?php echo SITE_URL; ?>/commercial.php">Commercial</a>
-      <a class="<?php echo $current_page === 'services' ? 'text-white font-bold border-b-2 border-white pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="<?php echo SITE_URL; ?>/services.php">Services</a>
-      <a class="<?php echo $current_page === 'about' ? 'text-white font-bold border-b-2 border-white pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="<?php echo SITE_URL; ?>/about.php">About Us</a>
+      <a class="<?php echo $current_page === 'index'       ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="index.php">Home</a>
+      <a class="<?php echo $current_page === 'residential'  ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="residential.php">Residential</a>
+      <a class="<?php echo $current_page === 'commercial'   ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="commercial.php">Commercial</a>
+      <a class="<?php echo $current_page === 'services'     ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="services.php">Services</a>
+      <a class="<?php echo $current_page === 'about'        ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="about.php">About Us</a>
     </div>
 
     <div class="flex items-center gap-4">
-      <span class="hidden lg:block text-white/70 text-[10px] font-medium tracking-wider uppercase border border-white/20 px-2 py-1 rounded">WBRERA Reg. No: HIRA/A/KOL/2024/000XXX</span>
-      <button class="bg-white text-primary-container px-6 py-2.5 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all text-sm" id="nav-cta" onclick="openContactModal()">Book Free Site Visit</button>
+      <span class="hidden lg:block <?php echo $nav_needs_glass ? 'text-[#43474e] border-[#c3c6cf]' : 'text-white/70 border-white/20'; ?> text-[10px] font-medium tracking-wider uppercase border px-2 py-1 rounded">WBRERA Reg. No: HIRA/A/KOL/2024/000XXX</span>
+      <button class="<?php echo $nav_cta_class; ?> px-6 py-2.5 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all text-sm" id="nav-cta" onclick="openContactModal()">Book Free Site Visit</button>
     </div>
   </div>
 </nav>
@@ -141,7 +148,7 @@ tailwind.config = {
   <button onclick="toggleMobileMenu()" class="text-slate-900 p-1 -ml-1 hover:opacity-80 active:scale-95 transition-all" aria-label="Open menu">
     <span class="material-symbols-outlined text-2xl" id="mobile-hamburger-icon">menu</span>
   </button>
-  <a href="<?php echo SITE_URL; ?>/index.php" class="absolute left-1/2 -translate-x-1/2 text-sm font-bold tracking-[0.2em] text-primary uppercase font-headline whitespace-nowrap"><?php echo SITE_NAME; ?></a>
+  <a href="index.php" class="absolute left-1/2 -translate-x-1/2 text-sm font-bold tracking-[0.2em] text-primary uppercase font-headline whitespace-nowrap"><?php echo SITE_NAME; ?></a>
   <button onclick="openContactModal()" class="text-primary-container text-sm font-bold border border-primary-container/30 rounded-lg px-3 py-1.5 active:scale-95 transition-all">
     Contact
   </button>
@@ -150,11 +157,11 @@ tailwind.config = {
 <!-- Mobile Slide-down Menu -->
 <div id="mobile-menu" class="md:hidden hidden fixed top-16 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl shadow-ambient mx-0 px-6 py-6 transition-all">
   <div class="flex flex-col gap-1">
-    <a class="<?php echo $current_page === 'index' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="<?php echo SITE_URL; ?>/index.php">Home</a>
-    <a class="<?php echo $current_page === 'residential' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="<?php echo SITE_URL; ?>/residential.php">Residential</a>
-    <a class="<?php echo $current_page === 'commercial' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="<?php echo SITE_URL; ?>/commercial.php">Commercial</a>
-    <a class="<?php echo $current_page === 'services' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="<?php echo SITE_URL; ?>/services.php">Services</a>
-    <a class="<?php echo $current_page === 'about' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="<?php echo SITE_URL; ?>/about.php">About Us</a>
+    <a class="<?php echo $current_page === 'index' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="index.php">Home</a>
+    <a class="<?php echo $current_page === 'residential' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="residential.php">Residential</a>
+    <a class="<?php echo $current_page === 'commercial' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="commercial.php">Commercial</a>
+    <a class="<?php echo $current_page === 'services' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="services.php">Services</a>
+    <a class="<?php echo $current_page === 'about' ? 'text-primary font-bold bg-surface-container-low' : 'text-on-surface-variant font-medium'; ?> text-lg py-3 px-4 rounded-xl" href="about.php">About Us</a>
     <button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold mt-3 w-full" onclick="openContactModal(); closeMobileMenu();">Book Free Site Visit</button>
   </div>
 </div>

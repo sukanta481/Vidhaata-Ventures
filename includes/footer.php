@@ -39,8 +39,8 @@
     <!-- Portfolio -->
     <div class="flex flex-col gap-4">
       <p class="text-white font-semibold mb-2">Portfolio</p>
-      <a class="text-slate-400 hover:text-white underline-offset-4 hover:underline transition-colors" href="<?php echo SITE_URL; ?>/residential.php">Luxury Residential</a>
-      <a class="text-slate-400 hover:text-white underline-offset-4 hover:underline transition-colors" href="<?php echo SITE_URL; ?>/commercial.php">Commercial Projects</a>
+      <a class="text-slate-400 hover:text-white underline-offset-4 hover:underline transition-colors" href="residential.php">Luxury Residential</a>
+      <a class="text-slate-400 hover:text-white underline-offset-4 hover:underline transition-colors" href="commercial.php">Commercial Projects</a>
       <a class="text-slate-400 hover:text-white underline-offset-4 hover:underline transition-colors" href="#">New Developments</a>
     </div>
 
@@ -93,19 +93,19 @@
      MOBILE Bottom Navigation Bar (hidden on desktop)
      ============================================================ -->
 <nav class="md:hidden bg-white/80 backdrop-blur-2xl fixed bottom-0 w-full z-50 rounded-t-3xl shadow-[0px_-10px_30px_rgba(0,0,0,0.05)] flex justify-around items-center h-20 pb-safe px-4">
-  <a href="<?php echo SITE_URL; ?>/index.php" class="flex flex-col items-center justify-center <?php echo $current_page === 'index' ? 'text-primary-container bg-surface-container rounded-xl px-3 py-1' : 'text-slate-400'; ?> tap-highlight-none transition-all duration-300">
+  <a href="index.php" class="flex flex-col items-center justify-center <?php echo $current_page === 'index' ? 'text-primary-container bg-surface-container rounded-xl px-3 py-1' : 'text-slate-400'; ?> tap-highlight-none transition-all duration-300">
     <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' <?php echo $current_page === 'index' ? '1' : '0'; ?>">home</span>
     <span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
   </a>
-  <a href="<?php echo SITE_URL; ?>/residential.php" class="flex flex-col items-center justify-center <?php echo ($current_page === 'residential' || $current_page === 'commercial') ? 'text-primary-container bg-surface-container rounded-xl px-3 py-1' : 'text-slate-400'; ?> tap-highlight-none transition-all duration-300">
+  <a href="residential.php" class="flex flex-col items-center justify-center <?php echo ($current_page === 'residential' || $current_page === 'commercial') ? 'text-primary-container bg-surface-container rounded-xl px-3 py-1' : 'text-slate-400'; ?> tap-highlight-none transition-all duration-300">
     <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' <?php echo ($current_page === 'residential' || $current_page === 'commercial') ? '1' : '0'; ?>">apartment</span>
     <span class="text-[10px] font-bold uppercase tracking-widest">Browse</span>
   </a>
-  <a href="<?php echo SITE_URL; ?>/services.php" class="flex flex-col items-center justify-center <?php echo $current_page === 'services' ? 'text-primary-container bg-surface-container rounded-xl px-3 py-1' : 'text-slate-400'; ?> tap-highlight-none transition-all duration-300">
+  <a href="services.php" class="flex flex-col items-center justify-center <?php echo $current_page === 'services' ? 'text-primary-container bg-surface-container rounded-xl px-3 py-1' : 'text-slate-400'; ?> tap-highlight-none transition-all duration-300">
     <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' <?php echo $current_page === 'services' ? '1' : '0'; ?>">handyman</span>
     <span class="text-[10px] font-bold uppercase tracking-widest">Services</span>
   </a>
-  <a href="<?php echo SITE_URL; ?>/about.php" class="flex flex-col items-center justify-center <?php echo $current_page === 'about' ? 'text-primary-container bg-surface-container rounded-xl px-3 py-1' : 'text-slate-400'; ?> tap-highlight-none transition-all duration-300">
+  <a href="about.php" class="flex flex-col items-center justify-center <?php echo $current_page === 'about' ? 'text-primary-container bg-surface-container rounded-xl px-3 py-1' : 'text-slate-400'; ?> tap-highlight-none transition-all duration-300">
     <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' <?php echo $current_page === 'about' ? '1' : '0'; ?>">person</span>
     <span class="text-[10px] font-bold uppercase tracking-widest">About</span>
   </a>
@@ -123,7 +123,7 @@
   </a>
 </div>
 
-<script src="<?php echo SITE_URL; ?>/assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 <script>
 // ── Mobile hamburger icon sync (unique to new header markup) ──
 function toggleMobileMenu() {
@@ -159,6 +159,61 @@ document.getElementById('contact-modal')?.addEventListener('click', function(e) 
 });
 // ── data-open-contact-modal buttons ──────────────────────────
 document.querySelectorAll('[data-open-contact-modal]').forEach(btn => btn.addEventListener('click', openContactModal));
+
+// ── Desktop nav scroll: glass effect ─────────────────────────
+(function() {
+  const nav   = document.getElementById('main-nav');
+  const logo  = document.getElementById('nav-logo');
+  const links = document.querySelectorAll('#nav-links a');
+  const cta   = document.getElementById('nav-cta');
+  if (!nav) return;
+
+  // If the nav already started in glass mode (non-hero pages), keep it there always
+  const startsGlass = nav.classList.contains('glass-nav');
+
+  function applyGlass() {
+    nav.classList.add('glass-nav', 'shadow-md');
+    logo?.classList.replace('text-white', 'text-slate-950');
+    cta?.classList.replace('bg-white', 'bg-primary-container');
+    cta?.classList.replace('text-primary-container', 'text-white');
+    links.forEach(link => {
+      link.classList.replace('text-white', 'text-slate-900');
+      link.classList.replace('border-white', 'border-slate-900');
+      link.classList.replace('text-white/80', 'text-slate-500');
+      link.classList.replace('hover:text-white', 'hover:text-slate-900');
+    });
+  }
+
+  function removeGlass() {
+    nav.classList.remove('glass-nav', 'shadow-md');
+    logo?.classList.replace('text-slate-950', 'text-white');
+    cta?.classList.replace('bg-primary-container', 'bg-white');
+    cta?.classList.replace('text-white', 'text-primary-container');
+    links.forEach(link => {
+      link.classList.replace('text-slate-900', 'text-white');
+      link.classList.replace('border-slate-900', 'border-white');
+      link.classList.replace('text-slate-500', 'text-white/80');
+      link.classList.replace('hover:text-slate-900', 'hover:text-white');
+    });
+  }
+
+  if (startsGlass) {
+    // Non-hero page: glass is permanent, no toggling needed
+    return;
+  }
+
+  // Hero page (index): toggle based on scroll position
+  function updateNav() {
+    if (window.scrollY > 50) {
+      applyGlass();
+    } else {
+      removeGlass();
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav(); // run once on load
+})();
 </script>
 
 </body>
