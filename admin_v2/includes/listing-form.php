@@ -5,7 +5,7 @@ if (!function_exists('e')) {
   }
 }
 ?>
-<form id="listing-form" class="space-y-10">
+<form id="listing-form" class="space-y-10" enctype="multipart/form-data">
   <input type="hidden" name="id" value="<?php echo e($listing['id'] ?? ''); ?>"/>
   <input type="hidden" name="action" value="save"/>
   
@@ -356,7 +356,7 @@ if (!function_exists('e')) {
         <div class="flex gap-4 mt-6 flex-wrap" id="photo-preview-container">
           <?php if(!empty($listing['image_filename'])): ?>
           <div class="w-20 h-20 rounded-lg bg-surface-container overflow-hidden border border-outline-variant relative group">
-            <img class="w-full h-full object-cover" src="<?php echo SITE_URL; ?>/<?php echo htmlspecialchars($listing['image_filename']); ?>"/>
+            <img class="w-full h-full object-cover" src="<?php echo SITE_URL; ?>/assets/images/<?php echo htmlspecialchars($listing['image_filename']); ?>"/>
           </div>
           <?php endif; ?>
         </div>

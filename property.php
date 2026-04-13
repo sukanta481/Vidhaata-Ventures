@@ -50,7 +50,27 @@ require_once __DIR__ . '/includes/header.php';
 
       <div class="relative group reveal">
         <div class="aspect-[3/2] overflow-hidden rounded-2xl md:rounded-[2rem] shadow-xl">
-          <img alt="<?php echo htmlspecialchars($listing['title']); ?>" class="w-full h-full object-cover" src="<?php echo (!empty($listing['image_filename']) && strpos($listing['image_filename'], 'http') === false) ? SITE_URL . '/' . $listing['image_filename'] : ($listing['image_filename'] ?: SITE_URL . '/assets/images/placeholder.jpg'); ?>"/>
+          <?php
+            $imageFile = trim((string)($listing['image_filename'] ?? ''));
+            if ($imageFile === '') {
+              $heroImage = SITE_URL . '/assets/images/placeholder.jpg';
+            } elseif (strpos($imageFile, 'http://') === 0 || strpos($imageFile, 'https://') === 0) {
+              $heroImage = $imageFile;
+            } elseif (strpos($imageFile, '/assets/images/') === 0) {
+              $heroImage = SITE_URL . $imageFile;
+            } elseif (strpos($imageFile, 'assets/images/') === 0) {
+              $heroImage = SITE_URL . '/' . $imageFile;
+            } elseif (strpos($imageFile, '/uploads/') === 0) {
+              $heroImage = SITE_URL . '/assets/images/' . ltrim($imageFile, '/');
+            } elseif (strpos($imageFile, 'uploads/') === 0) {
+              $heroImage = SITE_URL . '/assets/images/' . $imageFile;
+            } elseif (strpos($imageFile, '/') === false) {
+              $heroImage = SITE_URL . '/assets/images/uploads/' . $imageFile;
+            } else {
+              $heroImage = SITE_URL . '/assets/images/' . ltrim($imageFile, '/');
+            }
+          ?>
+          <img alt="<?php echo htmlspecialchars($listing['title']); ?>" class="w-full h-full object-cover" src="<?php echo htmlspecialchars($heroImage, ENT_QUOTES, 'UTF-8'); ?>"/>
         </div>
         <!-- Pagination Dots -->
         <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">

@@ -152,9 +152,16 @@ require_once __DIR__ . '/includes/header.php';
   }
 
   function imgSrc(l) {
-    if (!l.image_filename) return imageBase + 'assets/images/placeholder.jpg';
-    if (l.image_filename.startsWith('http')) return l.image_filename;
-    return imageBase + l.image_filename;
+    const raw = (l.image_filename || '').trim();
+    if (!raw) return imageBase + 'placeholder.jpg';
+    if (raw.startsWith('http://') || raw.startsWith('https://')) return raw;
+    if (raw.startsWith('/assets/images/')) return imageBase + raw.replace(/^\/assets\/images\//, '');
+    if (raw.startsWith('assets/images/')) return imageBase + raw.replace(/^assets\/images\//, '');
+    if (raw.startsWith('/uploads/')) return imageBase + raw.replace(/^\/uploads\//, 'uploads/');
+    if (raw.startsWith('uploads/')) return imageBase + raw;
+    if (raw.startsWith('/')) return raw;
+    if (!raw.includes('/')) return imageBase + 'uploads/' + raw;
+    return imageBase + raw;
   }
 
   // Horizontal list card for desktop, stacked article for mobile
