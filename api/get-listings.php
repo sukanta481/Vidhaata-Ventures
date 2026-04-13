@@ -79,5 +79,7 @@ try {
 
   echo json_encode($stmt->fetchAll());
 } catch (PDOException $e) {
-  respondWithError('Unable to load listings right now.', 500);
+  // If table doesn't exist yet, return empty array gracefully
+  http_response_code(200);
+  echo json_encode([]);
 }

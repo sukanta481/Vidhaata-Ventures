@@ -1,11 +1,7 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF'], '.php');
-// Pages with NO dark hero behind the navbar need glass+dark text from the start
-$nav_needs_glass = in_array($current_page, ['residential','commercial','property','services','about']);
-$nav_logo_class  = $nav_needs_glass ? 'text-[#001225]' : 'text-white';
-$nav_link_active = $nav_needs_glass ? 'text-[#001225] font-bold border-b-2 border-[#001225] pb-1' : 'text-white font-bold border-b-2 border-white pb-1';
-$nav_link_idle   = $nav_needs_glass ? 'text-[#43474e] font-medium hover:text-[#001225]' : 'text-white/80 font-medium hover:text-white';
-$nav_cta_class   = $nav_needs_glass ? 'bg-primary-container text-white' : 'bg-white text-primary-container';
+// Only residential & commercial → black text; all other pages → white text
+$is_listing_page = in_array($current_page, ['residential', 'commercial']);
 ?>
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en">
@@ -91,6 +87,17 @@ tailwind.config = {
 }
 </script>
 <link href="assets/css/custom.css" rel="stylesheet"/>
+<?php if ($is_listing_page): ?>
+<style>
+  /* Listing pages: ensure nav is visible immediately (before Tailwind loads) */
+  #main-nav { background: rgba(255,255,255,0.95) !important; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+  #nav-links a { color: #374151 !important; }
+  #nav-links a:hover { color: #111827 !important; }
+  #nav-links a.border-b-2 { color: #111827 !important; border-color: #111827 !important; }
+  #nav-cta { background: #022747 !important; color: #fff !important; }
+  #nav-logo img { filter: none !important; }
+</style>
+<?php endif; ?>
 <style>
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -122,23 +129,23 @@ tailwind.config = {
 <!-- ============================================================
      DESKTOP Navigation (hidden on mobile)
      ============================================================ -->
-<nav class="hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-2xl transition-all duration-300 rounded-b-xl px-4<?php echo $nav_needs_glass ? ' glass-nav shadow-md' : ''; ?>" id="main-nav">
+<nav class="hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-2xl transition-all duration-300 rounded-b-xl px-4" id="main-nav">
   <div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto font-headline tracking-tight">
     <a href="index.php" class="inline-flex items-center" id="nav-logo" aria-label="<?php echo SITE_NAME; ?> home">
-      <img src="assets/images/vidhaataventureslogo.png" alt="<?php echo SITE_NAME; ?>" class="h-10 w-auto <?php echo $nav_needs_glass ? '' : 'brightness-0 invert'; ?> transition duration-300"/>
+      <img src="assets/images/vidhaataventureslogo.png" alt="<?php echo SITE_NAME; ?>" class="h-10 w-auto transition duration-300<?php echo $is_listing_page ? '' : ' brightness-0 invert'; ?>"/>
     </a>
 
     <div class="flex items-center gap-8" id="nav-links">
-      <a class="<?php echo $current_page === 'index'       ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="index.php">Home</a>
-      <a class="<?php echo $current_page === 'residential'  ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="residential.php">Residential</a>
-      <a class="<?php echo $current_page === 'commercial'   ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="commercial.php">Commercial</a>
-      <a class="<?php echo $current_page === 'services'     ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="services.php">Services</a>
-      <a class="<?php echo $current_page === 'about'        ? $nav_link_active : $nav_link_idle; ?> transition-colors duration-300" href="about.php">About Us</a>
+      <a class="<?php echo $current_page === 'index' ? 'text-white font-bold border-b-2 border-white pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="index.php">Home</a>
+      <a class="<?php echo $current_page === 'residential' ? 'text-gray-700 font-bold border-b-2 border-gray-900 pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="residential.php">Residential</a>
+      <a class="<?php echo $current_page === 'commercial' ? 'text-gray-700 font-bold border-b-2 border-gray-900 pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="commercial.php">Commercial</a>
+      <a class="<?php echo $current_page === 'services' ? 'text-gray-700 font-bold border-b-2 border-gray-900 pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="services.php">Services</a>
+      <a class="<?php echo $current_page === 'about' ? 'text-gray-700 font-bold border-b-2 border-gray-900 pb-1' : 'text-white/80 font-medium hover:text-white'; ?> transition-colors duration-300" href="about.php">About Us</a>
     </div>
 
     <div class="flex items-center gap-4">
-      <span class="hidden lg:block <?php echo $nav_needs_glass ? 'text-[#43474e] border-[#c3c6cf]' : 'text-white/70 border-white/20'; ?> text-[10px] font-medium tracking-wider uppercase border px-2 py-1 rounded">WBRERA Reg. No: HIRA/A/KOL/2024/000XXX</span>
-      <button class="<?php echo $nav_cta_class; ?> px-6 py-2.5 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all text-sm" id="nav-cta" onclick="openContactModal()">Book Free Site Visit</button>
+      <span class="hidden lg:block <?php echo $is_listing_page ? 'text-gray-500 border-gray-300' : 'text-white/70 border-white/20'; ?> text-[10px] font-medium tracking-wider uppercase border px-2 py-1 rounded">WBRERA Reg. No: HIRA/A/KOL/2024/000XXX</span>
+      <button id="nav-cta" onclick="openContactModal()" class="px-6 py-2.5 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all text-sm<?php echo $is_listing_page ? ' bg-primary-container text-white' : ' bg-white text-primary-container'; ?>">Book Free Site Visit</button>
     </div>
   </div>
 </nav>
