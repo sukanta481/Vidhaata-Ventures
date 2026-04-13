@@ -97,10 +97,11 @@ require_once __DIR__ . '/includes/header.php';
     <p id="residential-count" class="hidden md:block text-on-surface-variant text-sm mt-2 font-medium">Loading residential properties…</p>
   </div>
 
-  <div class="max-w-screen-2xl mx-auto px-4 md:px-6 lg:px-8"
-       id="residential-listings-app"
+    <div class="max-w-screen-2xl mx-auto px-4 md:px-6 lg:px-8"
+      id="residential-listings-app"
+      data-renderer="inline"
        data-api-url="<?php echo htmlspecialchars(SITE_URL, ENT_QUOTES, 'UTF-8'); ?>/api/get-listings.php?type=residential&limit=50"
-       data-image-base-url="<?php echo htmlspecialchars(SITE_URL, ENT_QUOTES, 'UTF-8'); ?>/"
+      data-image-base-url="<?php echo htmlspecialchars(SITE_URL, ENT_QUOTES, 'UTF-8'); ?>/assets/images/"
        data-property-url="<?php echo htmlspecialchars(SITE_URL, ENT_QUOTES, 'UTF-8'); ?>/property.php">
 
     <!-- ─── LISTINGS CONTAINER ─── -->
@@ -206,26 +207,43 @@ require_once __DIR__ . '/includes/header.php';
   }
 
   function render(listings) {
+    console.log('render() called with', listings.length, 'listings');
+    console.log('container:', container);
+    console.log('emptyEl:', emptyEl);
+    console.log('countEl:', countEl);
     if (!listings.length) {
+      console.log('No listings, showing empty state');
       container.innerHTML = '';
       emptyEl.classList.remove('hidden');
       return;
     }
+    console.log('Has listings, hiding empty state');
     emptyEl.classList.add('hidden');
-    container.innerHTML = listings.map(cardHTML).join('');
+    const html = listings.map(cardHTML).join('');
+    console.log('Generated HTML length:', html.length);
+    container.innerHTML = html;
     const msg = `${listings.length} curated ${listings.length === 1 ? 'property' : 'properties'} found`;
     if (countEl)  countEl.textContent  = msg;
     if (countMob) countMob.textContent = msg;
+    console.log('Render complete');
   }
 
+  console.log('Fetching listings from:', apiUrl);
   fetch(apiUrl)
-    .then(r => r.json())
+    .then(r => {
+      console.log('Response status:', r.status, r.ok);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
     .then(data => {
+      console.log('API data received:', data);
       allListings = Array.isArray(data) ? data : (data.listings || []);
+      console.log('Parsed listings:', allListings.length);
       render(allListings);
     })
-    .catch(() => {
-      container.innerHTML = '<div class="bg-surface-container-low rounded-xl p-8 text-on-surface-variant">Failed to load listings. Please refresh.</div>';
+    .catch((err) => {
+      console.error('Listings fetch error:', err);
+      container.innerHTML = '<div class="bg-surface-container-low rounded-xl p-8 text-on-surface-variant text-center"><p class="font-bold text-primary mb-2">Unable to load residential properties right now.</p><p class="text-sm">Please try refreshing the page or contact support.</p></div>';
     });
 })();
 </script>

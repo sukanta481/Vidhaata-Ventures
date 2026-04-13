@@ -148,7 +148,7 @@ attachFormHandler('property-contact-form', 'property-form-toast', 'api/submit-le
 
 // ===== Residential Listings Page =====
 var residentialApp = document.getElementById('residential-listings-app');
-if (residentialApp) {
+if (residentialApp && residentialApp.getAttribute('data-renderer') !== 'inline') {
   initResidentialListings(residentialApp);
 }
 
@@ -426,7 +426,7 @@ function trimResidentialNumber(value) {
 
 // ===== Commercial Listings Page =====
 var commercialApp = document.getElementById('commercial-listings-app');
-if (commercialApp) {
+if (commercialApp && commercialApp.getAttribute('data-renderer') !== 'inline') {
   initCommercialListings(commercialApp);
 }
 
