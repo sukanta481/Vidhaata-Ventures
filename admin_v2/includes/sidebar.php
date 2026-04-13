@@ -18,14 +18,9 @@ function nav_classes($page, $active_page) {
 ?>
 <aside id="admin-sidebar" class="w-64 fixed left-0 top-[72px] bottom-0 bg-[#eaf6f7] border-r border-surface-container-high lg:flex flex-col py-6 overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40">
   <div class="px-6 mb-8">
-    <div class="flex items-center gap-3 mb-6">
-      <div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white">
-        <span class="material-symbols-outlined" data-icon="domain">domain</span>
-      </div>
-      <div>
-        <p class="font-manrope font-black text-[#121d1e] text-sm">Brokerage Portal</p>
-        <p class="text-xs text-slate-500 font-manrope">Premium Tier</p>
-      </div>
+    <div class="mb-6">
+      <p class="font-manrope font-black text-[#121d1e] text-sm">Admin Portal</p>
+      <p class="text-xs text-slate-500 font-manrope mt-1">Operations Dashboard</p>
     </div>
     <button onclick="location.href='add-listing.php'" class="w-full py-3 px-4 bg-gradient-to-br from-primary-container to-on-primary-container text-white rounded-md font-semibold text-sm shadow-sm active:scale-95 duration-150 ease-in-out flex items-center justify-center gap-2">
       <span class="material-symbols-outlined text-lg" data-icon="add">add</span>

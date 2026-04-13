@@ -82,7 +82,7 @@ h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
 <section class="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 md:p-24 bg-surface-container-lowest">
 <div class="w-full max-w-md">
 <div class="mb-12">
-<span class="font-headline text-3xl font-extrabold text-secondary tracking-tighter block mb-2">Architectural Ledger</span>
+<img src="../assets/images/vidhaataventureslogo.png" alt="Vidhaata Ventures" class="h-12 w-auto mb-4"/>
 <h1 class="font-headline text-2xl font-semibold text-on-surface tracking-tight">Welcome Back, Broker</h1>
 <p class="text-outline font-body text-sm mt-1">Log in to manage your high-end portfolio</p>
 </div>

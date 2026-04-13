@@ -12,7 +12,9 @@
       <button onclick="document.getElementById('admin-sidebar').classList.toggle('-translate-x-full')" class="lg:hidden p-2 text-secondary hover:bg-surface-container-high rounded-full transition-colors">
         <span class="material-symbols-outlined">menu</span>
       </button>
-      <h1 class="text-xl font-bold tracking-tighter text-[#121d1e] font-manrope hidden sm:block">Architectural Ledger</h1>
+      <a href="index.php" class="hidden sm:inline-flex items-center" aria-label="Admin home">
+        <img src="../assets/images/vidhaataventureslogo.png" alt="Vidhaata Ventures" class="h-9 w-auto"/>
+      </a>
     </div>
     
     <div class="hidden md:flex items-center gap-2 bg-surface-container rounded-full px-4 py-1.5 w-[300px] lg:w-[400px]">
