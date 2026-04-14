@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS listings (
   location VARCHAR(255),
   bedrooms TINYINT DEFAULT NULL,
   area_sqft INT,
-  image_filename VARCHAR(255),
+  image_filename TEXT,
   is_featured TINYINT(1) DEFAULT 0,
   status ENUM('active', 'sold', 'inactive') DEFAULT 'active',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

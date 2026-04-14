@@ -146,13 +146,18 @@ require_once __DIR__ . '/includes/header.php';
   let allListings = [];
 
   function fmt(price) {
-    if (price >= 10000000) return '₹' + (price / 10000000).toFixed(2) + ' Cr';
-    if (price >= 100000)   return '₹' + (price / 100000).toFixed(1) + ' L';
-    return '₹' + Number(price).toLocaleString('en-IN');
+    const value = Number(price);
+    if (!Number.isFinite(value) || value <= 0) {
+      return { text: 'Price on Request', approx: false };
+    }
+    if (value >= 10000000) return { text: '₹' + (value / 10000000).toFixed(1) + 'Cr', approx: true };
+    if (value >= 100000)   return { text: '₹' + (value / 100000).toFixed(1) + 'L', approx: true };
+    return { text: '₹' + (value / 1000).toFixed(0) + 'k', approx: true };
   }
 
   function imgSrc(l) {
-    const raw = (l.image_filename || '').trim();
+    let raw = (l.image_filename || '').trim();
+    if (raw.includes(',')) raw = raw.split(',')[0].trim();
     if (!raw) return imageBase + 'placeholder.jpg';
     if (raw.startsWith('http://') || raw.startsWith('https://')) return raw;
     if (raw.startsWith('/assets/images/')) return imageBase + raw.replace(/^\/assets\/images\//, '');
@@ -166,7 +171,9 @@ require_once __DIR__ . '/includes/header.php';
 
   // Horizontal list card for desktop, stacked article for mobile
   function cardHTML(l) {
-    const price = l.price_formatted || fmt(l.price || 0);
+    const price = l.price_formatted
+      ? { text: l.price_formatted, approx: true }
+      : fmt(l.price);
     const img   = imgSrc(l);
     const url   = `${propertyUrl}?id=${l.id}`;
     const rera  = l.is_rera ? `<span class="bg-primary/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg flex items-center gap-1.5"><span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">verified</span>RERA</span>` : '';
@@ -200,7 +207,7 @@ require_once __DIR__ . '/includes/header.php';
       <div class="w-full md:w-60 lg:w-72 p-6 md:p-8 border-t md:border-t-0 md:border-l border-surface-container flex flex-col justify-center bg-surface-container-lowest/50">
         <div class="mb-6">
           <p class="text-[10px] font-bold text-outline uppercase tracking-widest mb-1">Starting Price</p>
-          <p class="font-headline text-2xl md:text-3xl font-extrabold text-primary">${price}<span class="text-sm font-normal text-outline">*</span></p>
+          <p class="font-headline text-2xl md:text-3xl font-extrabold text-primary">${price.text}${price.approx ? '<span class="text-sm font-normal text-outline">*</span>' : ''}</p>
         </div>
         <div class="flex flex-col gap-3">
           <button class="w-full bg-primary-container text-white py-3 rounded-xl font-headline text-sm font-bold hover:bg-primary transition-all shadow-md hover:shadow-lg active:scale-[0.98]"

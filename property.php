@@ -65,6 +65,9 @@ if (!$listing) {
     if (!empty($listing['gallery_images'])) {
         $listing['gallery_images'] = json_decode($listing['gallery_images'], true);
     }
+    if (empty($listing['gallery_images']) && !empty($listing['image_filename'])) {
+        $listing['gallery_images'] = array_values(array_filter(array_map('trim', explode(',', (string)$listing['image_filename']))));
+    }
 }
 
 // Format price

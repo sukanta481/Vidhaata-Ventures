@@ -41,7 +41,7 @@ $total_listings = $count_stmt->fetch()['count'];
 $total_pages = max(1, ceil($total_listings / $per_page));
 
 // Get paginated listings
-$stmt = $pdo->prepare("SELECT id, title, type, price, location, bedrooms, area_sqft, status, is_featured, created_at FROM listings {$where} ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+$stmt = $pdo->prepare("SELECT id, title, type, listing_purpose, price, monthly_rent, location, bedrooms, area_sqft, status, is_featured, created_at FROM listings {$where} ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
 $stmt->bindValue(':limit', $per_page, PDO::PARAM_INT);
 $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 foreach ($params as $key => $value) {
@@ -66,6 +66,14 @@ $blocked_count = max(0, $total_all - $active_count - $sold_count);
 // Build query string helper
 function build_qs(array $overrides): string {
   return '?' . http_build_query(array_merge($_GET, $overrides));
+}
+
+// Format price to 10k, 1.2L, 3.6Cr format
+function fmtPrice(float $value): string {
+  if ($value <= 0) return '';
+  if ($value >= 10000000) return round($value / 10000000, 1) . 'Cr';
+  if ($value >= 100000) return round($value / 100000, 1) . 'L';
+  return round($value / 1000, 0) . 'k';
 }
 
 $active_page = 'listings';
@@ -171,7 +179,15 @@ admin_head($page_title);
             $border_class = 'border-outline';
             $status_bg = 'bg-slate-200 text-slate-700';
         }
-        $price_fmt = $listing['price'] !== null ? '₹' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $listing['price']) : 'Price on Request';
+        $is_commercial_rent = ($listing['type'] === 'commercial' && (($listing['listing_purpose'] ?? '') === 'rent' || ($listing['listing_purpose'] ?? '') === 'pg'));
+        if ($is_commercial_rent && !empty($listing['monthly_rent']) && (float)$listing['monthly_rent'] > 0) {
+          $price_fmt = '₹' . fmtPrice((float)$listing['monthly_rent']) . '/month';
+        } elseif (!empty($listing['price']) && (float)$listing['price'] > 0) {
+          $price_fmt = '₹' . fmtPrice((float)$listing['price']);
+        } else {
+          $price_fmt = 'Price on Request';
+        }
+        $price_per_sqft = (!$is_commercial_rent && $listing['area_sqft'] && $listing['price']) ? (int)round($listing['price'] / $listing['area_sqft']) : 0;
       ?>
       <div class="grid grid-cols-12 gap-4 items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm border-l-4 <?php echo $border_class; ?> hover:shadow-md transition-all group">
         <div class="col-span-5 flex items-center space-x-4 pr-4">
@@ -216,8 +232,8 @@ admin_head($page_title);
         
         <div class="col-span-2">
           <p class="text-xl font-headline font-extrabold text-on-background tracking-tight"><?php echo $price_fmt; ?></p>
-          <?php if ($listing['area_sqft'] && $listing['price']): ?>
-          <p class="text-[11px] text-outline font-bold uppercase tracking-tight">₹<?php echo number_format($listing['price'] / $listing['area_sqft'], 0); ?> / SQ.FT</p>
+          <?php if (!$is_commercial_rent && $listing['area_sqft'] && $listing['price']): ?>
+          <p class="text-[11px] text-outline font-bold uppercase tracking-tight">₹<?php echo fmtPrice($listing['price'] / $listing['area_sqft']); ?> / SQ.FT</p>
           <?php endif; ?>
         </div>
         

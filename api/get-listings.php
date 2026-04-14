@@ -60,7 +60,22 @@ try {
 }
 
 try {
-  $sql = 'SELECT id, type, title, description, price, location, bedrooms, area_sqft, image_filename, is_featured, status, created_at
+  $availableColumns = $pdo->query('SHOW COLUMNS FROM listings')->fetchAll(PDO::FETCH_COLUMN, 0);
+  $availableSet = array_flip($availableColumns ?: []);
+  $desiredColumns = [
+    'id', 'type', 'title', 'description', 'price', 'monthly_rent', 'listing_purpose',
+    'location', 'city', 'bedrooms', 'area_sqft', 'total_floors', 'possession_status',
+    'image_filename', 'is_featured', 'is_rera', 'status', 'created_at'
+  ];
+  $selectedColumns = array_values(array_filter($desiredColumns, static function ($col) use ($availableSet) {
+    return isset($availableSet[$col]);
+  }));
+
+  if (empty($selectedColumns)) {
+    respondWithError('Listings schema is missing expected columns.', 500);
+  }
+
+  $sql = 'SELECT ' . implode(', ', $selectedColumns) . '
           FROM listings
           WHERE ' . implode(' AND ', $where) . '
           ORDER BY created_at DESC

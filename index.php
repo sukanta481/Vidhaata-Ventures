@@ -295,7 +295,11 @@ require_once __DIR__ . '/includes/header.php';
             $stmt->execute();
             $recent_listings = $stmt->fetchAll();
             foreach ($recent_listings as $lst):
-                $hero_img = (!empty($lst['image_filename']) && strpos($lst['image_filename'], 'http') === false) ? SITE_URL . '/assets/images/' . $lst['image_filename'] : ($lst['image_filename'] ?: SITE_URL . '/assets/images/placeholder.jpg');
+                $hero_img_name = trim((string)($lst['image_filename'] ?? ''));
+                if (strpos($hero_img_name, ',') !== false) {
+                  $hero_img_name = trim(explode(',', $hero_img_name)[0]);
+                }
+                $hero_img = (!empty($hero_img_name) && strpos($hero_img_name, 'http') === false) ? SITE_URL . '/assets/images/' . ltrim($hero_img_name, '/') : ($hero_img_name ?: SITE_URL . '/assets/images/placeholder.jpg');
                 $price_fmt = $lst['price'] >= 10000000 ? round($lst['price'] / 10000000, 2) . ' Cr' : round($lst['price'] / 100000, 2) . ' Lakh';
         ?>
         <a href="<?php echo SITE_URL; ?>/property.php?id=<?php echo $lst['id']; ?>" class="bg-surface-container-lowest rounded-xl overflow-hidden group block shadow-sm border border-outline-variant/10 hover:shadow-xl transition-all">
@@ -335,7 +339,11 @@ require_once __DIR__ . '/includes/header.php';
         <?php
         if (isset($pdo) && isset($recent_listings) && !empty($recent_listings)):
           foreach ($recent_listings as $lst):
-            $hero_img = (!empty($lst['image_filename']) && strpos($lst['image_filename'], 'http') === false) ? SITE_URL . '/assets/images/' . $lst['image_filename'] : ($lst['image_filename'] ?: SITE_URL . '/assets/images/placeholder.jpg');
+            $hero_img_name = trim((string)($lst['image_filename'] ?? ''));
+            if (strpos($hero_img_name, ',') !== false) {
+              $hero_img_name = trim(explode(',', $hero_img_name)[0]);
+            }
+            $hero_img = (!empty($hero_img_name) && strpos($hero_img_name, 'http') === false) ? SITE_URL . '/assets/images/' . ltrim($hero_img_name, '/') : ($hero_img_name ?: SITE_URL . '/assets/images/placeholder.jpg');
             $price_fmt = $lst['price'] >= 10000000 ? round($lst['price'] / 10000000, 2) . ' Cr' : round($lst['price'] / 100000, 2) . ' Lakh';
         ?>
         <a href="<?php echo SITE_URL; ?>/property.php?id=<?php echo $lst['id']; ?>" class="min-w-[88%] snap-start bg-surface-container-low rounded-[2.5rem] p-5 flex flex-col shadow-sm block">

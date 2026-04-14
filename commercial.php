@@ -145,13 +145,44 @@ require_once __DIR__ . '/includes/header.php';
   let allListings = [];
 
   function fmt(price) {
-    if (price >= 10000000) return '₹' + (price / 10000000).toFixed(2) + ' Cr';
-    if (price >= 100000)   return '₹' + (price / 100000).toFixed(1) + ' L';
-    return '₹' + Number(price).toLocaleString('en-IN');
+    const value = Number(price);
+    if (!Number.isFinite(value) || value <= 0) {
+      return { text: 'Price on Request', approx: false };
+    }
+    if (value >= 10000000) return { text: '₹' + (value / 10000000).toFixed(1) + 'Cr', approx: true };
+    if (value >= 100000)   return { text: '₹' + (value / 100000).toFixed(1) + 'L', approx: true };
+    return { text: '₹' + (value / 1000).toFixed(0) + 'k', approx: true };
+  }
+
+  function fmtRent(price) {
+    const value = Number(price);
+    if (!Number.isFinite(value) || value <= 0) return { text: 'Price on Request', approx: false };
+    if (value >= 100000) return { text: '₹' + (value / 100000).toFixed(1) + 'L/month', approx: true };
+    return { text: '₹' + (value / 1000).toFixed(0) + 'k/month', approx: true };
+  }
+
+  function getCommercialPriceMeta(l) {
+    const purpose = (l.listing_purpose || '').toLowerCase();
+    if (purpose === 'rent' || purpose === 'pg') {
+      const rentValue = Number(l.monthly_rent);
+      if (Number.isFinite(rentValue) && rentValue > 0) {
+        return {
+          label: 'Monthly Rent',
+          value: fmtRent(rentValue),
+          purposeLabel: purpose === 'pg' ? 'PG' : 'Rent'
+        };
+      }
+    }
+    return {
+      label: 'Investment Value',
+      value: l.price_formatted ? { text: l.price_formatted, approx: true } : fmt(l.price),
+      purposeLabel: purpose === 'rent' ? 'Rent' : (purpose === 'pg' ? 'PG' : 'Sale')
+    };
   }
 
   function imgSrc(l) {
-    const raw = (l.image_filename || '').trim();
+    let raw = (l.image_filename || '').trim();
+    if (raw.includes(',')) raw = raw.split(',')[0].trim();
     if (!raw) return imageBase + 'placeholder.jpg';
     if (raw.startsWith('http://') || raw.startsWith('https://')) return raw;
     if (raw.startsWith('/assets/images/')) return imageBase + raw.replace(/^\/assets\/images\//, '');
@@ -165,12 +196,13 @@ require_once __DIR__ . '/includes/header.php';
 
   // Desktop: image | content | right-price-panel. Mobile: tall image + card body
   function cardHTML(l) {
-    const price = l.price_formatted || fmt(l.price || 0);
+    const priceMeta = getCommercialPriceMeta(l);
+    const price = priceMeta.value;
     const img   = imgSrc(l);
     const url   = `${propertyUrl}?id=${l.id}`;
     const rera  = l.is_rera ? `<div class="absolute top-4 left-4 bg-primary-container/90 backdrop-blur text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1 uppercase tracking-widest"><span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">verified</span>RERA</div>` : '';
     const feat  = l.is_featured ? `<div class="absolute top-4 right-4 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest">Featured</div>` : '';
-    const typeLabel = l.type ? `<div class="inline-block bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">For ${l.listing_type || 'Sale'}</div>` : '';
+    const typeLabel = l.type ? `<div class="inline-block bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">For ${priceMeta.purposeLabel}</div>` : '';
 
     return `
     <a href="${url}" class="block group bg-surface-container-lowest rounded-2xl md:rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(27,28,28,0.06)] hover:shadow-[0px_30px_60px_rgba(0,18,37,0.10)] transition-all duration-500 ring-1 ring-outline-variant/10 flex flex-col md:flex-row lg:flex-row">
@@ -209,8 +241,8 @@ require_once __DIR__ . '/includes/header.php';
         <div class="md:w-56 lg:w-64 flex flex-col justify-between items-start md:items-end md:text-right md:border-l md:border-outline-variant/20 md:pl-8 mt-4 md:mt-0">
           <div>
             ${typeLabel}
-            <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">Investment Value</span>
-            <span class="text-2xl md:text-3xl font-extrabold text-primary">${price}</span>
+            <span class="text-[10px] uppercase tracking-widest text-outline block mb-1">${priceMeta.label}</span>
+            <span class="text-2xl md:text-3xl font-extrabold text-primary">${price.text}${price.approx ? '<span class="text-sm font-normal text-outline">*</span>' : ''}</span>
           </div>
           <div class="flex flex-col gap-3 w-full mt-5 md:mt-0">
             <button class="bg-primary-container text-on-primary w-full py-3 rounded-xl font-bold text-sm hover:opacity-90 transition-all"
